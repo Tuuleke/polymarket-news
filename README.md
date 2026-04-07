@@ -1,3 +1,5 @@
+## Work in progress
+
 # Polymarket News
 
 AI-powered news platform that translates prediction market data into readable news articles.
