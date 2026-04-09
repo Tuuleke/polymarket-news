@@ -1,6 +1,17 @@
-from datetime import datetime
+from datetime import date, datetime
 
 from pydantic import BaseModel
+
+from app.schemas.article import ArticleRead
+
+
+class MarketSnapshotRead(BaseModel):
+    id: int
+    market_id: int
+    date: date
+    probability: float
+
+    model_config = {"from_attributes": True}
 
 
 class MarketBase(BaseModel):
@@ -19,5 +30,6 @@ class MarketCreate(MarketBase):
 class MarketRead(MarketBase):
     id: int
     fetched_at: datetime
+    articles: list[ArticleRead] = []
 
     model_config = {"from_attributes": True}

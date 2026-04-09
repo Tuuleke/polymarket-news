@@ -16,9 +16,8 @@ class Settings(BaseSettings):
     POLYMARKET_CLOB_API_URL: str = "https://clob.polymarket.com"
 
     # LLM
-    ANTHROPIC_API_KEY: str = ""
-    LLM_MODEL: str = "claude-sonnet-4-6"
-
+    OPENROUTER_API_KEY: str = ""
+    LLM_MODEL: str = "qwen/qwen3.6-plus"
     # Scheduler
     FETCH_INTERVAL_MINUTES: int = 30
 

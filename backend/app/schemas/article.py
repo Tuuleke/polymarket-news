@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 
 from pydantic import BaseModel
 
@@ -8,6 +8,9 @@ class ArticleBase(BaseModel):
     body: str
     llm_model: str
     probability_at_generation: float
+    article_type: str = "explanation"
+    probability_change: float | None = None
+    snapshot_date: date | None = None
 
 
 class ArticleCreate(ArticleBase):
