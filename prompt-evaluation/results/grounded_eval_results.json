@@ -1,0 +1,473 @@
+{
+  "run_at": "20260423T122915Z",
+  "judge_model": "openai/gpt-4o-search-preview",
+  "grounding_method": "gpt4o_search_preview",
+  "results": [
+    {
+      "article_type": "explanation",
+      "question": "Will France win the 2026 FIFA World Cup?",
+      "writer_model": "deepseek/deepseek-v3.2",
+      "original_factual_consistency": 1,
+      "grounded_factual_consistency": 7,
+      "delta": 6,
+      "supported_claims": [
+        "Spain is the betting favorite with 17.3% probability, while France sits at 16.4%\u2014a tight margin reflecting co-favorite status.",
+        "Recent March 2026 friendly wins over Brazil and Colombia boosted France's credentials."
+      ],
+      "unsupported_claims": [
+        "The market sees Spain as more reliable but France's elite squad depth and tournament pedigree keep them close contenders."
+      ],
+      "reasoning": "The article's claims about betting probabilities and France's recent friendly wins are supported by sources, but the statement about market perceptions lacks explicit confirmation."
+    },
+    {
+      "article_type": "explanation",
+      "question": "Will France win the 2026 FIFA World Cup?",
+      "writer_model": "google/gemini-3-flash-preview",
+      "original_factual_consistency": 5,
+      "grounded_factual_consistency": 6,
+      "delta": 1,
+      "supported_claims": [
+        "Hugo Ekitike was ruled out in April with a ruptured Achilles.",
+        "Market confidence remains high due to a 'billion-dollar' attack led by Kylian Mbapp\u00e9 and Ballon d\u2019Or winner Ousmane Demb\u00e9l\u00e9."
+      ],
+      "unsupported_claims": [
+        "France maintains a 17% probability (approx. 9/2 odds) as co-favorites alongside Argentina and Spain for the 2026 World Cup.",
+        "Recent friendly wins over Brazil and Colombia further solidified their status as the world\u2019s deepest squad."
+      ],
+      "reasoning": "While Ekitike's injury and the strength of France's attack are confirmed, the specific probability figures and recent friendly match results are not supported by the available sources."
+    },
+    {
+      "article_type": "explanation",
+      "question": "Will France win the 2026 FIFA World Cup?",
+      "writer_model": "minimax/minimax-m2.7",
+      "original_factual_consistency": 0,
+      "grounded_factual_consistency": 7,
+      "delta": 7,
+      "supported_claims": [
+        "France's 17% World Cup title probability reflects elite status amid stiff competition.",
+        "France enters the 2026 World Cup as co-favorites alongside Spain, with betting markets and prediction platforms assigning them roughly a 17% chance to lift the trophy at MetLife Stadium.",
+        "France is ranked No. 1 by FIFA.",
+        "France possesses one of the tournament's deepest squads, led by Kylian Mbapp\u00e9.",
+        "Spain leads the market at +450, while France sits at +500 to +550 across major sportsbooks."
+      ],
+      "unsupported_claims": [
+        "France's squad is led by Ballon d'Or winner Ousmane Demb\u00e9l\u00e9.",
+        "Several factors temper their title odds: a projected knockout path that could pit them against Germany, Netherlands, and Spain; defensive transition vulnerabilities; and Mbapp\u00e9's injury concerns.",
+        "Didier Deschamps' final tournament as manager adds emotional weight but also uncertainty around tactical evolution."
+      ],
+      "reasoning": "While the article accurately reports France's FIFA ranking, squad depth, and betting odds, it includes unverifiable or unsupported claims about Ousmane Demb\u00e9l\u00e9's Ballon d'Or status, specific knockout path projections, defensive vulnerabilities, Mbapp\u00e9's injury concerns, and Deschamps' managerial status."
+    },
+    {
+      "article_type": "explanation",
+      "question": "Will the Oklahoma City Thunder win the 2026 NBA Championship?",
+      "writer_model": "deepseek/deepseek-v3.2",
+      "original_factual_consistency": 0,
+      "grounded_factual_consistency": 7,
+      "delta": 7,
+      "supported_claims": [
+        "The Oklahoma City Thunder entered the playoffs as heavy favorites at +110 to +120 odds after an NBA-best 64-18 season.",
+        "All-Star Jalen Williams aggravated his hamstring in Game 2 against Phoenix.",
+        "Despite a 2-0 series lead, these injuries in the first round create uncertainty for the defending champions' repeat aspirations."
+      ],
+      "unsupported_claims": [
+        "MVP Shai Gilgeous-Alexander tweaked his hand in the same game."
+      ],
+      "reasoning": "The article accurately reports the Thunder's season record, playoff odds, and Jalen Williams' injury, but there is no evidence supporting the claim that Shai Gilgeous-Alexander injured his hand in Game 2."
+    },
+    {
+      "article_type": "explanation",
+      "question": "Will the Oklahoma City Thunder win the 2026 NBA Championship?",
+      "writer_model": "google/gemini-3-flash-preview",
+      "original_factual_consistency": 3,
+      "grounded_factual_consistency": 9,
+      "delta": 6,
+      "supported_claims": [
+        "The Oklahoma City Thunder hold a 52% probability of winning the 2026 NBA Finals.",
+        "They are the defending champions and the West\u2019s top seed.",
+        "They currently lead their first-round series against the Phoenix Suns 2-0.",
+        "Shai Gilgeous-Alexander was named the 2025-26 Kia NBA Clutch Player of the Year.",
+        "OKC finished the regular season with a league-best 64-18 record.",
+        "Jalen Williams sustained a hamstring injury during Game 2 of the first-round series against the Phoenix Suns."
+      ],
+      "unsupported_claims": [
+        "Jalen Williams is an All-Star."
+      ],
+      "reasoning": "All factual claims in the article are supported by the provided sources, except for the assertion that Jalen Williams is an All-Star, which lacks verification."
+    },
+    {
+      "article_type": "explanation",
+      "question": "Will the Oklahoma City Thunder win the 2026 NBA Championship?",
+      "writer_model": "minimax/minimax-m2.7",
+      "original_factual_consistency": 2,
+      "grounded_factual_consistency": 7,
+      "delta": 5,
+      "supported_claims": [
+        "The Oklahoma City Thunder had a net rating of 11.1 this season.",
+        "The Thunder finished this year with a Net Rating of 11.1, the eighth-highest mark in league history.",
+        "The Thunder are a +135 betting favorite to win outright in the 2026 NBA Finals odds, ahead of the Spurs (+550) and Celtics (+550)."
+      ],
+      "unsupported_claims": [
+        "The Oklahoma City Thunder enter the 2026 playoffs as clear favorites to repeat as champions, holding +110 odds on DraftKings and +115 on FanDuel.",
+        "The Thunder won an NBA-best 64 games this season while leading the league in point differential (+11.1), defensive rating, and net rating for the second consecutive year.",
+        "Despite injuries to MVP frontrunner Shai Gilgeous-Alexander, Jalen Williams, and Chet Holmgren during the regular season, Oklahoma City avoided a championship hangover and secured the West's top seed for the third straight year.",
+        "The main threats include the San Antonio Spurs (+500), who surged to 30-4 after the All-Star break behind Victor Wembanyama, and the Boston Celtics (+550) with Jayson Tatum back from injury.",
+        "The Thunder dominated Game 1 of their first-round series against Phoenix, winning 120-84 as 17.5-point favorites."
+      ],
+      "reasoning": "While some claims are supported by available sources, several key details, such as specific betting odds, win totals, player injuries, and game outcomes, lack explicit confirmation in the provided search results."
+    },
+    {
+      "article_type": "explanation",
+      "question": "Will the Federal Reserve hold interest rates unchanged at its April 2026 meeting?",
+      "writer_model": "deepseek/deepseek-v3.2",
+      "original_factual_consistency": 0,
+      "grounded_factual_consistency": 9,
+      "delta": 9,
+      "supported_claims": [
+        "Market consensus overwhelmingly expects the Federal Reserve to maintain interest rates unchanged at the April 28-29, 2026 FOMC meeting.",
+        "Polymarket shows 99% probability for 'No change,' with over $116 million in trading volume reflecting this near-certainty.",
+        "Economic pressures from persistent inflation and Middle East geopolitical tensions limiting energy supplies have reinforced expectations of continued policy stability."
+      ],
+      "unsupported_claims": [],
+      "reasoning": "All factual claims in the article are supported by the provided search results, with minor discrepancies in exact figures that do not significantly impact the overall accuracy."
+    },
+    {
+      "article_type": "explanation",
+      "question": "Will the Federal Reserve hold interest rates unchanged at its April 2026 meeting?",
+      "writer_model": "google/gemini-3-flash-preview",
+      "original_factual_consistency": 1,
+      "grounded_factual_consistency": 9,
+      "delta": 8,
+      "supported_claims": [
+        "The Federal Reserve is overwhelmingly expected to maintain the federal funds rate at 3.50%\u20133.75% during its April 28\u201329 meeting.",
+        "Markets price in a 99% probability of no change as the FOMC adopts a 'wait-and-see' stance.",
+        "Inflation jumped to 3.3% in March, driven by surging energy prices from the conflict with Iran."
+      ],
+      "unsupported_claims": [
+        "With core inflation remaining sticky, the Fed is prioritizing caution over imminent rate shifts."
+      ],
+      "reasoning": "The article's claims about the Federal Reserve's expected rate decision, market probabilities, and the March inflation rate are well-supported by current data. However, the statement regarding core inflation's persistence and the Fed's cautious approach lacks explicit confirmation in the provided sources."
+    },
+    {
+      "article_type": "explanation",
+      "question": "Will the Federal Reserve hold interest rates unchanged at its April 2026 meeting?",
+      "writer_model": "minimax/minimax-m2.7",
+      "original_factual_consistency": 5,
+      "grounded_factual_consistency": 7,
+      "delta": 2,
+      "supported_claims": [
+        "The Federal Reserve is expected to keep interest rates unchanged at its April 28\u201329 meeting.",
+        "CME's FedWatch tool shows a 99.5% probability of no change.",
+        "Core PCE inflation held at 3.1% in February, well above the Fed's 2% target."
+      ],
+      "unsupported_claims": [
+        "The 99.5% probability is the highest ever recorded by the CME FedWatch tool.",
+        "The persistence of inflation is compounded by the war in Iran and closure of the Strait of Hormuz.",
+        "Energy prices have increased 50% since mid-March.",
+        "Even dovish officials like Governor Christopher Waller have signaled comfort with staying on the sidelines.",
+        "Any rate cuts have been pushed to late 2026 at the earliest, with market pricing reflecting no change until December."
+      ],
+      "reasoning": "While key claims about the Fed's expected rate decision and inflation data are supported, several specific details lack explicit confirmation in the provided sources."
+    },
+    {
+      "article_type": "explanation",
+      "question": "Will Gavin Newsom be the 2028 Democratic presidential nominee?",
+      "writer_model": "deepseek/deepseek-v3.2",
+      "original_factual_consistency": 2,
+      "grounded_factual_consistency": 4,
+      "delta": 2,
+      "supported_claims": [
+        "Gavin Newsom holds a 25% nomination probability.",
+        "Prediction markets price him at ~27.6% for the nomination."
+      ],
+      "unsupported_claims": [
+        "He trails Kamala Harris in recent polls, who leads with 22% support.",
+        "Newsom tied with Harris among older voters (28%) but ranks second overall.",
+        "He's indicated he'll decide after the 2026 midterms."
+      ],
+      "reasoning": "While the article accurately reports Newsom's nomination probability, it lacks verifiable sources for polling data and his decision timeline."
+    },
+    {
+      "article_type": "explanation",
+      "question": "Will Gavin Newsom be the 2028 Democratic presidential nominee?",
+      "writer_model": "google/gemini-3-flash-preview",
+      "original_factual_consistency": 3,
+      "grounded_factual_consistency": 4,
+      "delta": 1,
+      "supported_claims": [
+        "California Governor Gavin Newsom\u2019s 2028 probability remains at 25% as the field of potential Democratic successors widens.",
+        "Critics point to California\u2019s structural $20\u2013$35 billion deficits as a potential campaign liability."
+      ],
+      "unsupported_claims": [
+        "While Newsom led a March poll of California Democrats with 23%, a more recent YouGov survey shows him trailing former Vice President Kamala Harris by 12 points.",
+        "Newsom has confirmed he will wait until after the 2026 midterms to officially decide."
+      ],
+      "reasoning": "The article's claim about Newsom's 25% probability aligns with prediction market data, and the budget deficit figures are consistent with reports. However, specific polling data and Newsom's statement about his decision timeline could not be verified in the provided sources."
+    },
+    {
+      "article_type": "explanation",
+      "question": "Will Gavin Newsom be the 2028 Democratic presidential nominee?",
+      "writer_model": "minimax/minimax-m2.7",
+      "original_factual_consistency": 4,
+      "grounded_factual_consistency": 5,
+      "delta": 1,
+      "supported_claims": [
+        "Recent polling shows Newsom as a leading Democrat for 2028 but trailing Harris significantly among primary voters.",
+        "A YouGov poll found Harris leads with 52% support compared to Newsom's 40% when Democrats are asked who they'd consider voting for."
+      ],
+      "unsupported_claims": [
+        "Washington insiders view Newsom favorably\u201475% see him as best positioned to lead the party.",
+        "The 25% probability reflects his strong elite support but persistent polling gap behind Harris, plus his unresolved California governance legacy concerns heading into his final months in office."
+      ],
+      "reasoning": "While some polling data supports the claims about Newsom's and Harris's standings, the specific figures and insider opinions mentioned are not corroborated by the provided sources."
+    },
+    {
+      "article_type": "explanation",
+      "question": "Will Bitcoin hit $150,000 by December 31, 2026?",
+      "writer_model": "deepseek/deepseek-v3.2",
+      "original_factual_consistency": 4,
+      "grounded_factual_consistency": 8,
+      "delta": 4,
+      "supported_claims": [
+        "Polymarket bettors give Bitcoin just a 10% probability of reaching $150,000 before 2027.",
+        "Bernstein maintains a $150,000 Bitcoin price target for 2026.",
+        "Bitcoin's all-time high was over $125,000 in early October 2025.",
+        "Bitcoin is currently trading around $77,000."
+      ],
+      "unsupported_claims": [
+        "Goldman Sachs has issued forecasts targeting $150,000-$170,000 for Bitcoin."
+      ],
+      "reasoning": "The article accurately reports Polymarket's 10% probability for Bitcoin reaching $150,000 by 2026, Bernstein's $150,000 target, and Bitcoin's current trading price around $77,000. However, there is no evidence that Goldman Sachs has issued forecasts targeting $150,000-$170,000 for Bitcoin; instead, JPMorgan has suggested a fair value of $170,000."
+    },
+    {
+      "article_type": "explanation",
+      "question": "Will Bitcoin hit $150,000 by December 31, 2026?",
+      "writer_model": "google/gemini-3-flash-preview",
+      "original_factual_consistency": 4,
+      "grounded_factual_consistency": 7,
+      "delta": 3,
+      "supported_claims": [
+        "Bernstein maintains a $150,000 Bitcoin price target for 2026.",
+        "Standard Chartered revised its Bitcoin price target to $150,000 for 2026.",
+        "Bitcoin is currently trading near $77,766."
+      ],
+      "unsupported_claims": [
+        "Standard Chartered maintains a $150,000 Bitcoin price target for 2026.",
+        "Bitcoin is currently trading near $78,900 after a 41% drawdown from its October 2025 peak."
+      ],
+      "reasoning": "The article accurately reports Bernstein's $150,000 Bitcoin price target for 2026 and the current Bitcoin price near $77,766. However, it incorrectly states that Standard Chartered maintains a $150,000 target, whereas the bank has revised its forecast to $100,000. Additionally, the current Bitcoin price is approximately $77,766, not $78,900, and the drawdown percentage from the October 2025 peak is not specified in the provided sources."
+    },
+    {
+      "article_type": "explanation",
+      "question": "Will Bitcoin hit $150,000 by December 31, 2026?",
+      "writer_model": "minimax/minimax-m2.7",
+      "original_factual_consistency": 5,
+      "grounded_factual_consistency": 5,
+      "delta": 0,
+      "supported_claims": [
+        "Bitcoin is trading around $75,000 in mid-April 2026.",
+        "Bitcoin's all-time high was set in October 2025.",
+        "The market assigns just 10% probability to Bitcoin reaching $150,000 by December 31, 2026."
+      ],
+      "unsupported_claims": [
+        "Bitcoin's all-time high was $126,000.",
+        "Bitcoin is down 41% from its all-time high.",
+        "This marks Bitcoin's longest sustained bearish streak in 17 years.",
+        "Institutions like Bernstein and Goldman Sachs maintain $150,000 year-end targets.",
+        "Five consecutive red monthly candles have crushed retail sentiment.",
+        "ETF outflows reached $8.6 billion in January alone.",
+        "Standard Chartered cut its target three times, citing weakening ETF flows.",
+        "Institutional consensus centers on Q3 2026 catalysts\u2014Kevin Warsh replacing Powell as Fed chair on May 15, potential CLARITY Act passage, and altcoin ETF approvals\u2014that could spark a recovery.",
+        "The gap reflects deep disagreement over whether Bitcoin's four-year cycle has broken down or merely paused."
+      ],
+      "reasoning": "While some claims are supported by available data, many specific figures and events mentioned in the article lack explicit confirmation from the provided sources."
+    },
+    {
+      "article_type": "update",
+      "question": "Will Bitcoin hit $80,000 in April 2026?",
+      "writer_model": "deepseek/deepseek-v3.2",
+      "original_factual_consistency": 4,
+      "grounded_factual_consistency": 7,
+      "delta": 3,
+      "supported_claims": [
+        "Prediction markets have slashed Bitcoin's chance of hitting $80,000 this month from 65% to 31%.",
+        "The drop follows a failed price breakout, with BTC falling 1.77% on April 18 after hitting $78,390."
+      ],
+      "unsupported_claims": [
+        "retreating into the $75,000-$76,000 resistance zone",
+        "Traders cite hawkish Fed minutes from April 15 and EU plans for stricter crypto capital rules as headwinds, reducing upside conviction."
+      ],
+      "reasoning": "The article accurately reports the prediction market probability shift and Bitcoin's price movement on April 18. However, the claim about retreating into the $75,000-$76,000 resistance zone lacks explicit support, and there is no evidence of hawkish Fed minutes or EU plans for stricter crypto capital rules affecting Bitcoin's price."
+    },
+    {
+      "article_type": "update",
+      "question": "Will Bitcoin hit $80,000 in April 2026?",
+      "writer_model": "google/gemini-3-flash-preview",
+      "original_factual_consistency": 3,
+      "grounded_factual_consistency": 7,
+      "delta": 4,
+      "supported_claims": [
+        "The probability of Bitcoin reaching $80,000 this month plummeted to 31%.",
+        "Effective U.S. tariff rates surged to 10.3%.",
+        "U.S. inflation increased to 3.3% in March 2026.",
+        "Kevin Warsh is the nominee for Federal Reserve Chair.",
+        "A US-Iran ceasefire extension occurred.",
+        "The Strait of Hormuz is closed."
+      ],
+      "unsupported_claims": [
+        "The 'Liberation Day' tariff shocks occurred.",
+        "The US-Iran ceasefire extension sparked a 'V-shaped' recovery to $78,000.",
+        "Stalled negotiations and the closed Strait of Hormuz continue to depress risk appetite and institutional ETF inflows."
+      ],
+      "reasoning": "While most claims are supported by available sources, specific details such as the 'Liberation Day' tariff shocks and the exact impact on Bitcoin's price lack direct confirmation."
+    },
+    {
+      "article_type": "update",
+      "question": "Will Bitcoin hit $80,000 in April 2026?",
+      "writer_model": "minimax/minimax-m2.7",
+      "original_factual_consistency": 2,
+      "grounded_factual_consistency": 6,
+      "delta": 4,
+      "supported_claims": [
+        "Bitcoin's probability of reaching $80,000 by end of April 2026 has plummeted to 31%, down 34 percentage points from 65%.",
+        "Bitcoin traded near $74,300 on April 14 after reversing from $76,000.",
+        "Geopolitical risks linked to the U.S.-Iran standoff have kept oil prices above $100 since early March.",
+        "Rate cut expectations have faded, with markets now pricing just a 60% chance of a June cut versus 80% previously."
+      ],
+      "unsupported_claims": [
+        "The largest cryptocurrency repeatedly failed to break the $75,000-$76,000 resistance zone in April, extending a frustrating two-month struggle.",
+        "Funding rates on bitcoin perpetuals have remained negative for 46 straight days\u2014the longest streak since post-FTX 2022\u2014signaling persistent bearish positioning.",
+        "Technicals show exchange outflows fell 50% since March, reducing accumulation pressure.",
+        "Prediction markets assign only 35% odds to Bitcoin reaching $80,000 by month-end.",
+        "Institutional buyers like MicroStrategy and Deutsche B\u00f6rse's $200M Kraken investment provide support."
+      ],
+      "reasoning": "While several claims are supported by available data, multiple assertions lack explicit confirmation in the provided sources."
+    },
+    {
+      "article_type": "update",
+      "question": "Will George Russell win the 2026 Formula 1 Drivers' Championship?",
+      "writer_model": "deepseek/deepseek-v3.2",
+      "original_factual_consistency": 4,
+      "grounded_factual_consistency": 8,
+      "delta": 4,
+      "supported_claims": [
+        "George Russell's 2026 F1 title probability has surged from 28% to 50% following his dominant Australian Grand Prix victory on March 7.",
+        "This 22-point jump reflects market confidence in Mercedes' strong start under new regulations.",
+        "Russell won comfortably in Melbourne, leading a Mercedes 1-2 finish with teammate Kimi Antonelli."
+      ],
+      "unsupported_claims": [
+        "Max Verstappen trailed."
+      ],
+      "reasoning": "The article accurately reports Russell's victory and Mercedes' 1-2 finish at the Australian Grand Prix, aligning with the market context of a 22-point probability increase. However, the claim that 'Max Verstappen trailed' is vague and lacks specific details about his performance in the race."
+    },
+    {
+      "article_type": "update",
+      "question": "Will George Russell win the 2026 Formula 1 Drivers' Championship?",
+      "writer_model": "google/gemini-3-flash-preview",
+      "original_factual_consistency": 0,
+      "grounded_factual_consistency": 7,
+      "delta": 7,
+      "supported_claims": [
+        "George Russell\u2019s championship probability rose to 50% following a pole position and victory at the season-opening Australian Grand Prix.",
+        "Despite Mercedes locking out the front row in the first race under new regulations, Russell now trails teammate Kimi Antonelli by nine points after Antonelli secured back-to-back wins in China and Japan."
+      ],
+      "unsupported_claims": [
+        "Analysts remain bullish on Russell due to Mercedes\u2019 dominant W17 package and unanimous mid-season regulation tweaks aimed at improving energy management."
+      ],
+      "reasoning": "The article accurately reports on race outcomes and championship standings, but lacks verifiable sources for claims about analysts' opinions and specific technical details."
+    },
+    {
+      "article_type": "update",
+      "question": "Will George Russell win the 2026 Formula 1 Drivers' Championship?",
+      "writer_model": "minimax/minimax-m2.7",
+      "original_factual_consistency": 0,
+      "grounded_factual_consistency": 9,
+      "delta": 9,
+      "supported_claims": [
+        "George Russell's probability to win the 2026 Formula 1 Drivers' Championship jumped from 28% to 50% on March 7, 2026.",
+        "Russell secured pole position by nearly 0.8 seconds over the nearest non-Mercedes competitor.",
+        "Max Verstappen crashed out in Q1, leaving him to start 20th.",
+        "Pre-season testing had already signaled Mercedes' advantage under new regulations.",
+        "Russell converted pole into victory at the season opener, leading a Mercedes 1-2 finish ahead of teammate Kimi Antonelli."
+      ],
+      "unsupported_claims": [
+        "Russell was the betting favorite at +200.",
+        "Lewis Hamilton noted Mercedes could build an 'unreachable' championship lead within months given their pace advantage."
+      ],
+      "reasoning": "Most claims are supported by search results, but specific details about betting odds and Lewis Hamilton's statement are not confirmed."
+    },
+    {
+      "article_type": "update",
+      "question": "Will Finland win Eurovision 2026?",
+      "writer_model": "deepseek/deepseek-v3.2",
+      "original_factual_consistency": 0,
+      "grounded_factual_consistency": 9,
+      "delta": 9,
+      "supported_claims": [
+        "Finland's probability of winning Eurovision 2026 has doubled to 36% after Linda Lampenius and Pete Parkkonen won the national selection in February with 'Liekinheitin'.",
+        "The duo scored a decisive victory with 570 points, setting a voting record.",
+        "By April, bookmakers made Finland 6/4 favorites (40% implied chance), dominating betting markets."
+      ],
+      "unsupported_claims": [
+        "Accounting for nearly a third of all stakes."
+      ],
+      "reasoning": "The article's key claims are well-supported by the provided sources, except for the specific detail about Finland accounting for nearly a third of all stakes, which lacks explicit confirmation."
+    },
+    {
+      "article_type": "update",
+      "question": "Will Finland win Eurovision 2026?",
+      "writer_model": "google/gemini-3-flash-preview",
+      "original_factual_consistency": 0,
+      "grounded_factual_consistency": 7,
+      "delta": 7,
+      "supported_claims": [
+        "Linda Lampenius and Pete Parkkonen won Uuden Musiikin Kilpailu (UMK) 2026 with their song 'Liekinheitin' on February 28, 2026.",
+        "Their entry, 'Liekinheitin,' is a fusion of classical violin and rock.",
+        "By April 2026, the duo solidified their frontrunner status, with some bookmakers placing their winning chance as high as 40% following successful live performances at pre-parties in London and Amsterdam."
+      ],
+      "unsupported_claims": [
+        "Their entry, 'Liekinheitin,' secured a record-breaking 492 televote points."
+      ],
+      "reasoning": "While most claims are supported by the provided sources, the specific figure of 492 televote points being record-breaking is not explicitly confirmed in the available information."
+    },
+    {
+      "article_type": "update",
+      "question": "Will Finland win Eurovision 2026?",
+      "writer_model": "minimax/minimax-m2.7",
+      "original_factual_consistency": 3,
+      "grounded_factual_consistency": 7,
+      "delta": 4,
+      "supported_claims": [
+        "Finland's entry 'Liekinheitin' by Linda Lampenius and Pete Parkkonen is a classical-pop-rock hybrid.",
+        "The Grand Final takes place at Vienna's Wiener Stadthalle on 16 May 2026."
+      ],
+      "unsupported_claims": [
+        "Finland has emerged as the dominant favourite to win Eurovision 2026, with its entry 'Liekinheitin' by Linda Lampenius and Pete Parkkonen now commanding approximately 30% win probability across bookmakers.",
+        "The classical-pop-rock hybrid has attracted nearly a third of all outright winner bets at William Hill.",
+        "The Nordic nation's rise is attributed to three consecutive cycles of strong Eurovision form, reliable pre-party performances, and a song with both jury and televote appeal.",
+        "Finland opened at 8/1 in December but has since shortened dramatically."
+      ],
+      "reasoning": "While the article accurately describes Finland's Eurovision entry and the Grand Final details, specific claims about betting odds, betting patterns at William Hill, Finland's recent Eurovision performance history, and initial betting odds lack explicit confirmation in the provided sources."
+    }
+  ],
+  "summary": {
+    "by_model": {
+      "deepseek/deepseek-v3.2": {
+        "avg_original": 1.88,
+        "avg_grounded": 7.38,
+        "avg_delta": 5.5
+      },
+      "google/gemini-3-flash-preview": {
+        "avg_original": 2.38,
+        "avg_grounded": 7.0,
+        "avg_delta": 4.62
+      },
+      "minimax/minimax-m2.7": {
+        "avg_original": 2.62,
+        "avg_grounded": 6.62,
+        "avg_delta": 4.0
+      }
+    },
+    "overall_avg_original": 2.29,
+    "overall_avg_grounded": 7.0
+  }
+}
