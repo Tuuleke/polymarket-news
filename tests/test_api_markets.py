@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, timedelta
 
 import httpx
 import pytest
@@ -9,6 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from pmnews.api.app import app
 from pmnews.api.deps import get_polymarket
 from pmnews.api.routes.markets import find_significant_moves
+from pmnews.core.clock import utc_today
 from pmnews.core.config import settings
 from pmnews.db.models import Article, Market, MarketSnapshot
 from tests.conftest import CLOB_TEST_URL, load_fixture
@@ -165,3 +166,34 @@ async def test_generate_updates_writes_at_most_the_configured_number_of_articles
 
     assert resp.json()["dates"] == ["2026-04-11"]  # the most recent of the two moves
     assert openrouter.call_count == 1
+
+
+async def test_market_detail_only_includes_recent_snapshots(
+    client: httpx.AsyncClient, db: AsyncSession
+) -> None:
+    market = await _add_market(db)
+    today = utc_today()
+    db.add_all(
+        MarketSnapshot(market_id=market.id, date=today - timedelta(days=d), probability=0.5)
+        for d in range(120)
+    )
+    await db.commit()
+
+    resp = await client.get(f"/api/v1/markets/{market.id}")
+
+    dates = [s["date"] for s in resp.json()["snapshots"]]
+    assert len(dates) == 91  # today plus the 90 days before it
+    assert min(dates) == (today - timedelta(days=90)).isoformat()
+
+
+async def test_list_markets_paginates(client: httpx.AsyncClient, db: AsyncSession) -> None:
+    for i in range(3):
+        await _add_market(db, polymarket_id=str(i), volume=float(i))
+
+    first = await client.get("/api/v1/markets/", params={"limit": 2})
+    rest = await client.get("/api/v1/markets/", params={"limit": 2, "offset": 2})
+    too_big = await client.get("/api/v1/markets/", params={"limit": 101})
+
+    assert [m["polymarket_id"] for m in first.json()] == ["2", "1"]
+    assert [m["polymarket_id"] for m in rest.json()] == ["0"]
+    assert too_big.status_code == 422

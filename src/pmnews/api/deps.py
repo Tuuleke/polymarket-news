@@ -12,6 +12,8 @@ from pmnews.db.database import get_db
 from pmnews.llm.articles import LLMService, get_llm_service
 from pmnews.sources.polymarket import PolymarketService
 
+MAX_PAGE_SIZE = 100
+
 
 @lru_cache
 def polymarket_service() -> PolymarketService:

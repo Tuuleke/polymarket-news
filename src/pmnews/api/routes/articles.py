@@ -1,9 +1,10 @@
 from collections.abc import Sequence
+from typing import Annotated
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 from sqlalchemy import select
 
-from pmnews.api.deps import DbSession
+from pmnews.api.deps import MAX_PAGE_SIZE, DbSession
 from pmnews.api.schemas.article import ArticleRead
 from pmnews.db.models import Article
 
@@ -14,8 +15,8 @@ router = APIRouter()
 async def get_articles(
     db: DbSession,
     article_type: str | None = None,
-    limit: int = 20,
-    offset: int = 0,
+    limit: Annotated[int, Query(ge=1, le=MAX_PAGE_SIZE)] = 20,
+    offset: Annotated[int, Query(ge=0)] = 0,
 ) -> Sequence[Article]:
     stmt = select(Article).order_by(Article.created_at.desc()).offset(offset).limit(limit)
     if article_type:
