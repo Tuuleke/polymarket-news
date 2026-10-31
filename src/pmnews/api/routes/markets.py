@@ -2,7 +2,7 @@ import asyncio
 import itertools
 import logging
 from collections.abc import Sequence
-from datetime import date, timedelta
+from datetime import UTC, date, datetime, timedelta
 
 from fastapi import APIRouter, HTTPException
 from sqlalchemy import select
@@ -150,7 +150,7 @@ async def generate_updates(
             ts = point["t"]
             if ts > 1e10:
                 ts = ts / 1000
-            snap_date = date.fromtimestamp(ts)
+            snap_date = datetime.fromtimestamp(ts, UTC).date()
             prob = float(point["p"])
         except (KeyError, ValueError, TypeError, OSError) as e:
             logger.warning("generate-updates: skipping point %s — %s", point, e)

@@ -10,6 +10,7 @@ from typing import Any, TypedDict
 
 from openai import AsyncOpenAI
 
+from pmnews.core.clock import utc_today
 from pmnews.core.config import settings
 from pmnews.db.models import ArticleType, Market, MarketSnapshot
 
@@ -73,7 +74,7 @@ class LLMService:
         return resp.choices[0].message.content or ""
 
     async def generate_explanation(self, market: Market) -> ArticleFields:
-        today = date.today().isoformat()
+        today = utc_today().isoformat()
         end_line = f"Resolves: {market.end_date.date()}\n" if market.end_date else ""
 
         user_prompt = (

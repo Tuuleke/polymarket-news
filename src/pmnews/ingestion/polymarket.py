@@ -3,12 +3,13 @@
 import json
 import logging
 from contextlib import suppress
-from datetime import date, datetime
+from datetime import datetime
 from typing import Any
 
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
+from pmnews.core.clock import parse_iso_utc, utc_now, utc_today
 from pmnews.db.models import Market, MarketSnapshot
 from pmnews.sources.polymarket import PolymarketService, RawMarket
 
@@ -19,7 +20,7 @@ TAGS = ["geopolitics", "finance", "culture", "tech"]
 
 async def upsert_markets(session: AsyncSession, raw_markets: list[RawMarket], tag: str) -> int:
     """Upsert a list of raw market dicts into the DB with the given tag as category."""
-    today = date.today()
+    today = utc_today()
     count = 0
     for raw in raw_markets:
         try:
@@ -32,7 +33,7 @@ async def upsert_markets(session: AsyncSession, raw_markets: list[RawMarket], ta
         end_date_raw = raw.get("endDate") or raw.get("end_date")
         if end_date_raw:
             with suppress(ValueError):
-                end_date = datetime.fromisoformat(end_date_raw.rstrip("Z"))
+                end_date = parse_iso_utc(end_date_raw)
 
         # Parse clobTokenIds — stored as JSON string array e.g. '["123...","456..."]'
         clob_token_id: str | None = None
@@ -48,7 +49,7 @@ async def upsert_markets(session: AsyncSession, raw_markets: list[RawMarket], ta
             "probability": probability,
             "volume": float(raw.get("volume", 0) or 0),
             "end_date": end_date,
-            "fetched_at": datetime.utcnow(),
+            "fetched_at": utc_now(),
         }
 
         stmt = (

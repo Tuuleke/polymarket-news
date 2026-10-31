@@ -14,6 +14,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
+from pmnews.core.clock import utc_now
 from pmnews.db.database import Base
 
 
@@ -32,8 +33,8 @@ class Market(Base):
     category: Mapped[str] = mapped_column(String, index=True)
     probability: Mapped[float] = mapped_column(Float)
     volume: Mapped[float] = mapped_column(Float, default=0.0)
-    end_date: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
-    fetched_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    end_date: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    fetched_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utc_now)
 
     articles: Mapped[list["Article"]] = relationship(back_populates="market")
     snapshots: Mapped[list["MarketSnapshot"]] = relationship(back_populates="market")
@@ -60,7 +61,7 @@ class Article(Base):
     body: Mapped[str] = mapped_column(Text)
     llm_model: Mapped[str] = mapped_column(String)
     probability_at_generation: Mapped[float] = mapped_column(Float)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utc_now)
     article_type: Mapped[ArticleType] = mapped_column(
         Enum(ArticleType, name="article_type_enum"),
         default=ArticleType.explanation,

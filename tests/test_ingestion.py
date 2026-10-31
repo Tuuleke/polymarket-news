@@ -1,3 +1,5 @@
+from datetime import UTC, datetime
+
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -18,6 +20,8 @@ async def test_upsert_inserts_markets_and_one_snapshot_each(db: AsyncSession) ->
     assert markets[0].clob_token_id is not None
     assert markets[0].clob_token_id.startswith("7132")
     assert markets[0].category == "geopolitics"
+    assert markets[0].end_date == datetime(2028, 8, 31, 12, tzinfo=UTC)
+    assert markets[0].fetched_at.tzinfo is not None
     assert await db.scalar(select(func.count()).select_from(MarketSnapshot)) == 2
 
 

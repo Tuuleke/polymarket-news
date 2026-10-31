@@ -92,3 +92,22 @@ async def test_generate_updates_backfills_history_and_writes_articles(
     assert openrouter.call_count == 2
     assert await db.scalar(select(func.count()).select_from(MarketSnapshot)) == 5
     assert await db.scalar(select(func.count()).select_from(Article)) == 2
+
+
+async def test_snapshot_dates_are_utc_calendar_days(
+    client: httpx.AsyncClient,
+    db: AsyncSession,
+    mock_http: respx.MockRouter,
+    openrouter: respx.Route,
+) -> None:
+    market = await _add_market(db)
+    late_evening_utc = 1775520000 - 3600  # 2026-04-06 23:00 UTC = 2026-04-07 02:00 in Tallinn
+    mock_http.get(f"{CLOB_TEST_URL}/prices-history").mock(
+        return_value=httpx.Response(200, json={"history": [{"t": late_evening_utc, "p": 0.5}]})
+    )
+
+    await client.post(f"/api/v1/markets/{market.id}/generate-updates")
+
+    snapshot = await db.scalar(select(MarketSnapshot))
+    assert snapshot is not None
+    assert snapshot.date == date(2026, 4, 6)
