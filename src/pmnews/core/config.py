@@ -14,7 +14,9 @@ class Settings(BaseSettings):
     # Database
     DATABASE_URL: str = "postgresql+asyncpg://user:password@db:5432/polymarket_news"
 
-    # Polymarket API
+    # Polymarket API. Off by default: Polymarket is not available in Estonia
+    # (regulatory status), so the scheduled fetch only runs when explicitly enabled.
+    POLYMARKET_ENABLED: bool = False
     POLYMARKET_GAMMA_API_URL: str = "https://gamma-api.polymarket.com"
     POLYMARKET_CLOB_API_URL: str = "https://clob.polymarket.com"
 
@@ -26,7 +28,6 @@ class Settings(BaseSettings):
 
     # Scheduler
     FETCH_INTERVAL_MINUTES: int = 30
-    DISABLE_SCHEDULER: bool = False
 
 
 settings = Settings()

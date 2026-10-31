@@ -13,7 +13,16 @@ async def test_startup_does_not_wait_for_the_first_fetch(monkeypatch: pytest.Mon
         await release.wait()  # simulates an unreachable source
 
     monkeypatch.setattr(app_module, "_scheduled_fetch", slow_fetch)
-    monkeypatch.setattr(settings, "DISABLE_SCHEDULER", False)
+    monkeypatch.setattr(settings, "POLYMARKET_ENABLED", True)
 
     async with asyncio.timeout(2), app_module.lifespan(app_module.app):
         release.set()
+
+
+async def test_no_fetch_is_scheduled_when_polymarket_is_disabled(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(settings, "POLYMARKET_ENABLED", False)
+
+    async with app_module.lifespan(app_module.app):
+        assert not app_module._scheduler.running

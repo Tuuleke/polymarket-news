@@ -5,6 +5,8 @@ import respx
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from pmnews.api.app import app
+from pmnews.api.deps import get_polymarket
 from pmnews.api.routes.markets import find_significant_moves
 from pmnews.db.models import Article, Market, MarketSnapshot
 from tests.conftest import CLOB_TEST_URL, load_fixture
@@ -129,3 +131,14 @@ async def test_generate_updates_reports_only_new_snapshots(
     resp = await client.post(f"/api/v1/markets/{market.id}/generate-updates")
 
     assert resp.json()["snapshots_added"] == 4
+
+
+async def test_generate_updates_is_503_when_polymarket_is_disabled(
+    client: httpx.AsyncClient, db: AsyncSession
+) -> None:
+    market = await _add_market(db)
+    del app.dependency_overrides[get_polymarket]  # use the real, settings-driven dependency
+
+    resp = await client.post(f"/api/v1/markets/{market.id}/generate-updates")
+
+    assert resp.status_code == 503
