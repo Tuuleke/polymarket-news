@@ -7,16 +7,23 @@ and post-thesis production work on the `production` branch.
 ## Post-thesis (production)
 
 ### Added
+- `MarketSource` protocol with **Kalshi** (default), **Manifold** (default) and
+  **Polymarket** (off by default) adapters, all normalised into one schema with a
+  `source` column; `SOURCES_ENABLED` switches sources.
+- RSS news source (The Conversation, Federal Reserve press releases) into `news_items`.
+- Polite shared HTTP client: request spacing, backoff with jitter, `Retry-After`,
+  conditional requests.
+- Raw landing zone: every API response stored unchanged, partitioned by source and date.
+- `docs/data-sources.md`: endpoints, units, terms of use and limitations per source.
 - `docs/MIGRATION_PLAN.md`: architecture review and phased plan for the production rebuild.
-- pytest suite (36 tests): real Postgres via testcontainers, HTTP mocked with respx,
-  migration drift check.
+- pytest suite: real Postgres via testcontainers, HTTP mocked with respx (fixtures recorded
+  from the live APIs where reachable), migration drift check.
 - Alembic migrations (baseline + timestamptz), run by a one-shot `migrate` compose service.
 - `make setup | up | seed | test | lint | typecheck | dev`; pre-commit with gitleaks,
   ruff and mypy.
 - `make seed`: the 8 thesis sample markets, so a fresh clone shows data.
 - `GENERATION_MODE` (`disabled` / `open` / `token`) and `X-Admin-Token` guard on
   endpoints that make paid LLM calls; `MAX_UPDATES_PER_REQUEST` cap.
-- `POLYMARKET_ENABLED` flag, off by default (Polymarket is not available in Estonia).
 - Pagination (`limit`/`offset`, max 100) on market and article lists.
 
 ### Changed
@@ -34,6 +41,7 @@ and post-thesis production work on the `production` branch.
 - Snapshot insert count reported attempted rows.
 - API startup blocked on the first fetch (about two minutes when Polymarket is unreachable).
 - Missing OpenRouter key surfaced as an opaque 500.
+- The frontend formatted every volume as USD.
 - `GET /markets` returned the full, ever-growing snapshot history.
 - Alembic's logging setup disabled the application's loggers.
 

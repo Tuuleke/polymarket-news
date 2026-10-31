@@ -8,7 +8,7 @@ Built as my Bachelor's thesis at TalTech (2026).
 
 ## What it does
 
-The system polls Polymarket every 30 minutes, detects significant probability movements (≥10 pp), and on user request generates two article types via an LLM:
+The system fetches prediction markets every 30 minutes, detects significant probability movements (≥10 pp), and on user request generates two article types via an LLM:
 
 - **Explanation** — what is this market, and what does the current probability mean?
 - **Update** — what just moved, and what likely caused it?
@@ -30,10 +30,11 @@ Articles are capped at 80 words. The LLM is required to run a web search before 
 | Tooling | uv, ruff, mypy (strict), pytest + testcontainers + respx, ESLint, pre-commit with gitleaks |
 | Infra | Docker Compose |
 
-> **Data sources.** Polymarket is not available in Estonia, so its ingestion is **off by
-> default** (`POLYMARKET_ENABLED=false`). A fresh clone uses the thesis sample markets
-> (`make seed`). Kalshi and Manifold adapters are the next step; see
-> [docs/MIGRATION_PLAN.md](docs/MIGRATION_PLAN.md).
+> **Data sources.** Markets come from **Kalshi** (real-money, public read-only API) and
+> **Manifold** (play money), news from The Conversation and Federal Reserve press
+> releases. Polymarket is not available in Estonia, so its adapter is **off by default**;
+> enable it where legal with `SOURCES_ENABLED=kalshi,manifold,polymarket`. Sources, terms
+> of use and limitations: [docs/data-sources.md](docs/data-sources.md).
 
 ---
 
@@ -44,9 +45,9 @@ Articles are capped at 80 words. The LLM is required to run a web search before 
 │   ├── api/                # FastAPI app, routes, schemas, dependencies
 │   ├── core/               # settings, UTC clock helpers
 │   ├── db/                 # SQLAlchemy models, session, seed data
-│   ├── ingestion/          # scheduled market fetch + upsert
+│   ├── ingestion/          # scheduled fetch of markets and news
 │   ├── llm/                # article generation via OpenRouter
-│   └── sources/            # Polymarket client
+│   └── sources/            # MarketSource adapters (Kalshi, Manifold, Polymarket), RSS, raw store
 ├── migrations/             # Alembic migrations
 ├── tests/                  # pytest suite (real Postgres in a container, HTTP mocked)
 ├── frontend/               # Next.js — SSR market list, CSR article generation
@@ -77,7 +78,7 @@ Requires Docker, [uv](https://docs.astral.sh/uv/) and Node.js 22+.
 ```bash
 make setup   # installs dependencies, creates .env from .env.example, installs git hooks
 make up      # builds and starts db, migrations, API and frontend
-make seed    # loads the thesis sample markets
+make seed    # optional: also loads the 8 thesis sample markets
 
 # Frontend → http://localhost:3000
 # API docs → http://localhost:8000/docs

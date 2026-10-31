@@ -209,7 +209,7 @@ Kalshi details that shape the adapter:
 | Paid LLM calls from public endpoints or loops. | Unbounded spend. | Admin token, per-run caps, dedicated OpenRouter keys with credit limits (CI key = hard cap), and I ask before any paid batch. |
 | Kalshi data quality (combo markets, untraded candles, fixed-point strings). | Wrong probabilities in marts. | Normalisation rules in the adapter, dbt tests (0 ≤ p ≤ 1, not-null, freshness). |
 | Polymarket fixtures cannot be recorded from Estonia. | Adapter tests rely on hand-written fixtures. | Fixtures written from the response shape the thesis code already parses, clearly marked as synthetic. No circumvention. |
-| Terms of use for displaying Kalshi/Manifold data publicly, and for RSS feeds. | Legal/ethical issue on a public demo. | Read each source's terms in Phase 2, attribute sources in the UI, store only title/URL/time/summary for news. Note findings in the README. |
+| Terms of use for displaying Kalshi/Manifold data publicly, and for RSS feeds. | Legal/ethical issue on a public demo. | Checked in Phase 2 (docs/data-sources.md): Manifold permits it; news limited to CC BY-ND and public-domain feeds (BBC, Guardian rejected). **Kalshi display terms still unconfirmed — gate for Phase 6.** |
 | Cross-platform matching (`mart_cross_platform`) may be sparse. | Mart with few rows. | Embedding similarity + a small hand-curated mapping seed; report the match rate honestly. |
 | Airflow + dbt dependency conflicts in one image. | Broken builds. | dbt in its own virtualenv inside the Airflow image, called via a BashOperator. |
 | Airflow memory on a small EC2 instance. | OOM on the demo host. | LocalExecutor, a single scheduler, an instance size chosen from measured memory use. |
