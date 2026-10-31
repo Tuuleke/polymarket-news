@@ -1,3 +1,4 @@
+import os
 from typing import Literal, Self
 
 from pydantic import SecretStr, model_validator
@@ -5,7 +6,10 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+    # PMNEWS_ENV_FILE="" disables .env loading (the test suite does this to stay hermetic).
+    model_config = SettingsConfigDict(
+        env_file=os.environ.get("PMNEWS_ENV_FILE", ".env") or None, extra="ignore"
+    )
 
     PROJECT_NAME: str = "Polymarket News"
     VERSION: str = "0.2.0"
