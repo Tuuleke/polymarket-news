@@ -27,10 +27,10 @@ from sqlalchemy.ext.asyncio import (
 from testcontainers.community.postgres import PostgresContainer
 
 from pmnews.api.app import app
-from pmnews.api.deps import get_polymarket
+from pmnews.api.deps import get_llm, get_polymarket
 from pmnews.core.config import settings
 from pmnews.db.database import Base, get_db
-from pmnews.llm.articles import LLMService, get_llm_service
+from pmnews.llm.articles import LLMService
 from pmnews.sources.polymarket import PolymarketService
 
 ROOT = Path(__file__).parent.parent
@@ -130,7 +130,7 @@ async def client(
             yield session
 
     app.dependency_overrides[get_db] = _get_db
-    app.dependency_overrides[get_llm_service] = lambda: llm
+    app.dependency_overrides[get_llm] = lambda: llm
     app.dependency_overrides[get_polymarket] = lambda: polymarket
     transport = httpx.ASGITransport(app=app)
     async with httpx.AsyncClient(transport=transport, base_url="http://test") as ac:

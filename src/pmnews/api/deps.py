@@ -26,6 +26,12 @@ def get_polymarket() -> PolymarketService:
     return polymarket_service()
 
 
+def get_llm() -> LLMService:
+    if not settings.OPENROUTER_API_KEY.get_secret_value():
+        raise HTTPException(status_code=503, detail="OPENROUTER_API_KEY is not configured")
+    return get_llm_service()
+
+
 def require_generation_allowed(
     x_admin_token: Annotated[str | None, Header()] = None,
 ) -> None:
@@ -40,5 +46,5 @@ def require_generation_allowed(
 
 
 DbSession = Annotated[AsyncSession, Depends(get_db)]
-Llm = Annotated[LLMService, Depends(get_llm_service)]
+Llm = Annotated[LLMService, Depends(get_llm)]
 Polymarket = Annotated[PolymarketService, Depends(get_polymarket)]

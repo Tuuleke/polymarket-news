@@ -3,11 +3,12 @@ from datetime import date, timedelta
 import httpx
 import pytest
 import respx
+from pydantic import SecretStr
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from pmnews.api.app import app
-from pmnews.api.deps import get_polymarket
+from pmnews.api.deps import get_llm, get_polymarket
 from pmnews.api.routes.markets import find_significant_moves
 from pmnews.core.clock import utc_today
 from pmnews.core.config import settings
@@ -199,3 +200,16 @@ async def test_list_markets_paginates(client: httpx.AsyncClient, db: AsyncSessio
     assert [m["polymarket_id"] for m in first.json()] == ["2", "1"]
     assert [m["polymarket_id"] for m in rest.json()] == ["0"]
     assert too_big.status_code == 422
+
+
+async def test_explain_is_503_without_an_openrouter_key(
+    client: httpx.AsyncClient, db: AsyncSession, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(settings, "OPENROUTER_API_KEY", SecretStr(""))
+    market = await _add_market(db)
+    del app.dependency_overrides[get_llm]  # use the real, settings-driven dependency
+
+    resp = await client.post(f"/api/v1/markets/{market.id}/explain")
+
+    assert resp.status_code == 503
+    assert "OPENROUTER_API_KEY" in resp.json()["detail"]
