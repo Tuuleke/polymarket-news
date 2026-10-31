@@ -1,0 +1,22 @@
+{
+  "source": "prompt-evaluation/sample_data.py at the v1-thesis tag: real Polymarket values collected for the thesis evaluation in April 2026.",
+  "assumptions": "Current probability and volume were recorded on 2026-04-22 (the collection date stated in sample_data.py) and are stored as that day's snapshot. Earlier snapshots are the prev/curr points of the thesis update samples. No other price points exist, so none are added. Categories are mapped onto the four UI tags.",
+  "markets": [
+    {"slug": "thesis-france-world-cup-2026", "question": "Will France win the 2026 FIFA World Cup?", "category": "culture", "probability": 0.17, "volume": 734000000,
+     "snapshots": [["2026-04-22", 0.17]]},
+    {"slug": "thesis-okc-nba-2026", "question": "Will the Oklahoma City Thunder win the 2026 NBA Championship?", "category": "culture", "probability": 0.52, "volume": 317000000,
+     "snapshots": [["2026-02-19", 0.35], ["2026-04-19", 0.52], ["2026-04-22", 0.52]]},
+    {"slug": "thesis-fed-hold-april-2026", "question": "Will the Federal Reserve hold interest rates unchanged at its April 2026 meeting?", "category": "finance", "probability": 0.99, "volume": 128000000,
+     "snapshots": [["2026-04-07", 0.72], ["2026-04-11", 0.99], ["2026-04-22", 0.99]]},
+    {"slug": "thesis-newsom-2028", "question": "Will Gavin Newsom be the 2028 Democratic presidential nominee?", "category": "geopolitics", "probability": 0.25, "volume": 1000000000,
+     "snapshots": [["2026-04-22", 0.25]]},
+    {"slug": "thesis-btc-150k-2026", "question": "Will Bitcoin hit $150,000 by December 31, 2026?", "category": "finance", "probability": 0.10, "volume": 18000000,
+     "snapshots": [["2026-04-22", 0.10]]},
+    {"slug": "thesis-btc-80k-april-2026", "question": "Will Bitcoin hit $80,000 in April 2026?", "category": "finance", "probability": 0.31, "volume": 39000000,
+     "snapshots": [["2026-04-03", 0.65], ["2026-04-19", 0.31], ["2026-04-22", 0.31]]},
+    {"slug": "thesis-russell-f1-2026", "question": "Will George Russell win the 2026 Formula 1 Drivers' Championship?", "category": "culture", "probability": 0.43, "volume": 123000000,
+     "snapshots": [["2026-03-05", 0.28], ["2026-03-07", 0.50], ["2026-04-22", 0.43]]},
+    {"slug": "thesis-finland-eurovision-2026", "question": "Will Finland win Eurovision 2026?", "category": "culture", "probability": 0.36, "volume": 107000000,
+     "snapshots": [["2026-02-01", 0.18], ["2026-02-09", 0.36], ["2026-04-22", 0.36]]}
+  ]
+}

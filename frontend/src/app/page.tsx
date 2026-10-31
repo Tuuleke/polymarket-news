@@ -112,7 +112,7 @@ export default async function Home({
             margin: "6px 0 0",
             letterSpacing: "-0.01em",
           }}>
-            Top markets by volume · updated every 30 minutes
+            Top markets by volume
           </p>
         </div>
 
@@ -137,7 +137,7 @@ export default async function Home({
             color: "var(--text-muted)",
             fontSize: 15,
           }}>
-            No markets loaded yet — the scheduler populates them on startup.
+            No markets yet. Run <code>make seed</code> to load the thesis sample markets.
           </div>
         ) : (
           <MarketList markets={markets} />
