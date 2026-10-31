@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from pmnews.api.deps import get_polymarket
 from pmnews.api.routes import articles, markets
+from pmnews.core.clock import utc_now
 from pmnews.core.config import settings
 from pmnews.db.database import AsyncSessionLocal
 from pmnews.ingestion.polymarket import fetch_and_store_markets
@@ -30,9 +31,9 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
             minutes=settings.FETCH_INTERVAL_MINUTES,
             id="fetch_markets",
             replace_existing=True,
+            next_run_time=utc_now(),  # first run in the background; startup does not wait
         )
         _scheduler.start()
-        await _scheduled_fetch()
     else:
         logger.info("Scheduler disabled — serving existing DB data only")
     yield
