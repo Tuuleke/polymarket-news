@@ -17,9 +17,11 @@ class Settings(BaseSettings):
 
     # LLM
     OPENROUTER_API_KEY: str = ""
-    LLM_MODEL: str = "qwen/qwen3.6-plus"
+    LLM_MODEL: str = "deepseek/deepseek-v3.2"
+    LLM_WEB_SEARCH: bool = True
     # Scheduler
     FETCH_INTERVAL_MINUTES: int = 30
+    DISABLE_SCHEDULER: bool = False
 
     class Config:
         env_file = ".env"

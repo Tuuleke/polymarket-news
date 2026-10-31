@@ -1,5 +1,6 @@
 import { api } from "@/lib/api";
-import { MarketCard } from "@/components/MarketCard";
+import { MarketList } from "@/components/MarketList";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export const dynamic = "force-dynamic";
 
@@ -30,75 +31,87 @@ export default async function Home({
   }
 
   return (
-    <div style={{ minHeight: "100dvh", background: "var(--color-surface)" }}>
-      {/* ── Top bar ── */}
-      <header style={{
-        background: "rgba(245,245,247,0.85)",
-        backdropFilter: "saturate(180%) blur(20px)",
-        WebkitBackdropFilter: "saturate(180%) blur(20px)",
-        borderBottom: "1px solid var(--color-border)",
-        position: "sticky",
-        top: 0,
-        zIndex: 40,
-      }}>
-        <div style={{ maxWidth: 860, margin: "0 auto", padding: "0 24px" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 56 }}>
-            <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-              <span style={{ fontSize: 17, fontWeight: 700, letterSpacing: "-0.02em", color: "var(--color-text-primary)" }}>
+    <div style={{ minHeight: "100dvh", backgroundColor: "var(--bg-page)" }}>
+      {/* ── Header ── */}
+      <header className="glass-header" style={{ position: "sticky", top: 0, zIndex: 40 }}>
+        <div style={{ maxWidth: 880, margin: "0 auto", padding: "0 20px" }}>
+          <div className="header-inner">
+            {/* Logo */}
+            <div style={{ display: "flex", alignItems: "baseline", minWidth: 0 }}>
+              <span style={{
+                fontSize: 15,
+                fontWeight: 700,
+                letterSpacing: "-0.03em",
+                color: "var(--text-primary)",
+                whiteSpace: "nowrap",
+              }}>
                 Polymarket News
               </span>
-              <span style={{ fontSize: 12, color: "var(--color-text-tertiary)", fontWeight: 400 }}>
-                AI-generated market analysis
-              </span>
+            </div>
+
+            {/* Category pills — center column, scrollable on mobile */}
+            <nav className="header-nav" style={{
+              display: "flex",
+              gap: 4,
+              background: "var(--bg-nav)",
+              borderRadius: 100,
+              padding: "3px 4px",
+              flexShrink: 0,
+            }}>
+              {TAGS.map((t) => {
+                const active = t === tag;
+                return (
+                  <a
+                    key={t}
+                    href={`/?tag=${t}`}
+                    style={{
+                      display: "inline-block",
+                      padding: "5px 14px",
+                      borderRadius: 100,
+                      fontSize: 12,
+                      fontWeight: active ? 600 : 450,
+                      color: active ? "var(--text-primary)" : "var(--text-secondary)",
+                      background: active ? "var(--bg-pill-active)" : "transparent",
+                      boxShadow: active ? "var(--shadow-pill)" : "none",
+                      textDecoration: "none",
+                      transition: "background 150ms ease-out, color 150ms ease-out, box-shadow 150ms ease-out",
+                      letterSpacing: "-0.01em",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {TAG_LABELS[t]}
+                  </a>
+                );
+              })}
+            </nav>
+
+            {/* Theme toggle — right-justified */}
+            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+              <ThemeToggle />
             </div>
           </div>
         </div>
       </header>
 
-      <main style={{ maxWidth: 860, margin: "0 auto", padding: "32px 24px 80px" }}>
-        {/* ── Tab navigation ── */}
-        <nav style={{
-          display: "flex",
-          gap: 6,
-          marginBottom: 32,
-          background: "rgba(0,0,0,0.04)",
-          borderRadius: "var(--radius-pill)",
-          padding: 4,
-          width: "fit-content",
-        }}>
-          {TAGS.map((t) => {
-            const active = t === tag;
-            return (
-              <a
-                key={t}
-                href={`/?tag=${t}`}
-                style={{
-                  display: "inline-block",
-                  padding: "6px 18px",
-                  borderRadius: "var(--radius-pill)",
-                  fontSize: 13,
-                  fontWeight: active ? 600 : 450,
-                  color: active ? "var(--color-text-primary)" : "var(--color-text-secondary)",
-                  background: active ? "var(--color-card)" : "transparent",
-                  boxShadow: active ? "var(--shadow-sm)" : "none",
-                  textDecoration: "none",
-                  transition: "all var(--transition-fast)",
-                  letterSpacing: "-0.01em",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {TAG_LABELS[t]}
-              </a>
-            );
-          })}
-        </nav>
-
+      <main style={{ maxWidth: 880, margin: "0 auto", padding: "36px 20px 100px" }}>
         {/* ── Section heading ── */}
-        <div style={{ marginBottom: 20 }}>
-          <h1 style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.03em", color: "var(--color-text-primary)", margin: 0 }}>
+        <div style={{ marginBottom: 24 }}>
+          <h1 style={{
+            fontSize: 26,
+            fontWeight: 700,
+            letterSpacing: "-0.035em",
+            color: "var(--text-primary)",
+            margin: 0,
+            lineHeight: 1.2,
+          }}>
             {TAG_LABELS[tag]}
           </h1>
-          <p style={{ fontSize: 14, color: "var(--color-text-secondary)", marginTop: 4 }}>
+          <p style={{
+            fontSize: 13,
+            color: "var(--text-muted)",
+            margin: "6px 0 0",
+            letterSpacing: "-0.01em",
+          }}>
             Top markets by volume · updated every 30 minutes
           </p>
         </div>
@@ -107,25 +120,27 @@ export default async function Home({
           <div style={{
             marginBottom: 20,
             padding: "12px 16px",
-            borderRadius: "var(--radius-md)",
-            background: "var(--color-danger-light)",
-            color: "var(--color-danger)",
+            borderRadius: 14,
+            background: "var(--bg-error)",
+            color: "var(--color-red)",
             fontSize: 13,
+            border: "1px solid rgba(239,68,68,0.20)",
           }}>
             {fetchError}
           </div>
         )}
 
         {markets.length === 0 ? (
-          <div style={{ textAlign: "center", padding: "80px 0", color: "var(--color-text-tertiary)", fontSize: 15 }}>
+          <div style={{
+            textAlign: "center",
+            padding: "100px 0",
+            color: "var(--text-muted)",
+            fontSize: 15,
+          }}>
             No markets loaded yet — the scheduler populates them on startup.
           </div>
         ) : (
-          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            {markets.map((market) => (
-              <MarketCard key={market.id} market={market} />
-            ))}
-          </div>
+          <MarketList markets={markets} />
         )}
       </main>
     </div>

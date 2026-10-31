@@ -96,7 +96,7 @@ async def _fetch_and_store_markets() -> None:
             try:
                 raw_markets = await _polymarket.fetch_markets_by_tag(tag, limit=10)
             except Exception as exc:
-                logger.error("Scheduler: fetch_markets_by_tag(%s) failed: %s", tag, exc)
+                logger.error("Scheduler: fetch_markets_by_tag(%s) failed: %r", tag, exc)
                 continue
             count = await _upsert_markets(session, raw_markets, tag)
             logger.info("Scheduler: tag=%s processed %d markets", tag, count)
@@ -111,17 +111,21 @@ async def lifespan(app: FastAPI):
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
-    _scheduler.add_job(
-        _fetch_and_store_markets,
-        "interval",
-        minutes=settings.FETCH_INTERVAL_MINUTES,
-        id="fetch_markets",
-        replace_existing=True,
-    )
-    _scheduler.start()
-    await _fetch_and_store_markets()  # populate DB immediately on startup
+    if not settings.DISABLE_SCHEDULER:
+        _scheduler.add_job(
+            _fetch_and_store_markets,
+            "interval",
+            minutes=settings.FETCH_INTERVAL_MINUTES,
+            id="fetch_markets",
+            replace_existing=True,
+        )
+        _scheduler.start()
+        await _fetch_and_store_markets()
+    else:
+        logger.info("Scheduler disabled — serving existing DB data only")
     yield
-    _scheduler.shutdown(wait=False)
+    if not settings.DISABLE_SCHEDULER:
+        _scheduler.shutdown(wait=False)
 
 
 app = FastAPI(

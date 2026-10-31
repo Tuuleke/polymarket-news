@@ -31,5 +31,6 @@ class MarketRead(MarketBase):
     id: int
     fetched_at: datetime
     articles: list[ArticleRead] = []
+    snapshots: list[MarketSnapshotRead] = []
 
     model_config = {"from_attributes": True}

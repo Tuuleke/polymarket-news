@@ -30,7 +30,11 @@ async def get_markets(
     category: str | None = None,
     db: AsyncSession = Depends(get_db),
 ):
-    stmt = select(Market).options(selectinload(Market.articles))
+    stmt = (
+        select(Market)
+        .options(selectinload(Market.articles), selectinload(Market.snapshots))
+        .order_by(Market.volume.desc())
+    )
     if category:
         stmt = stmt.where(Market.category == category)
     result = await db.execute(stmt)
@@ -41,7 +45,7 @@ async def get_markets(
 async def get_market(market_id: int, db: AsyncSession = Depends(get_db)):
     result = await db.execute(
         select(Market)
-        .options(selectinload(Market.articles))
+        .options(selectinload(Market.articles), selectinload(Market.snapshots))
         .where(Market.id == market_id)
     )
     market = result.scalar_one_or_none()
@@ -62,16 +66,23 @@ async def generate_explanation(market_id: int, db: AsyncSession = Depends(get_db
     if not market:
         raise HTTPException(status_code=404, detail="Market not found")
 
-    existing = await db.execute(
+    existing_result = await db.execute(
         select(Article).where(
             Article.market_id == market_id,
             Article.article_type == "explanation",
         )
     )
-    if existing.scalar_one_or_none():
-        raise HTTPException(status_code=409, detail="Explanation article already exists")
+    existing = existing_result.scalar_one_or_none()
 
     article_data = await _llm.generate_explanation(market)
+
+    if existing:
+        for key, value in article_data.items():
+            setattr(existing, key, value)
+        await db.commit()
+        await db.refresh(existing)
+        return existing
+
     article = Article(market_id=market.id, **article_data)
     db.add(article)
     await db.commit()

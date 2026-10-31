@@ -11,6 +11,13 @@ export interface Article {
   snapshot_date: string | null;
 }
 
+export interface MarketSnapshot {
+  id: number;
+  market_id: number;
+  date: string;
+  probability: number;
+}
+
 export interface Market {
   id: number;
   polymarket_id: string;
@@ -21,6 +28,7 @@ export interface Market {
   end_date: string | null;
   fetched_at: string;
   articles: Article[];
+  snapshots: MarketSnapshot[];
 }
 
 export interface GenerateUpdatesResult {
