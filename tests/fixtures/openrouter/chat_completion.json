@@ -1,0 +1,17 @@
+{
+  "id": "gen-test-0001",
+  "object": "chat.completion",
+  "created": 1775865600,
+  "model": "deepseek/deepseek-v3.2",
+  "choices": [
+    {
+      "index": 0,
+      "finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "TITLE: Fed Expected to Hold Rates in April\nBODY:\nTraders see roughly a 99-in-100 chance that the Federal Reserve leaves rates unchanged."
+      }
+    }
+  ],
+  "usage": {"prompt_tokens": 210, "completion_tokens": 42, "total_tokens": 252}
+}
