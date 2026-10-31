@@ -6,12 +6,12 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from pmnews.api.deps import polymarket_service
+from pmnews.api.deps import get_sources
 from pmnews.api.routes import articles, markets
 from pmnews.core.clock import utc_now
 from pmnews.core.config import settings
 from pmnews.db.database import AsyncSessionLocal
-from pmnews.ingestion.polymarket import fetch_and_store_markets
+from pmnews.ingestion.markets import ingest_markets
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s:%(name)s: %(message)s")
 logger = logging.getLogger(__name__)
@@ -19,12 +19,12 @@ _scheduler = AsyncIOScheduler()
 
 
 async def _scheduled_fetch() -> None:
-    await fetch_and_store_markets(AsyncSessionLocal, polymarket_service())
+    await ingest_markets(AsyncSessionLocal, get_sources(), settings.MARKETS_PER_CATEGORY)
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
-    if settings.POLYMARKET_ENABLED:
+    if settings.SOURCES_ENABLED:
         _scheduler.add_job(
             _scheduled_fetch,
             "interval",
@@ -35,7 +35,7 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         )
         _scheduler.start()
     else:
-        logger.info("POLYMARKET_ENABLED is false — serving existing DB data only")
+        logger.info("SOURCES_ENABLED is empty — serving existing DB data only")
     yield
     if _scheduler.running:
         _scheduler.shutdown(wait=False)

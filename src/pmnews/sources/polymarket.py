@@ -1,79 +1,101 @@
 """
-Service for fetching data from the Polymarket Gamma and CLOB APIs.
+Polymarket adapter (public read-only Gamma and CLOB APIs).
+
+Disabled by default: Polymarket is not available in Estonia because of its regulatory
+status, and its APIs are not reachable from there. Enable it only where access is
+legal by adding "polymarket" to SOURCES_ENABLED. When the API cannot be reached the
+adapter raises SourceError like any other source; it never tries to work around blocks.
 """
 
+import json
+import logging
 from datetime import UTC, date, datetime, time
-from typing import Any, ClassVar
+from decimal import Decimal, InvalidOperation
+from typing import Any
 
-import httpx
+from pmnews.core.clock import from_unix, parse_iso_utc
+from pmnews.sources.base import Category, NormalizedMarket, PricePoint
+from pmnews.sources.http import PoliteClient
 
-from pmnews.core.config import settings
+logger = logging.getLogger(__name__)
 
-RawMarket = dict[str, Any]
+GAMMA_URL = "https://gamma-api.polymarket.com"
+CLOB_URL = "https://clob.polymarket.com"
+
+# Polymarket tag IDs for the four UI tabs (found by exploring the Gamma API).
+TAG_IDS: dict[Category, str] = {
+    Category.geopolitics: "2",
+    Category.finance: "120",
+    Category.culture: "596",
+    Category.tech: "439",
+}
 
 
-class PolymarketService:
-    """Fetches and normalises market data from Polymarket APIs."""
+def normalize_market(raw: dict[str, Any], category: Category) -> NormalizedMarket | None:
+    try:
+        probability = Decimal(str(json.loads(raw["outcomePrices"])[0]))
+    except (KeyError, ValueError, IndexError, TypeError, InvalidOperation):
+        logger.warning("polymarket: skipping market %s: unparseable outcomePrices", raw.get("id"))
+        return None
+    try:
+        token_ids = json.loads(raw.get("clobTokenIds") or "[]")
+    except ValueError:
+        token_ids = []
+    end_date = raw.get("endDate")
+    slug = raw.get("slug")
+    return NormalizedMarket(
+        source="polymarket",
+        external_id=str(raw["id"]),
+        question=raw.get("question", ""),
+        category=category,
+        probability=probability,
+        volume=Decimal(str(raw.get("volume") or 0)),
+        volume_unit="usd",
+        close_time=parse_iso_utc(end_date) if end_date else None,
+        url=f"https://polymarket.com/market/{slug}" if slug else None,
+        history_ref=str(token_ids[0]) if token_ids else None,
+    )
 
-    # Polymarket tag IDs for our four categories (discovered via API exploration)
-    TAG_IDS: ClassVar[dict[str, str]] = {
-        "geopolitics": "2",  # Politics
-        "finance": "120",  # Finance
-        "culture": "596",  # Culture
-        "tech": "439",  # AI / Tech
-    }
 
-    def __init__(
-        self,
-        gamma_base: str = settings.POLYMARKET_GAMMA_API_URL,
-        clob_base: str = settings.POLYMARKET_CLOB_API_URL,
-    ) -> None:
-        self._gamma_base = gamma_base
-        self._clob_base = clob_base
+class PolymarketSource:
+    name = "polymarket"
 
-    async def fetch_markets_by_tag(self, tag: str, limit: int = 10) -> list[RawMarket]:
-        """Fetch top markets by volume for a given tag from the Gamma API using tag_id."""
-        tag_id = self.TAG_IDS.get(tag)
-        if not tag_id:
-            return []
-        async with httpx.AsyncClient(timeout=30.0) as client:
-            resp = await client.get(
-                f"{self._gamma_base}/markets",
+    def __init__(self, client: PoliteClient) -> None:
+        self._client = client
+
+    async def fetch_markets(self, per_category: int) -> list[NormalizedMarket]:
+        result = []
+        for category, tag_id in TAG_IDS.items():
+            rows = await self._client.get_json(
+                f"{GAMMA_URL}/markets",
+                endpoint="markets",
                 params={
                     "tag_id": tag_id,
                     "order": "volume",
                     "ascending": "false",
-                    "limit": limit,
+                    "limit": per_category,
                     "active": "true",
                     "closed": "false",
                 },
             )
-            resp.raise_for_status()
-            data = resp.json()
-        return data if isinstance(data, list) else []
+            for raw in rows if isinstance(rows, list) else []:
+                if market := normalize_market(raw, category):
+                    result.append(market)
+        return result
 
     async def fetch_price_history(
-        self, clob_token_id: str, since: date | None = None
-    ) -> list[dict[str, float]]:
-        """
-        Fetch daily price history from the CLOB API using the YES token ID.
-        Returns a list of dicts with 't' (Unix seconds) and 'p' (probability 0-1) keys.
-        Falls back to empty list if CLOB is unavailable.
-        If 'since' is provided, only returns data from that date onwards.
-        """
-        params: dict[str, str | int] = {
-            "market": clob_token_id,
-            "interval": "max",
-            "fidelity": 1440,
-        }
+        self, history_ref: str, since: date | None = None
+    ) -> list[PricePoint]:
+        params: dict[str, str | int] = {"market": history_ref, "interval": "max", "fidelity": 1440}
         if since:
-            # Midnight UTC; strftime("%s") is a non-portable glibc extension in local time.
             params["since"] = int(datetime.combine(since, time.min, tzinfo=UTC).timestamp())
-        async with httpx.AsyncClient(timeout=30.0) as client:
-            try:
-                resp = await client.get(f"{self._clob_base}/prices-history", params=params)
-                resp.raise_for_status()
-                history: list[dict[str, float]] = resp.json().get("history", [])
-            except httpx.HTTPError:
-                return []
-        return history
+        data = await self._client.get_json(
+            f"{CLOB_URL}/prices-history", endpoint="prices-history", params=params
+        )
+        by_day: dict[date, Decimal] = {}
+        for point in data.get("history", []):
+            ts = float(point["t"])
+            # The CLOB API has returned both seconds and milliseconds.
+            day = from_unix(ts / 1000 if ts > 1e10 else ts).date()
+            by_day[day] = Decimal(str(point["p"]))
+        return [PricePoint(day=d, probability=p) for d, p in sorted(by_day.items())]

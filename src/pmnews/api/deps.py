@@ -1,6 +1,7 @@
 """Shared FastAPI dependencies. Tests override these via app.dependency_overrides."""
 
 import secrets
+from collections.abc import Mapping
 from functools import lru_cache
 from typing import Annotated
 
@@ -10,20 +11,16 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from pmnews.core.config import settings
 from pmnews.db.database import get_db
 from pmnews.llm.articles import LLMService, get_llm_service
-from pmnews.sources.polymarket import PolymarketService
+from pmnews.sources.base import MarketSource
+from pmnews.sources.registry import build_sources
 
 MAX_PAGE_SIZE = 100
 
 
 @lru_cache
-def polymarket_service() -> PolymarketService:
-    return PolymarketService()
-
-
-def get_polymarket() -> PolymarketService:
-    if not settings.POLYMARKET_ENABLED:
-        raise HTTPException(status_code=503, detail="The Polymarket source is disabled")
-    return polymarket_service()
+def get_sources() -> Mapping[str, MarketSource]:
+    """The enabled market sources, built once from SOURCES_ENABLED."""
+    return build_sources(settings)
 
 
 def get_llm() -> LLMService:
@@ -47,4 +44,4 @@ def require_generation_allowed(
 
 DbSession = Annotated[AsyncSession, Depends(get_db)]
 Llm = Annotated[LLMService, Depends(get_llm)]
-Polymarket = Annotated[PolymarketService, Depends(get_polymarket)]
+Sources = Annotated[Mapping[str, MarketSource], Depends(get_sources)]

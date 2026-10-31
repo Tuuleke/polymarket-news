@@ -8,20 +8,23 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from pmnews.api.app import app
-from pmnews.api.deps import get_llm, get_polymarket
+from pmnews.api.deps import get_llm, get_sources
 from pmnews.api.routes.markets import find_significant_moves
 from pmnews.core.clock import utc_today
 from pmnews.core.config import settings
 from pmnews.db.models import Article, Market, MarketSnapshot
-from tests.conftest import CLOB_TEST_URL, load_fixture
+from pmnews.sources.polymarket import CLOB_URL
+from tests.conftest import load_fixture
 
 pytestmark = pytest.mark.usefixtures("generation_open")
 
 
 async def _add_market(db: AsyncSession, **overrides: object) -> Market:
     values: dict[str, object] = {
-        "polymarket_id": "538932",
-        "clob_token_id": "token-1",
+        "source": "polymarket",
+        "external_id": "538932",
+        "history_ref": "token-1",
+        "volume_unit": "usd",
         "question": "Will the Federal Reserve hold interest rates unchanged?",
         "category": "finance",
         "probability": 0.99,
@@ -56,12 +59,12 @@ async def test_list_markets_filters_by_category(
     client: httpx.AsyncClient, db: AsyncSession
 ) -> None:
     await _add_market(db)
-    await _add_market(db, polymarket_id="2", category="tech", volume=5.0)
+    await _add_market(db, external_id="2", category="tech", volume=5.0)
 
     resp = await client.get("/api/v1/markets/", params={"category": "finance"})
 
     assert resp.status_code == 200
-    assert [m["polymarket_id"] for m in resp.json()] == ["538932"]
+    assert [m["external_id"] for m in resp.json()] == ["538932"]
 
 
 async def test_get_market_404(client: httpx.AsyncClient) -> None:
@@ -89,7 +92,7 @@ async def test_generate_updates_backfills_history_and_writes_articles(
     openrouter: respx.Route,
 ) -> None:
     market = await _add_market(db)
-    mock_http.get(f"{CLOB_TEST_URL}/prices-history").mock(
+    mock_http.get(f"{CLOB_URL}/prices-history").mock(
         return_value=httpx.Response(200, json=load_fixture("polymarket/prices_history.json"))
     )
 
@@ -110,7 +113,7 @@ async def test_snapshot_dates_are_utc_calendar_days(
 ) -> None:
     market = await _add_market(db)
     late_evening_utc = 1775520000 - 3600  # 2026-04-06 23:00 UTC = 2026-04-07 02:00 in Tallinn
-    mock_http.get(f"{CLOB_TEST_URL}/prices-history").mock(
+    mock_http.get(f"{CLOB_URL}/prices-history").mock(
         return_value=httpx.Response(200, json={"history": [{"t": late_evening_utc, "p": 0.5}]})
     )
 
@@ -130,7 +133,7 @@ async def test_generate_updates_reports_only_new_snapshots(
     market = await _add_market(db)
     db.add(MarketSnapshot(market_id=market.id, date=date(2026, 4, 7), probability=0.72))
     await db.commit()
-    mock_http.get(f"{CLOB_TEST_URL}/prices-history").mock(
+    mock_http.get(f"{CLOB_URL}/prices-history").mock(
         return_value=httpx.Response(200, json=load_fixture("polymarket/prices_history.json"))
     )
 
@@ -139,15 +142,27 @@ async def test_generate_updates_reports_only_new_snapshots(
     assert resp.json()["snapshots_added"] == 4
 
 
-async def test_generate_updates_is_503_when_polymarket_is_disabled(
+async def test_generate_updates_is_503_when_the_market_source_is_disabled(
     client: httpx.AsyncClient, db: AsyncSession
 ) -> None:
     market = await _add_market(db)
-    del app.dependency_overrides[get_polymarket]  # use the real, settings-driven dependency
+    app.dependency_overrides[get_sources] = lambda: {}  # e.g. SOURCES_ENABLED=kalshi,manifold
 
     resp = await client.post(f"/api/v1/markets/{market.id}/generate-updates")
 
     assert resp.status_code == 503
+    assert resp.json()["detail"] == "The polymarket source is disabled"
+
+
+async def test_generate_updates_is_502_when_the_source_is_unreachable(
+    client: httpx.AsyncClient, db: AsyncSession, mock_http: respx.MockRouter
+) -> None:
+    market = await _add_market(db)
+    mock_http.get(f"{CLOB_URL}/prices-history").mock(side_effect=httpx.ConnectTimeout("blocked"))
+
+    resp = await client.post(f"/api/v1/markets/{market.id}/generate-updates")
+
+    assert resp.status_code == 502
 
 
 async def test_generate_updates_writes_at_most_the_configured_number_of_articles(
@@ -159,7 +174,7 @@ async def test_generate_updates_writes_at_most_the_configured_number_of_articles
 ) -> None:
     monkeypatch.setattr(settings, "MAX_UPDATES_PER_REQUEST", 1)
     market = await _add_market(db)
-    mock_http.get(f"{CLOB_TEST_URL}/prices-history").mock(
+    mock_http.get(f"{CLOB_URL}/prices-history").mock(
         return_value=httpx.Response(200, json=load_fixture("polymarket/prices_history.json"))
     )
 
@@ -191,14 +206,14 @@ async def test_market_detail_only_includes_the_last_90_days_of_history(
 
 async def test_list_markets_paginates(client: httpx.AsyncClient, db: AsyncSession) -> None:
     for i in range(3):
-        await _add_market(db, polymarket_id=str(i), volume=float(i))
+        await _add_market(db, external_id=str(i), volume=float(i))
 
     first = await client.get("/api/v1/markets/", params={"limit": 2})
     rest = await client.get("/api/v1/markets/", params={"limit": 2, "offset": 2})
     too_big = await client.get("/api/v1/markets/", params={"limit": 101})
 
-    assert [m["polymarket_id"] for m in first.json()] == ["2", "1"]
-    assert [m["polymarket_id"] for m in rest.json()] == ["0"]
+    assert [m["external_id"] for m in first.json()] == ["2", "1"]
+    assert [m["external_id"] for m in rest.json()] == ["0"]
     assert too_big.status_code == 422
 
 

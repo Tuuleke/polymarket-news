@@ -43,3 +43,6 @@ htmlcov/
 # Next.js generated
 next-env.d.ts
 *.tsbuildinfo
+
+# Raw API responses (local landing zone)
+data/

@@ -35,7 +35,9 @@ async def seed(
             snapshots = [(date.fromisoformat(d), p) for d, p in item["snapshots"]]
             last_day = max(d for d, _ in snapshots)
             values = {
-                "polymarket_id": item["slug"],
+                "source": "polymarket",
+                "external_id": item["slug"],
+                "volume_unit": "usd",
                 "question": item["question"],
                 "category": item["category"],
                 "probability": item["probability"],
@@ -46,7 +48,7 @@ async def seed(
                 await session.execute(
                     pg_insert(Market)
                     .values(**values)
-                    .on_conflict_do_update(index_elements=["polymarket_id"], set_=values)
+                    .on_conflict_do_update(constraint="uq_markets_source_external_id", set_=values)
                     .returning(Market.id)
                 )
             ).scalar_one()

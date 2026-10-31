@@ -42,8 +42,8 @@ class NormalizedMarket(BaseModel):
     volume_unit: VolumeUnit
     close_time: AwareDatetime | None = None
     url: str | None = None
-    # Opaque handle the same adapter needs later to fetch price history.
-    history_ref: str
+    # Opaque handle the same adapter needs later to fetch price history (None if unavailable).
+    history_ref: str | None
 
 
 class PricePoint(BaseModel):

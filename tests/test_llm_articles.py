@@ -9,7 +9,9 @@ from pmnews.llm.articles import LLMService
 
 def _market() -> Market:
     return Market(
-        polymarket_id="538932",
+        source="polymarket",
+        external_id="538932",
+        volume_unit="usd",
         question="Will the Federal Reserve hold interest rates unchanged in April 2026?",
         category="finance",
         probability=0.99,

@@ -1,8 +1,11 @@
 import os
-from typing import Literal, Self
+from pathlib import Path
+from typing import Annotated, Literal, Self
 
-from pydantic import SecretStr, model_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import SecretStr, field_validator, model_validator
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
+
+KNOWN_SOURCES = ("kalshi", "manifold", "polymarket")
 
 
 class Settings(BaseSettings):
@@ -20,11 +23,13 @@ class Settings(BaseSettings):
     # Database
     DATABASE_URL: str = "postgresql+asyncpg://user:password@db:5432/polymarket_news"
 
-    # Polymarket API. Off by default: Polymarket is not available in Estonia
-    # (regulatory status), so the scheduled fetch only runs when explicitly enabled.
-    POLYMARKET_ENABLED: bool = False
-    POLYMARKET_GAMMA_API_URL: str = "https://gamma-api.polymarket.com"
-    POLYMARKET_CLOB_API_URL: str = "https://clob.polymarket.com"
+    # Market data sources, comma-separated: kalshi, manifold, polymarket.
+    # Polymarket is off by default: it is not available in Estonia (regulatory status).
+    SOURCES_ENABLED: Annotated[list[str], NoDecode] = ["kalshi", "manifold"]
+    MARKETS_PER_CATEGORY: int = 10
+    KALSHI_MAX_PAGES: int = 10
+    # Raw API responses land here unchanged (S3 in Phase 3).
+    RAW_DATA_DIR: Path = Path("data/raw")
 
     # LLM
     OPENROUTER_API_KEY: SecretStr = SecretStr("")
@@ -42,6 +47,21 @@ class Settings(BaseSettings):
 
     # Scheduler
     FETCH_INTERVAL_MINUTES: int = 30
+
+    @field_validator("SOURCES_ENABLED", mode="before")
+    @classmethod
+    def _split_sources(cls, value: object) -> object:
+        if isinstance(value, str):
+            return [name.strip().lower() for name in value.split(",") if name.strip()]
+        return value
+
+    @field_validator("SOURCES_ENABLED")
+    @classmethod
+    def _known_sources(cls, value: list[str]) -> list[str]:
+        unknown = sorted(set(value) - set(KNOWN_SOURCES))
+        if unknown:
+            raise ValueError(f"unknown sources {unknown}; choose from {list(KNOWN_SOURCES)}")
+        return value
 
     @model_validator(mode="after")
     def _token_mode_needs_a_token(self) -> Self:

@@ -15,12 +15,16 @@ class MarketSnapshotRead(BaseModel):
 
 
 class MarketBase(BaseModel):
-    polymarket_id: str
+    source: str
+    external_id: str
+    event_id: str | None = None
     question: str
     category: str
     probability: float
     volume: float
+    volume_unit: str
     end_date: datetime | None = None
+    url: str | None = None
 
 
 class MarketCreate(MarketBase):

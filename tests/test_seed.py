@@ -14,8 +14,6 @@ async def test_seed_loads_thesis_markets_and_is_repeatable(
 
     assert await db.scalar(select(func.count()).select_from(Market)) == 8
     assert await db.scalar(select(func.count()).select_from(MarketSnapshot)) == 18
-    fed = await db.scalar(
-        select(Market).where(Market.polymarket_id == "thesis-fed-hold-april-2026")
-    )
+    fed = await db.scalar(select(Market).where(Market.external_id == "thesis-fed-hold-april-2026"))
     assert fed is not None
     assert fed.probability == 0.99

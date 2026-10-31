@@ -27,17 +27,16 @@ from sqlalchemy.ext.asyncio import (
 from testcontainers.community.postgres import PostgresContainer
 
 from pmnews.api.app import app
-from pmnews.api.deps import get_llm, get_polymarket
+from pmnews.api.deps import get_llm, get_sources
 from pmnews.core.config import settings
 from pmnews.db.database import Base, get_db
 from pmnews.llm.articles import LLMService
-from pmnews.sources.polymarket import PolymarketService
+from pmnews.sources.http import PoliteClient
+from pmnews.sources.polymarket import PolymarketSource
 
 ROOT = Path(__file__).parent.parent
 FIXTURES = Path(__file__).parent / "fixtures"
 OPENROUTER_TEST_URL = "https://openrouter.test/api/v1"
-GAMMA_TEST_URL = "https://gamma.polymarket.test"
-CLOB_TEST_URL = "https://clob.polymarket.test"
 
 
 def load_fixture(relative_path: str) -> Any:
@@ -113,15 +112,16 @@ def openrouter(mock_http: respx.MockRouter) -> respx.Route:
 
 
 @pytest.fixture
-def polymarket() -> PolymarketService:
-    return PolymarketService(gamma_base=GAMMA_TEST_URL, clob_base=CLOB_TEST_URL)
+def polymarket() -> PolymarketSource:
+    # Real adapter against respx-mocked endpoints; one attempt so error tests do not wait.
+    return PolymarketSource(PoliteClient("polymarket", min_interval=0.0, max_attempts=1))
 
 
 @pytest.fixture
 async def client(
     session_factory: async_sessionmaker[AsyncSession],
     llm: LLMService,
-    polymarket: PolymarketService,
+    polymarket: PolymarketSource,
 ) -> AsyncIterator[httpx.AsyncClient]:
     """API client wired to the test database and test doubles. Lifespan (scheduler) is not run."""
 
@@ -131,7 +131,7 @@ async def client(
 
     app.dependency_overrides[get_db] = _get_db
     app.dependency_overrides[get_llm] = lambda: llm
-    app.dependency_overrides[get_polymarket] = lambda: polymarket
+    app.dependency_overrides[get_sources] = lambda: {"polymarket": polymarket}
     transport = httpx.ASGITransport(app=app)
     async with httpx.AsyncClient(transport=transport, base_url="http://test") as ac:
         yield ac

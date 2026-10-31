@@ -25,14 +25,21 @@ class ArticleType(enum.StrEnum):
 
 class Market(Base):
     __tablename__ = "markets"
+    __table_args__ = (
+        UniqueConstraint("source", "external_id", name="uq_markets_source_external_id"),
+    )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    polymarket_id: Mapped[str] = mapped_column(String, unique=True, index=True)
-    clob_token_id: Mapped[str | None] = mapped_column(String, nullable=True)
+    source: Mapped[str] = mapped_column(String)
+    external_id: Mapped[str] = mapped_column(String)
+    event_id: Mapped[str | None] = mapped_column(String, nullable=True)
+    history_ref: Mapped[str | None] = mapped_column(String, nullable=True)
     question: Mapped[str] = mapped_column(Text)
     category: Mapped[str] = mapped_column(String, index=True)
     probability: Mapped[float] = mapped_column(Float)
     volume: Mapped[float] = mapped_column(Float, default=0.0)
+    volume_unit: Mapped[str] = mapped_column(String)
+    url: Mapped[str | None] = mapped_column(String, nullable=True)
     end_date: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     fetched_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utc_now)
 

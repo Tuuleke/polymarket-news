@@ -9,7 +9,15 @@ from pmnews.db.models import Market
 
 
 async def _market_id(db: AsyncSession) -> int:
-    market = Market(polymarket_id="1", question="Q?", category="tech", probability=0.5, volume=1.0)
+    market = Market(
+        source="kalshi",
+        external_id="1",
+        question="Q?",
+        category="tech",
+        probability=0.5,
+        volume=1.0,
+        volume_unit="contracts",
+    )
     db.add(market)
     await db.commit()
     return market.id

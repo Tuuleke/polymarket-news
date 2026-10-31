@@ -2,7 +2,7 @@ import asyncio
 import itertools
 import logging
 from collections.abc import Sequence
-from datetime import UTC, date, datetime, timedelta
+from datetime import date, timedelta
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, Query
@@ -15,7 +15,7 @@ from pmnews.api.deps import (
     MAX_PAGE_SIZE,
     DbSession,
     Llm,
-    Polymarket,
+    Sources,
     require_generation_allowed,
 )
 from pmnews.api.schemas.article import ArticleRead
@@ -23,6 +23,7 @@ from pmnews.api.schemas.market import GenerateUpdatesResult, MarketRead
 from pmnews.core.config import settings
 from pmnews.db.models import Article, ArticleType, Market, MarketSnapshot
 from pmnews.llm.articles import ArticleFields
+from pmnews.sources.base import SourceError
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -146,7 +147,7 @@ async def generate_explanation(market_id: int, db: DbSession, llm: Llm) -> Artic
     dependencies=[Depends(require_generation_allowed)],
 )
 async def generate_updates(
-    market_id: int, db: DbSession, llm: Llm, polymarket: Polymarket
+    market_id: int, db: DbSession, llm: Llm, sources: Sources
 ) -> GenerateUpdatesResult:
     """
     Scan all daily snapshots for this market.
@@ -156,13 +157,13 @@ async def generate_updates(
     """
     market = await _get_market_or_404(db, market_id)
 
-    # Backfill historical price snapshots from CLOB API (safe to re-run; skips existing dates)
-    if not market.clob_token_id:
-        raise HTTPException(
-            status_code=422, detail="Market has no CLOB token ID — cannot fetch price history"
-        )
+    source = sources.get(market.source)
+    if source is None:
+        raise HTTPException(status_code=503, detail=f"The {market.source} source is disabled")
+    if not market.history_ref:
+        raise HTTPException(status_code=422, detail="This market has no price history reference")
 
-    # Find the last snapshot date to only fetch new data
+    # Backfill daily history from the source (safe to re-run; existing dates are skipped).
     last_snap_date = (
         await db.execute(
             select(MarketSnapshot.date)
@@ -171,30 +172,23 @@ async def generate_updates(
             .limit(1)
         )
     ).scalar_one_or_none()
+    try:
+        history = await source.fetch_price_history(market.history_ref, since=last_snap_date)
+    except SourceError as exc:
+        raise HTTPException(status_code=502, detail=str(exc)) from exc
     logger.info(
-        "generate-updates: market_id=%d clob_token_id=%s last_snap_date=%s",
+        "generate-updates: market_id=%d source=%s since=%s got %d points",
         market_id,
-        market.clob_token_id,
+        market.source,
         last_snap_date,
+        len(history),
     )
 
-    history = await polymarket.fetch_price_history(market.clob_token_id, since=last_snap_date)
-    logger.info("generate-updates: got %d history points from CLOB", len(history))
-
     inserted = 0
-    snapshot_values = []
-    for point in history:
-        try:
-            ts = point["t"]
-            if ts > 1e10:
-                ts = ts / 1000
-            snap_date = datetime.fromtimestamp(ts, UTC).date()
-            prob = float(point["p"])
-        except (KeyError, ValueError, TypeError, OSError) as e:
-            logger.warning("generate-updates: skipping point %s — %s", point, e)
-            continue
-        snapshot_values.append({"market_id": market_id, "date": snap_date, "probability": prob})
-
+    snapshot_values = [
+        {"market_id": market_id, "date": p.day, "probability": float(p.probability)}
+        for p in history
+    ]
     if snapshot_values:
         result = await db.execute(
             pg_insert(MarketSnapshot)

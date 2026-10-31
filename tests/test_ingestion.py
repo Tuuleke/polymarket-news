@@ -1,57 +1,73 @@
-import logging
-from datetime import UTC, datetime
+from datetime import date
+from decimal import Decimal
 
-import pytest
 from sqlalchemy import func, select
-from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from pmnews.db.models import Market, MarketSnapshot
-from pmnews.ingestion.polymarket import upsert_markets
-from tests.conftest import load_fixture
+from pmnews.ingestion.markets import ingest_markets, store_markets
+from pmnews.sources.base import Category, NormalizedMarket, PricePoint, SourceError
 
 
-async def test_upsert_inserts_markets_and_one_snapshot_each(db: AsyncSession) -> None:
-    raw = load_fixture("polymarket/markets_geopolitics.json")
+def _market(source: str, external_id: str, probability: str = "0.5") -> NormalizedMarket:
+    return NormalizedMarket(
+        source=source,
+        external_id=external_id,
+        question=f"{source} question {external_id}?",
+        category=Category.finance,
+        probability=Decimal(probability),
+        volume=Decimal("10"),
+        volume_unit="contracts",
+        history_ref=external_id,
+    )
 
-    count = await upsert_markets(db, raw, "geopolitics")
+
+class FakeSource:
+    def __init__(self, name: str, markets: list[NormalizedMarket] | None) -> None:
+        self.name = name
+        self._markets = markets
+
+    async def fetch_markets(self, per_category: int) -> list[NormalizedMarket]:
+        if self._markets is None:
+            raise SourceError(f"{self.name}: unreachable")
+        return self._markets
+
+    async def fetch_price_history(
+        self, history_ref: str, since: date | None = None
+    ) -> list[PricePoint]:
+        return []
+
+
+async def test_same_external_id_on_two_platforms_are_different_markets(db: AsyncSession) -> None:
+    await store_markets(db, [_market("kalshi", "X-1"), _market("manifold", "X-1")])
     await db.commit()
 
-    assert count == 2
-    markets = (await db.execute(select(Market).order_by(Market.polymarket_id))).scalars().all()
-    assert [m.probability for m in markets] == [0.25, 0.99]
-    assert markets[0].clob_token_id is not None
-    assert markets[0].clob_token_id.startswith("7132")
-    assert markets[0].category == "geopolitics"
-    assert markets[0].end_date == datetime(2028, 8, 31, 12, tzinfo=UTC)
-    assert markets[0].fetched_at.tzinfo is not None
+    sources = (await db.execute(select(Market.source).order_by(Market.source))).scalars().all()
+    assert sources == ["kalshi", "manifold"]
     assert await db.scalar(select(func.count()).select_from(MarketSnapshot)) == 2
 
 
-async def test_upsert_is_idempotent_within_a_day(db: AsyncSession) -> None:
-    raw = load_fixture("polymarket/markets_geopolitics.json")
-    await upsert_markets(db, raw, "geopolitics")
-    raw[0]["outcomePrices"] = '["0.30", "0.70"]'
-
-    await upsert_markets(db, raw, "geopolitics")
+async def test_store_is_idempotent_within_a_day(db: AsyncSession) -> None:
+    await store_markets(db, [_market("kalshi", "X-1", "0.5")])
+    await store_markets(db, [_market("kalshi", "X-1", "0.6")])
     await db.commit()
 
-    assert await db.scalar(select(func.count()).select_from(Market)) == 2
-    assert await db.scalar(select(func.count()).select_from(MarketSnapshot)) == 2
-    newsom = await db.scalar(select(Market).where(Market.polymarket_id == "516710"))
-    assert newsom is not None
-    assert newsom.probability == 0.30
+    market = await db.scalar(select(Market))
+    assert market is not None
+    assert market.probability == 0.6
+    assert market.volume_unit == "contracts"
+    assert await db.scalar(select(func.count()).select_from(MarketSnapshot)) == 1
 
 
-async def test_upsert_skips_markets_without_a_parseable_price(
-    db: AsyncSession, caplog: pytest.LogCaptureFixture
+async def test_one_failing_source_does_not_stop_the_others(
+    session_factory: async_sessionmaker[AsyncSession], db: AsyncSession
 ) -> None:
-    raw = load_fixture("polymarket/markets_geopolitics.json")
-    raw[0]["outcomePrices"] = "not json"
-    del raw[1]["outcomePrices"]
+    sources = {
+        "polymarket": FakeSource("polymarket", None),
+        "kalshi": FakeSource("kalshi", [_market("kalshi", "K-1")]),
+    }
 
-    with caplog.at_level(logging.WARNING):
-        count = await upsert_markets(db, raw, "geopolitics")
+    stored = await ingest_markets(session_factory, sources, per_category=10)
 
-    assert count == 0
-    assert await db.scalar(select(func.count()).select_from(Market)) == 0
-    assert "Skipping market 516710" in caplog.text
+    assert stored == {"kalshi": 1}
+    assert await db.scalar(select(func.count()).select_from(Market)) == 1
