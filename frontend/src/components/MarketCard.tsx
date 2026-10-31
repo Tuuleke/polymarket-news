@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import type { Article, Market, MarketSnapshot } from "@/types";
 import { api } from "@/lib/api";
@@ -9,16 +9,13 @@ interface Props {
   market: Market;
 }
 
-export function MarketCard({ market: initialMarket }: Props) {
+export function MarketCard({ market }: Props) {
   const router = useRouter();
-  const [market, setMarket] = useState(initialMarket);
   const [loadingExplain, setLoadingExplain] = useState(false);
   const [loadingUpdates, setLoadingUpdates] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [updatesMsg, setUpdatesMsg] = useState<string | null>(null);
   const [hovered, setHovered] = useState(false);
-
-  useEffect(() => { setMarket(initialMarket); }, [initialMarket]);
 
   const explanation = market.articles.find((a) => a.article_type === "explanation");
   const updates = market.articles

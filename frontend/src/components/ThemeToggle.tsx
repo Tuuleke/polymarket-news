@@ -1,26 +1,29 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+
+// The inline script in layout.tsx sets the `dark` class before hydration, so the
+// class on <html> is the source of truth; this hook just subscribes to it.
+function subscribe(onChange: () => void) {
+  const observer = new MutationObserver(onChange);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+  return () => observer.disconnect();
+}
+
+const getSnapshot = () => document.documentElement.classList.contains("dark");
+const getServerSnapshot = () => null;
 
 export function ThemeToggle() {
-  const [dark, setDark] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    setDark(document.documentElement.classList.contains("dark"));
-  }, []);
+  const dark = useSyncExternalStore<boolean | null>(subscribe, getSnapshot, getServerSnapshot);
 
   function toggle() {
     const next = !dark;
-    setDark(next);
     document.documentElement.classList.toggle("dark", next);
     try { localStorage.setItem("pmn-theme", next ? "dark" : "light"); } catch {}
   }
 
   // Placeholder to prevent layout shift before hydration
-  if (!mounted) return <div style={{ width: 34, height: 34, flexShrink: 0 }} />;
-
+  if (dark === null) return <div style={{ width: 34, height: 34, flexShrink: 0 }} />;
   return (
     <button
       onClick={toggle}
