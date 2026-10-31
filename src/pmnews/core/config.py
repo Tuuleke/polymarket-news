@@ -1,4 +1,6 @@
-from pydantic import SecretStr
+from typing import Literal, Self
+
+from pydantic import SecretStr, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -26,8 +28,20 @@ class Settings(BaseSettings):
     LLM_MODEL: str = "deepseek/deepseek-v3.2"
     LLM_WEB_SEARCH: bool = True
 
+    # Who may trigger paid LLM calls through the API:
+    #   disabled — nobody (safe default); open — anyone (local development only);
+    #   token — requests must send the X-Admin-Token header.
+    GENERATION_MODE: Literal["disabled", "open", "token"] = "disabled"
+    ADMIN_TOKEN: SecretStr = SecretStr("")
+
     # Scheduler
     FETCH_INTERVAL_MINUTES: int = 30
+
+    @model_validator(mode="after")
+    def _token_mode_needs_a_token(self) -> Self:
+        if self.GENERATION_MODE == "token" and not self.ADMIN_TOKEN.get_secret_value():
+            raise ValueError("GENERATION_MODE=token requires ADMIN_TOKEN to be set")
+        return self
 
 
 settings = Settings()

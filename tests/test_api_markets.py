@@ -1,6 +1,7 @@
 from datetime import date
 
 import httpx
+import pytest
 import respx
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -10,6 +11,8 @@ from pmnews.api.deps import get_polymarket
 from pmnews.api.routes.markets import find_significant_moves
 from pmnews.db.models import Article, Market, MarketSnapshot
 from tests.conftest import CLOB_TEST_URL, load_fixture
+
+pytestmark = pytest.mark.usefixtures("generation_open")
 
 
 async def _add_market(db: AsyncSession, **overrides: object) -> Market:

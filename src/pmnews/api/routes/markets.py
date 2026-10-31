@@ -4,12 +4,12 @@ import logging
 from collections.abc import Sequence
 from datetime import UTC, date, datetime, timedelta
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.orm import selectinload
 
-from pmnews.api.deps import DbSession, Llm, Polymarket
+from pmnews.api.deps import DbSession, Llm, Polymarket, require_generation_allowed
 from pmnews.api.schemas.article import ArticleRead
 from pmnews.api.schemas.market import GenerateUpdatesResult, MarketRead
 from pmnews.db.models import Article, ArticleType, Market, MarketSnapshot
@@ -73,7 +73,12 @@ async def get_market(market_id: int, db: DbSession) -> Market:
     return market
 
 
-@router.post("/{market_id}/explain", status_code=201, response_model=ArticleRead)
+@router.post(
+    "/{market_id}/explain",
+    status_code=201,
+    response_model=ArticleRead,
+    dependencies=[Depends(require_generation_allowed)],
+)
 async def generate_explanation(market_id: int, db: DbSession, llm: Llm) -> Article:
     """
     Generate the evergreen explanation article for a market.
@@ -106,7 +111,11 @@ async def generate_explanation(market_id: int, db: DbSession, llm: Llm) -> Artic
     return article
 
 
-@router.post("/{market_id}/generate-updates", status_code=201)
+@router.post(
+    "/{market_id}/generate-updates",
+    status_code=201,
+    dependencies=[Depends(require_generation_allowed)],
+)
 async def generate_updates(
     market_id: int, db: DbSession, llm: Llm, polymarket: Polymarket
 ) -> GenerateUpdatesResult:

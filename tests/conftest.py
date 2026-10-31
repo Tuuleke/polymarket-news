@@ -28,6 +28,7 @@ from testcontainers.community.postgres import PostgresContainer
 
 from pmnews.api.app import app
 from pmnews.api.deps import get_polymarket
+from pmnews.core.config import settings
 from pmnews.db.database import Base, get_db
 from pmnews.llm.articles import LLMService, get_llm_service
 from pmnews.sources.polymarket import PolymarketService
@@ -77,6 +78,11 @@ async def session_factory(engine: AsyncEngine) -> AsyncIterator[async_sessionmak
 async def db(session_factory: async_sessionmaker[AsyncSession]) -> AsyncIterator[AsyncSession]:
     async with session_factory() as session:
         yield session
+
+
+@pytest.fixture
+def generation_open(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(settings, "GENERATION_MODE", "open")
 
 
 @pytest.fixture
