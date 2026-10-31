@@ -6,9 +6,9 @@ from datetime import UTC, date, datetime, timedelta
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlalchemy import select
+from sqlalchemy import func, literal, select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
-from sqlalchemy.orm import selectinload
+from sqlalchemy.orm import aliased, selectinload
 from sqlalchemy.orm.interfaces import LoaderOption
 
 from pmnews.api.deps import (
@@ -20,7 +20,6 @@ from pmnews.api.deps import (
 )
 from pmnews.api.schemas.article import ArticleRead
 from pmnews.api.schemas.market import GenerateUpdatesResult, MarketRead
-from pmnews.core.clock import utc_today
 from pmnews.core.config import settings
 from pmnews.db.models import Article, ArticleType, Market, MarketSnapshot
 from pmnews.llm.articles import ArticleFields
@@ -59,9 +58,16 @@ async def _get_market_or_404(db: DbSession, market_id: int) -> Market:
 
 
 def _recent_snapshots() -> LoaderOption:
-    """Load only the snapshots the UI charts, instead of the full and growing history."""
-    cutoff = utc_today() - timedelta(days=SNAPSHOT_WINDOW_DAYS)
-    return selectinload(Market.snapshots.and_(MarketSnapshot.date >= cutoff))
+    """
+    Load only the last SNAPSHOT_WINDOW_DAYS of each market's history, counted back from
+    that market's latest snapshot so markets that stopped trading still show a chart.
+    """
+    newer = aliased(MarketSnapshot)
+    latest = (
+        select(func.max(newer.date)).where(newer.market_id == MarketSnapshot.market_id)
+    ).scalar_subquery()
+    window = literal(timedelta(days=SNAPSHOT_WINDOW_DAYS))
+    return selectinload(Market.snapshots.and_(MarketSnapshot.date >= latest - window))
 
 
 @router.get("/", response_model=list[MarketRead])

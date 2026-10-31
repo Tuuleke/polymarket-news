@@ -168,13 +168,15 @@ async def test_generate_updates_writes_at_most_the_configured_number_of_articles
     assert openrouter.call_count == 1
 
 
-async def test_market_detail_only_includes_recent_snapshots(
+async def test_market_detail_only_includes_the_last_90_days_of_history(
     client: httpx.AsyncClient, db: AsyncSession
 ) -> None:
     market = await _add_market(db)
-    today = utc_today()
+    last_trading_day = utc_today() - timedelta(days=200)  # a market that stopped trading
     db.add_all(
-        MarketSnapshot(market_id=market.id, date=today - timedelta(days=d), probability=0.5)
+        MarketSnapshot(
+            market_id=market.id, date=last_trading_day - timedelta(days=d), probability=0.5
+        )
         for d in range(120)
     )
     await db.commit()
@@ -182,8 +184,8 @@ async def test_market_detail_only_includes_recent_snapshots(
     resp = await client.get(f"/api/v1/markets/{market.id}")
 
     dates = [s["date"] for s in resp.json()["snapshots"]]
-    assert len(dates) == 91  # today plus the 90 days before it
-    assert min(dates) == (today - timedelta(days=90)).isoformat()
+    assert len(dates) == 91  # the latest day plus the 90 days before it
+    assert min(dates) == (last_trading_day - timedelta(days=90)).isoformat()
 
 
 async def test_list_markets_paginates(client: httpx.AsyncClient, db: AsyncSession) -> None:
