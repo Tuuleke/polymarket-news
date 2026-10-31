@@ -1,6 +1,7 @@
 # Migration plan: thesis prototype → production portfolio project
 
-Status: **draft, awaiting review** (written 2026-10-31, before any code change).
+Status: **approved 2026-10-31**, including the deviations in §3 (package layout,
+Airflow in Phase 3, single EC2 host). The thesis is tagged `v1-thesis`; work happens on `production`.
 
 This document records what the repository looks like today, what will be kept or
 replaced, the main risks, and the phase order. Facts marked *(probed 2026-10-31)*
@@ -55,7 +56,8 @@ User clicks "Explain" / "Generate updates" in the UI
   fetched source documents: overall average 2.29 → 7.0 out of 10.
 - The CSV in the working tree has been patched (`results/patch_factual.py`, untracked)
   to replace factual scores with the grounded ones for those 24 rows. The `.md` file
-  still shows the original scores. Two versions of the thesis numbers therefore exist.
+  still shows the original scores. **Decision:** the thesis reports the grounded factual
+  scores, so the README quotes the patched CSV and states the method.
 
 ### 1.4 Problems found while reading the code
 
@@ -199,7 +201,7 @@ Kalshi details that shape the adapter:
 | Risk | Impact | Mitigation |
 |------|--------|------------|
 | **The thesis evals measured a different prompt than the app ships.** `web_writer.py` requires inline citations and a SOURCES list; `services/llm.py` forbids citations. The rubric checks "≤60 words" while both prompts say "<80 words". | Thesis scores cannot be quoted as the score of the deployed app. | README labels thesis numbers as thesis-harness results. Phase 5 evals load the same versioned prompt files the API uses. |
-| Two versions of thesis factual scores (original vs grounded-patched CSV, 24/30 rows). | Quoting the wrong one in README/CV. | You confirm which numbers appear in the thesis; README states the method next to each number. |
+| Two versions of thesis factual scores (original vs grounded-patched CSV, 24/30 rows). | Quoting the wrong one in README/CV. | Resolved: the thesis uses the grounded scores. README states the method and that 6/30 rows kept the original score. |
 | LLM-as-judge noise makes the CI gate flaky. | False CI failures or a gate that never fires. | Temperature 0, fixed judge model, threshold with a margin; the deterministic numeric fact-check is the primary gate. |
 | Paid LLM calls from public endpoints or loops. | Unbounded spend. | Admin token, per-run caps, dedicated OpenRouter keys with credit limits (CI key = hard cap), and I ask before any paid batch. |
 | Kalshi data quality (combo markets, untraded candles, fixed-point strings). | Wrong probabilities in marts. | Normalisation rules in the adapter, dbt tests (0 ≤ p ≤ 1, not-null, freshness). |
