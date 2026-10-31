@@ -77,3 +77,18 @@ class Article(Base):
     snapshot_date: Mapped[date | None] = mapped_column(Date, nullable=True)
 
     market: Mapped["Market"] = relationship(back_populates="articles")
+
+
+class NewsItem(Base):
+    """A news article's metadata. The article text itself is never stored."""
+
+    __tablename__ = "news_items"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    source: Mapped[str] = mapped_column(String, index=True)
+    url: Mapped[str] = mapped_column(String, unique=True)
+    title: Mapped[str] = mapped_column(Text)
+    author: Mapped[str | None] = mapped_column(String, nullable=True)
+    summary: Mapped[str] = mapped_column(Text, default="")
+    published_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    fetched_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utc_now)

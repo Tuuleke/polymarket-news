@@ -28,6 +28,8 @@ class Settings(BaseSettings):
     SOURCES_ENABLED: Annotated[list[str], NoDecode] = ["kalshi", "manifold"]
     MARKETS_PER_CATEGORY: int = 10
     KALSHI_MAX_PAGES: int = 10
+    # News feeds (see pmnews.sources.rss.FEEDS) are fetched on the same schedule.
+    NEWS_ENABLED: bool = True
     # Raw API responses land here unchanged (S3 in Phase 3).
     RAW_DATA_DIR: Path = Path("data/raw")
 

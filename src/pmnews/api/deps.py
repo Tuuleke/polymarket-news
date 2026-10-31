@@ -12,7 +12,10 @@ from pmnews.core.config import settings
 from pmnews.db.database import get_db
 from pmnews.llm.articles import LLMService, get_llm_service
 from pmnews.sources.base import MarketSource
+from pmnews.sources.http import PoliteClient
+from pmnews.sources.raw_store import LocalRawStore
 from pmnews.sources.registry import build_sources
+from pmnews.sources.rss import RssSource
 
 MAX_PAGE_SIZE = 100
 
@@ -21,6 +24,12 @@ MAX_PAGE_SIZE = 100
 def get_sources() -> Mapping[str, MarketSource]:
     """The enabled market sources, built once from SOURCES_ENABLED."""
     return build_sources(settings)
+
+
+@lru_cache
+def get_news_source() -> RssSource:
+    store = LocalRawStore(settings.RAW_DATA_DIR)
+    return RssSource(PoliteClient("rss", min_interval=1.0, raw_store=store))
 
 
 def get_llm() -> LLMService:

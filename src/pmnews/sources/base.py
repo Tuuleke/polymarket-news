@@ -59,6 +59,7 @@ class NewsItem(BaseModel):
     source: str
     url: str
     title: str
+    author: str | None = None
     published_at: AwareDatetime | None = None
     summary: str = ""
 

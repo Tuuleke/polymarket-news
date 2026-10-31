@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  <id>tag:theconversation.com,2011:/global/articles</id>
+  <link rel="alternate" type="text/html" href="https://theconversation.com"/>
+  <link rel="self" type="application/atom+xml" href="https://theconversation.com/global/articles.atom"/>
+  <title>The Conversation – Articles (GLOBAL)</title>
+  <updated>2026-10-30T11:33:54Z</updated>
+  <entry>
+    <id>tag:theconversation.com,2011:article/294007</id>
+    <published>2026-10-30T11:33:54Z</published>
+    <updated>2026-10-30T11:33:54Z</updated>
+    <link rel="alternate" type="text/html" href="https://theconversation.com/how-the-sphinx-is-helping-answer-a-riddle-about-extinct-crocodiles-294007"/>
+    <title>How the Sphinx is helping answer a riddle about extinct crocodiles</title>
+    <content type="html">&lt;p&gt;My colleagues and I discovered a new species of extinct crocodile from a fossil found in the same rocks used to carve the Great Sphinx of Giza. &lt;/p&gt;
+
+&lt;p&gt;Today, there are only two species of the long-snouted gavial &lt;a href="https://theconversation.com/topics/crocodiles-2406"&gt;crocodile&lt;/a&gt;, both of which &lt;a href="https://www.iucncsg.org/pages/Conservation-Status.html"&gt;are endangered&lt;/a&gt;: &lt;em&gt;Gavialis gangeticus&lt;/em&gt; and &lt;em&gt;Tomistoma schlegelii&lt;/em&gt;. They are found only in freshwater environments on the Indian subcontinent and Southeast Asia. &lt;/p&gt;
+
+&lt;p&gt;However, the fossil record of gavials  goes back &lt;a href="https://peerj.com/articles/12094/"&gt;80 million years&lt;/a&gt;, to the time of the dinosaurs. It shows that they were once diverse, with more than 40 species known, and lived all over the globe. So how did a group of crocodiles that today cannot tolerate saltwater once live all over the world? Our discovery may help to solve this puzzle.&lt;/p&gt;
+
+&lt;p&gt;Although the distribution of the continents differed from today, most were already separated by oceans. My colleagues and I have been trying to understand how gavials achieved this cosmopolitan distribution, while also seeking to unlock what led to their current predicament. &lt;/p&gt;
+
+&lt;p&gt;Studying the anatomy of the skeletons of living and fossil gavials has given us a better understanding of the &lt;a href="https://peerj.com/articles/12094/"&gt;group’s evolution&lt;/a&gt; in recent years. CT scans have enabled us to &lt;a href="https://onlinelibrary.wiley.com/doi/full/10.1111/joa.70182"&gt;look inside their skulls&lt;/a&gt;, giving us a window into their brains and sensory systems. &lt;/p&gt;
+
+&lt;p&gt;This has revealed new anatomical information that helps differentiate species, and has allowed us to infer &lt;a href="https://www.naturalsciences.be/en/science/news/long-snouted-crocodilians-may-have-crossed-the-atlantic-ocean-80-million-years-ago-ct-scans-reveal"&gt;aspects of the biology&lt;/a&gt; and &lt;a href="https://anatomypubs.onlinelibrary.wiley.com/doi/full/10.1002/ar.25569"&gt;ecology&lt;/a&gt; of some of the &lt;a href="https://onlinelibrary.wiley.com/doi/full/10.1111/joa.14213"&gt;extinct species&lt;/a&gt;. &lt;/p&gt;
+
+&lt;p&gt;For example, in an extinct group of crocodile relatives known to have lived entirely in the ocean, other researchers found &lt;a href="https://phys.org/news/2020-04-evolution-ear-canal-ancient-crocodile.html"&gt;thickening of the outer wall&lt;/a&gt; of their inner ear to cope with the higher pressures seen at ocean depths. My colleagues and I have found similar evidence for a marine lifestyle in some fossil gavials. This ability to live in the ocean was lost in living species, which are restricted to rivers and lakes.&lt;/p&gt;
+
+&lt;p&gt;Several of the gavial fossils we have been studying from Africa and Europe were first reported in the late 19th and early 20th centuries and they were often described as species of &lt;em&gt;Tomistoma&lt;/em&gt;, i.e. closely related to &lt;em&gt;Tomistoma schlegelii&lt;/em&gt;, one of the two living species of gavials. Our previous work and that of others has shown that some of these extinct species are not closely related to &lt;em&gt;Tomistoma&lt;/em&gt;, with &lt;a href="https://www.tandfonline.com/doi/full/10.1080/14772019.2024.2384548"&gt;new names&lt;/a&gt; given for &lt;a href="https://www.cambridge.org/core/journals/journal-of-paleontology/article/crocodylian-princess-in-taiwan-revising-the-taxonomic-status-of-tomistoma-taiwanicus-from-the-pleistocene-of-taiwan-and-its-paleobiogeographic-implications/0F9ABE50FA24B3EB42AF0A6E0E3371A5"&gt;some of them&lt;/a&gt;. However, many of these historically described species remain neglected. Led by my former PhD student, Paul Burke, now a researcher at the &lt;a href="https://www.nrm.se/engelska/in-english"&gt;Swedish Museum of Natural History&lt;/a&gt; in Stockholm, along with colleagues from Egypt and Germany, we re-examined one of these species in a new study.&lt;/p&gt;
+
+&lt;p&gt;In the 1920s, several fossils were collected from northeastern Egypt. These were found in a limestone rock, known as the &lt;a href="https://www.hallofmaat.com/sphinx/geologic-study-of-the-sphinx/"&gt;Mokattam Formation&lt;/a&gt;, that had formed 45 million years ago in a shallow marine environment when sea levels were higher. This region was submerged at this time. These fossils, including a nearly complete skull, were described in 1927 as belonging to &lt;em&gt;Tomistoma&lt;/em&gt;, because of their superficial resemblance to the living species, &lt;em&gt;Tomistoma schlegelii&lt;/em&gt;. &lt;/p&gt;
+
+&lt;p&gt;However, aided by the use of CT scanning, our team was able to identify several anatomical differences, including the presence of raised rims around the eye sockets, which are &lt;a href="https://peerj.com/articles/12094/"&gt;absent in &lt;em&gt;Tomistoma&lt;/em&gt;&lt;/a&gt;. &lt;/p&gt;
+
+&lt;figure class="align-center "&gt;
+            &lt;img alt="Enormous sphinx carved from stone." src="https://images.theconversation.com/files/766541/original/file-20261015-50-awmizw.jpg?ixlib=rb-4.1.1&amp;amp;q=45&amp;amp;auto=format&amp;amp;w=754&amp;amp;fit=clip" srcset="https://images.theconversation.com/files/766541/original/file-20261015-50-awmizw.jpg?ixlib=rb-4.1.1&amp;amp;q=45&amp;amp;auto=format&amp;amp;w=600&amp;amp;h=400&amp;amp;fit=crop&amp;amp;dpr=1 600w, https://images.theconversation.com/files/766541/original/file-20261015-50-awmizw.jpg?ixlib=rb-4.1.1&amp;amp;q=30&amp;amp;auto=format&amp;amp;w=600&amp;amp;h=400&amp;amp;fit=crop&amp;amp;dpr=2 1200w, https://images.theconversation.com/files/766541/original/file-20261015-50-awmizw.jpg?ixlib=rb-4.1.1&amp;amp;q=15&amp;amp;auto=format&amp;amp;w=600&amp;amp;h=400&amp;amp;fit=crop&amp;amp;dpr=3 1800w, https://images.theconversation.com/files/766541/original/file-20261015-50-awmizw.jpg?ixlib=rb-4.1.1&amp;amp;q=45&amp;amp;auto=format&amp;amp;w=754&amp;amp;h=503&amp;amp;fit=crop&amp;amp;dpr=1 754w, https://images.theconversation.com/files/766541/original/file-20261015-50-awmizw.jpg?ixlib=rb-4.1.1&amp;amp;q=30&amp;amp;auto=format&amp;amp;w=754&amp;amp;h=503&amp;amp;fit=crop&amp;amp;dpr=2 1508w, https://images.theconversation.com/files/766541/original/file-20261015-50-awmizw.jpg?ixlib=rb-4.1.1&amp;amp;q=15&amp;amp;auto=format&amp;amp;w=754&amp;amp;h=503&amp;amp;fit=crop&amp;amp;dpr=3 2262w" sizes="(min-width: 1466px) 754px, (max-width: 599px) 100vw, (min-width: 600px) 600px, 237px"&gt;
+            &lt;figcaption&gt;
+              &lt;span class="caption"&gt;The Great Sphinx of Giza.&lt;/span&gt;
+              &lt;span class="attribution"&gt;&lt;a class="source" href="https://www.shutterstock.com/image-photo/egyt-pyramids-great-sphinx-giza-famous-2821201119?trackingId=ba3b6339-d3f6-4236-9cbf-22840da9fc21&amp;amp;listId=searchResults"&gt;Fernanda-Belen/Shutterstock&lt;/a&gt;&lt;/span&gt;
+            &lt;/figcaption&gt;
+          &lt;/figure&gt;
+
+&lt;p&gt;The Mokattam Formation already has a legacy: 4,500 years ago, these rocks were used to carve the &lt;a href="https://www.hallofmaat.com/sphinx/geologic-study-of-the-sphinx/"&gt;Great Sphinx of Giza&lt;/a&gt;. The gavial skull shares more than this origin story though. Just as the Sphinx is famously missing the tip of its nose, the fossil is also missing the tip of its snout. This coincidence led us to name the new crocodile &lt;em&gt;Herugavialis cairensis&lt;/em&gt; after the Egyptian falcon-headed god Heru (also known as Horus), who is often thought to be the inspiration for the iconic Sphinx.&lt;/p&gt;
+
+&lt;p&gt;Both northern Africa and southern Europe hosted a high diversity of gavials (and other crocodiles) during much of the last 80 million years, with these species thriving in the shallow, marine environments that covered much of the Mediterranean region at the time. &lt;/p&gt;
+
+&lt;p&gt;Unlike living gavials, it is likely that some of these species &lt;a href="https://anatomypubs.onlinelibrary.wiley.com/doi/full/10.1002/ar.25569"&gt;could cross oceans&lt;/a&gt;. This diversity appears to have persisted through the devastating mass extinction that wiped out the dinosaurs, and probably fluctuated during alternating warmer and cooler intervals over the next 60 million years, tied to higher and lower sea levels, respectively. &lt;/p&gt;
+
+&lt;p&gt;However, crocodiles disappeared from the Mediterranean region approximately 6 million years ago and never returned. Their demise coincides with an event known as the Messinian salinity crisis, when the &lt;a href="https://www.nature.com/articles/s43017-024-00533-1"&gt;Mediterranean essentially dried up&lt;/a&gt; as a result of being sealed off from the Atlantic Ocean. As the seawater became increasingly salty with the heightened evaporation of water, it would have become ever more intolerable to the animals inhabiting it, even those usually able to live in saltwater, leading to the loss of crocodiles and many other species.&lt;/p&gt;
+
+&lt;p&gt;The signature of this event can still be observed today, with the Mediterranean Sea still much saltier than the oceans, and crocodiles entirely absent from this region. The remaining living gavials live far away from the Mediterranean, but the loss of the adaptations that would allow them to live in saltwater means that they would not be able to survive there regardless.&lt;/p&gt;
+
+&lt;p&gt;Rapid and extreme changes in temperature, sea level, and aridification are critical components of the current climate emergency, and events such as the Messinian salinity crisis show that they can have a lasting impact on biodiversity, spanning millions of years.&lt;/p&gt;&lt;img src="https://counter.theconversation.com/content/294007/count.gif" alt="The Conversation" width="1" height="1" /&gt;
+&lt;p class="fine-print"&gt;&lt;em&gt;&lt;span&gt;Philip Mannion receives funding from The Royal Society and UK Research and Innovation. &lt;/span&gt;&lt;/em&gt;&lt;/p&gt;</content>
+    <summary>New technology is helping to identify extinct fossil species.</summary>
+    <author>
+      <name>Philip Mannion, Professor of Palaeobiology, UCL</name>
+      <foaf:homepage rdf:resource="https://theconversation.com/profiles/philip-mannion-2768954"/>
+    </author>
+    <rights>Licensed as Creative Commons – attribution, no derivatives.</rights>
+  </entry><entry>
+    <id>tag:theconversation.com,2011:article/295542</id>
+    <published>2026-10-30T01:15:11Z</published>
+    <updated>2026-10-30T01:15:11Z</updated>
+    <link rel="alternate" type="text/html" href="https://theconversation.com/what-we-leave-behind-is-not-as-important-as-how-weve-lived-remembering-actor-patrick-stewart-295542"/>
+    <title>‘What we leave behind is not as important as how we’ve lived’: remembering actor Patrick Stewart</title>
+    <content type="html">&lt;p&gt;At the end of Star Trek: Generations (1994), surveying the wreckage of the crashed USS Enterprise he captained for nearly a decade, Jean-Luc Picard (Patrick Stewart) muses to his first officer, William Riker (Jonathan Frakes):&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;… time is a companion that goes with us on the journey, reminds us to cherish every moment, because it will never come again. What we leave behind is not as important as how we’ve lived.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Smiling, he quips to Riker, “After all, Number One, we’re only mortal.”&lt;/p&gt;
+
+&lt;figure&gt;
+            &lt;iframe width="440" height="260" src="https://www.youtube.com/embed/uHSX9e1TadA?wmode=transparent&amp;amp;start=0" frameborder="0" allowfullscreen=""&gt;&lt;/iframe&gt;
+
+          &lt;/figure&gt;
+
+&lt;p&gt;Passing away this week at 86 years old, we are sadly reminded of that mortality with the death of Sir Patrick Stewart: actor, dramaturge, Shakespearean exemplar, mutant professor, and distinguished Starfleet captain.&lt;/p&gt;
+
+
+
+&lt;h2&gt;From humble beginnings&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href="http://news.bbc.co.uk/local/bradford/hi/people_and_places/arts_and_culture/newsid_8815000/8815255.stm"&gt;Born&lt;/a&gt; in Mirfield, England, in 1940, Stewart grew up poor during the worst days of the second world war.&lt;/p&gt;
+
+&lt;p&gt;He found his calling to theatre &lt;a href="https://www.theguardian.com/lifeandstyle/2021/oct/13/a-moment-that-changed-me-patrick-stewart-on-the-teacher-who-spotted-his-talent-and-saved-him"&gt;as a child&lt;/a&gt;, thanks to a keen-eyed English teacher and a copy of Shakespeare’s plays.&lt;/p&gt;
+
+&lt;p&gt;He &lt;a href="https://www.theguardian.com/lifeandstyle/2021/oct/13/a-moment-that-changed-me-patrick-stewart-on-the-teacher-who-spotted-his-talent-and-saved-him"&gt;left school at 15&lt;/a&gt; to become a working actor in community theatre. &lt;/p&gt;
+
+&lt;p&gt;His extraordinary talent would lead to a stay at the &lt;a href="https://www.theguardian.com/lifeandstyle/2021/oct/13/a-moment-that-changed-me-patrick-stewart-on-the-teacher-who-spotted-his-talent-and-saved-him"&gt;Bristol Old Vic Theatre School&lt;/a&gt;, membership with the Royal Shakespeare Company, and a host of acclaimed theatre performances.&lt;/p&gt;
+
+&lt;p&gt;Despite the many screen roles for which Stewart would later be known, his Shakespearean roots are indelibly intertwined with almost every performance he gave.&lt;/p&gt;
+
+&lt;p&gt;They would also give him – and many of us – something to lighten the load of COVID lockdowns. Stewart used social media in 2020 to &lt;a href="https://www.folger.edu/blogs/shakespeare-and-beyond/patrick-stewart-on-performing-shakespeares-sonnets/"&gt;read the internet a Shakespearean sonnet each day&lt;/a&gt;, later turning his delightful orations into an audiobook.&lt;/p&gt;
+
+&lt;figure&gt;
+            &lt;iframe width="440" height="260" src="https://www.youtube.com/embed/2yF73_HcjHc?wmode=transparent&amp;amp;start=0" frameborder="0" allowfullscreen=""&gt;&lt;/iframe&gt;
+
+          &lt;/figure&gt;
+
+&lt;p&gt;For most, Stewart will best be remembered as a kaleidoscopic titan of film and television. &lt;/p&gt;
+
+&lt;p&gt;Beginning as &lt;a href="https://www.youtube.com/watch?v=Fx0E8HUAANI"&gt;a firefighter on the British soap opera Coronation Street in 1967&lt;/a&gt;, Stewart’s illustrious screen career spanned more than 50 years and a vast array of roles. &lt;/p&gt;
+
+&lt;p&gt;To name only a few, he was:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;a flamboyant &lt;a href="https://www.youtube.com/watch?v=ea7bj5MsyAU"&gt;interior designer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;a stoic Atreides &lt;a href="https://www.youtube.com/watch?v=MPMRZfDm9y8"&gt;weapon master&lt;/a&gt; in a screen adaptation of the Dune books&lt;/li&gt;
+&lt;li&gt;the irreverent &lt;a href="https://www.youtube.com/watch?v=FUAQkNVdQNg"&gt;king of England&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;a foul-mouthed &lt;a href="https://www.youtube.com/watch?v=DE13bmbCnyM"&gt;CIA deputy director&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;an enigmatic &lt;a href="https://www.youtube.com/watch?v=JokWbIEt3n8"&gt;cult leader&lt;/a&gt;, and&lt;/li&gt;
+&lt;li&gt;a megalomaniacal &lt;a href="https://www.youtube.com/watch?v=0A_in-OOAp8"&gt;egg-alien overlord&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure&gt;
+            &lt;iframe width="440" height="260" src="https://www.youtube.com/embed/FUAQkNVdQNg?wmode=transparent&amp;amp;start=0" frameborder="0" allowfullscreen=""&gt;&lt;/iframe&gt;
+
+          &lt;/figure&gt;
+
+&lt;h2&gt;Two key roles&lt;/h2&gt;
+
+&lt;p&gt;From his storied body of work, two roles loom largest.&lt;/p&gt;
+
+&lt;p&gt;He was the telepathic mutant and academic Charles Xavier of the X-Men film series – a role he played for more than 25 years, including a posthumous appearance in Avengers: Doomsday (released this December). &lt;/p&gt;
+
+&lt;p&gt;As Professor X, Stewart embodied a beloved superhero with paternal warmth and secretive, calculating intellect. He was an empathetic leader of a team of extraordinary people who had been shunned, threatened and harmed by the world for their differences. &lt;/p&gt;
+
+&lt;p&gt;One cannot help but think this role enabled Stewart to channel much of his real-life allyship with &lt;a href="https://pridesource.com/article/patrick-stewart-death-ian-mcklellan"&gt;marginalised queer communities&lt;/a&gt; and his &lt;a href="https://pridesource.com/article/patrick-stewart-death-ian-mcklellan"&gt;support for survivors of domestic violence&lt;/a&gt; (which was based on his own childhood experiences).&lt;/p&gt;
+
+&lt;p&gt;In this role, Stewart acted alongside his long-time friend Sir Ian McKellen, who played the mutant antagonist and master of metal Magneto. Ironically, McKellen &lt;a href="https://variety.com/2023/tv/news/ian-mckellen-patrick-stewart-reject-star-trek-stay-in-theater-1235743624/"&gt;had once warned Stewart&lt;/a&gt; not to forsake the theatre for the screen, advising that a career in film and television would go nowhere.&lt;/p&gt;
+
+&lt;p&gt;Stewart and McKellen’s endearing friendship and acclaimed X-Men performances became the stuff of internet legend, particularly when McKellen officiated Stewart’s wedding to US singer &lt;a href="https://www.bbc.com/news/entertainment-arts-24018472"&gt;Sunny Ozell in 2013&lt;/a&gt;.&lt;/p&gt;
+
+&lt;figure&gt;
+            &lt;iframe width="440" height="260" src="https://www.youtube.com/embed/m6nJzm8FMdM?wmode=transparent&amp;amp;start=0" frameborder="0" allowfullscreen=""&gt;&lt;/iframe&gt;
+
+          &lt;/figure&gt;
+
+&lt;p&gt;Stewart’s work in Star Trek as Jean-Luc Picard – captain (later admiral) of the USS Enterprise – is equally revered. &lt;/p&gt;
+
+&lt;p&gt;As Stewart’s first major American television role, he took the captain’s chair in Star Trek: The Next Generation in 1987. He would eventually appear in seven seasons, four theatrical films, and the recent sequel series Star Trek: Picard. &lt;/p&gt;
+
+&lt;p&gt;Despite initial reservations – including an infamous on-set incident where he stoically told his rambunctious Next Generation colleagues that “&lt;a href="https://www.hollywoodreporter.com/tv/tv-news/patrick-stewart-stormed-off-star-trek-next-generation-set-1235603395/"&gt;we are not here to have fun&lt;/a&gt;” – Stewart later embraced the role of Picard. He will be remembered as one of Star Trek’s most acclaimed and legendary performers.&lt;/p&gt;
+
+&lt;figure&gt;
+            &lt;iframe width="440" height="260" src="https://www.youtube.com/embed/gm-yqqgp9Ok?wmode=transparent&amp;amp;start=0" frameborder="0" allowfullscreen=""&gt;&lt;/iframe&gt;
+
+          &lt;/figure&gt;
+
+&lt;p&gt;As Picard, Stewart created a potent role model in a franchise focused on an inclusive, utopian future. &lt;/p&gt;
+
+&lt;p&gt;Stewart’s Picard was a respected leader, intergalactic explorer, keen orator, Shakespeare enthusiast, thoughtful diplomat, archaeology aficionado, and prolific tea-drinker – as he and other characters famously said, “&lt;a href="https://www.youtube.com/watch?v=iaAT6-dY1QI"&gt;tea, Earl Grey, hot&lt;/a&gt;”.&lt;/p&gt;
+
+&lt;p&gt;This captain was an inspiring beacon of hope, curiosity and discovery. He advocated Starfleet ideals of exploration and community, but encouraged his crew – and, by extension, all of us – to seek out knowledge. He urged us all to solve problems with rationality and empathy, and work toward a better future for humanity. &lt;/p&gt;
+
+&lt;h2&gt;An enduring inspiration&lt;/h2&gt;
+
+&lt;p&gt;Like many others who grew up in the 1990s with Picard on the television, I still find the character’s ethos and Stewart’s performance have a profound impact on me as a scholar and educator who strives to live and teach by those ideals.&lt;/p&gt;
+
+&lt;p&gt;Were it not for the inspiration Picard and Stewart provided me as a child, I may not have become an academic.&lt;/p&gt;
+
+&lt;p&gt;Stewart lived the kind of important life that Picard would admire, and leaves behind a cherished body of work, as well as a legacy of dedicated social advocacy. &lt;/p&gt;
+
+&lt;p&gt;Now, he boldly goes where you and I have not gone before.&lt;/p&gt;
+
+&lt;figure&gt;
+            &lt;iframe width="440" height="260" src="https://www.youtube.com/embed/UQzvEXaAyBY?wmode=transparent&amp;amp;start=0" frameborder="0" allowfullscreen=""&gt;&lt;/iframe&gt;
+
+          &lt;/figure&gt;&lt;img src="https://counter.theconversation.com/content/295542/count.gif" alt="The Conversation" width="1" height="1" /&gt;
+&lt;p class="fine-print"&gt;&lt;em&gt;&lt;span&gt;Chris Comerford does not work for, consult, own shares in or receive funding from any company or organisation that would benefit from this article, and has disclosed no relevant affiliations beyond their academic appointment.&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;</content>
+    <summary>Passing away this week at 86, Stewart will be remembered as actor, dramaturge, Shakespearean exemplar, mutant professor, and distinguished Starfleet captain.</summary>
+    <author>
+      <name>Chris Comerford, Senior Lecturer in Communication and Media, University of Wollongong</name>
+      <foaf:homepage rdf:resource="https://theconversation.com/profiles/chris-comerford-345819"/>
+    </author>
+    <rights>Licensed as Creative Commons – attribution, no derivatives.</rights>
+  </entry><entry>
+    <id>tag:theconversation.com,2011:article/293851</id>
+    <published>2026-10-29T16:01:06Z</published>
+    <updated>2026-10-29T16:01:06Z</updated>
+    <link rel="alternate" type="text/html" href="https://theconversation.com/how-porn-became-so-extreme-and-how-its-shaping-the-sex-lives-of-young-people-293851"/>
+    <title>How porn became so extreme – and how it’s shaping the sex lives of young people</title>
+    <content type="html">&lt;figure&gt;&lt;img src="https://images.theconversation.com/files/764497/original/file-20261007-50-n6trcc.jpg?ixlib=rb-4.1.1&amp;amp;rect=0%2C1%2C3870%2C2580&amp;amp;q=45&amp;amp;auto=format&amp;amp;w=1050&amp;amp;h=700&amp;amp;fit=crop" /&gt;&lt;figcaption&gt;&lt;span class="caption"&gt;&lt;/span&gt; &lt;span class="attribution"&gt;&lt;a class="source" href="https://www.shutterstock.com/image-photo/porn-website-adult-content-only-online-792806932?trackingId=00fbebae-6c7b-42d7-bac7-e901b9aaa617&amp;amp;listId=searchResults"&gt;Stenko Vlad/Shutterstock&lt;/a&gt;&lt;/span&gt;&lt;/figcaption&gt;&lt;/figure&gt;&lt;div style="width: 100%; height: 200px; margin-bottom: 20px; border-radius: 6px; overflow: hidden;"&gt;
+
+&lt;iframe style="width: 100%; height: 200px;" frameborder="no" scrolling="no" allow="clipboard-write" src="https://player.captivate.fm/episode/a2110fe7-0454-45f7-ac3f-6df5c7116373/" width="100%" height="400"&gt;&lt;/iframe&gt;
+
+&lt;/div&gt;
+
+
+
+&lt;p&gt;&lt;iframe id="tc-infographic-561" class="tc-infographic" height="100" src="https://cdn.theconversation.com/infographics/561/4fbbd099d631750693d02bac632430b71b37cd5f/site/index.html" width="100%" style="border: none" frameborder="0"&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;p&gt;A few years ago, the singer Billie Eilish opened up on the Howard Stern Show about how she began watching porn around age 11.  &lt;/p&gt;
+
+&lt;p&gt;“I’m so angry that porn is so loved, and I’m so angry at myself for thinking that it was ok,” she said. &lt;/p&gt;
+
+&lt;p&gt;Eilish became addicted to porn, and it led to problems. “The first few times I had sex, I was not saying no to things that were not good,” she said. She had nightmares because the content she was watching was so violent and abusive. &lt;/p&gt;
+
+&lt;p&gt;Online porn is a multi-million dollar business, driven by algorithms designed to keep people clicking for more. These algorithms push more and more extreme content, often for free, to people who didn’t go searching for it. This can include strangulation, exploitation or incest porn, that’s often misogynistic and racist too.&lt;/p&gt;
+
+&lt;p&gt;“If you take incest and strangulation, we can look at content studies from the 1980s, for example, when there was hardly any of that material,” Clare McGlynn, professor of law at Durham University in the UK, tells &lt;a href="https://theconversation.com/topics/the-conversation-weekly-98901"&gt;The Conversation Weekly&lt;/a&gt; podcast. “Today both incest and strangulation becomes mainstream.”&lt;/p&gt;
+
+&lt;p&gt;In the UK, the government will &lt;a href="https://www.bbc.co.uk/news/articles/cmpqgepejr2ro"&gt;ban the possession and publication&lt;/a&gt; of incest and strangulation porn from early November. McGlynn, who worked with civil society groups to push the regulation of extreme content, says it’s a “huge step” that sends a message about the harms of “normalising sexual violence”. &lt;/p&gt;
+
+&lt;p&gt;McGlynn, who has written &lt;a href="https://oneworld-publications.com/work/exposed/"&gt;a recent book about the rise of extreme porn&lt;/a&gt;, says large online porn platforms are pushing people towards more and more extreme content. &lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Their business model is to keep you engaged. They want us on the platform for as long as possible, and the way to do that is to feed you more content, not necessarily what you were looking for, but also, the more extreme, the more polarising, the more shocking content … unfortunately, that seems to be what our kind of base instincts go for and what does actually engage us to keep us searching.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;McGlynn says an abundance of extreme and violent porn is shaping the sex lives of young people, and it can lead to an increased risk of problematic behaviour. &lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;There’s a study that &lt;a href="https://pubmed.ncbi.nlm.nih.gov/37343427/"&gt;followed 16,000 young people&lt;/a&gt;, showing that high porn use, particularly at a young age, is a big risk factor in problematic sexual behaviour of young teenage boys. And there’s studies in &lt;a href="https://pubmed.ncbi.nlm.nih.gov/38961025/"&gt;Australia&lt;/a&gt; and &lt;a href="https://pubmed.ncbi.nlm.nih.gov/34696638/"&gt;the US&lt;/a&gt; … showing that the more porn they watch, the more strangulation they see, and then the more they identify that they act out the strangulation. &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2&gt;Disclosure statement&lt;/h2&gt;
+
+&lt;p&gt;Clare McGlynn does not work for, consult, own shares in or receive funding from any company or organisation that would benefit from this article, and has disclosed no relevant affiliations beyond their academic appointment.&lt;/p&gt;
+
+&lt;h2&gt;Credits&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;This episode of &lt;a href="https://pod.link/1550643487"&gt;The Conversation Weekly&lt;/a&gt; was written and produced by Gemma Ware with help from Isabella Podwinski and Ashlynne McGhee. Mixing by Daniel Semo and theme music by Neeta Sarl.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Newsclips in this episode from &lt;a href="https://www.facebook.com/9NewsSydney/videos/1045734941507574/"&gt;9News Sydney&lt;/a&gt;, ITV News, and  &lt;a href="https://www.youtube.com/shorts/9QmVM4jwCbU"&gt;The Howard Stern Show&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Listen to The Conversation Weekly via any of the apps listed above, download it directly via our &lt;a href="https://feeds.captivate.fm/the-conversation-weekly/"&gt;RSS feed&lt;/a&gt; or find out &lt;a href="https://theconversation.com/how-to-listen-to-the-conversations-podcasts-154131"&gt;how else to listen here&lt;/a&gt;. A transcript of this episode is available via the Apple Podcasts or Spotify apps.&lt;/em&gt;&lt;/p&gt;&lt;img src="https://counter.theconversation.com/content/293851/count.gif" alt="The Conversation" width="1" height="1" /&gt;
+</content>
+    <summary> Extreme pornography has become readily available on mainstream porn sites. Clare McGlynn explains what this is doing to the sex lives of young people.</summary>
+    <author>
+      <name>Gemma Ware, Head of Audio, The Conversation UK, The Conversation</name>
+      <foaf:homepage rdf:resource="https://theconversation.com/uk/team#gemma-ware"/>
+    </author>
+    <rights>Licensed as Creative Commons – attribution, no derivatives.</rights>
+  </entry>
+</feed>

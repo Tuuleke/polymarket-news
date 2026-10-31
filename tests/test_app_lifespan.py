@@ -19,10 +19,11 @@ async def test_startup_does_not_wait_for_the_first_fetch(monkeypatch: pytest.Mon
         release.set()
 
 
-async def test_no_fetch_is_scheduled_when_no_source_is_enabled(
+async def test_no_fetch_is_scheduled_when_nothing_is_enabled(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     monkeypatch.setattr(settings, "SOURCES_ENABLED", [])
+    monkeypatch.setattr(settings, "NEWS_ENABLED", False)
 
     async with app_module.lifespan(app_module.app):
         assert not app_module._scheduler.running
