@@ -29,8 +29,13 @@ out/
 .DS_Store
 Thumbs.db
 
-# Alembic
-backend/alembic/versions/*.py
 
 # Claude Code worktrees
 .claude/worktrees/
+
+# Tool caches
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
