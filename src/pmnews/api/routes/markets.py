@@ -82,9 +82,8 @@ async def get_market(market_id: int, db: DbSession) -> Market:
 )
 async def generate_explanation(market_id: int, db: DbSession, llm: Llm) -> Article:
     """
-    Generate the evergreen explanation article for a market.
-    Returns 409 if one already exists (idempotent — safe to check before pressing).
-    Only triggered by a user button click, never called automatically.
+    Generate the explanation article for a market, replacing the existing one if present.
+    Each call makes one paid LLM request.
     """
     market = await _get_market_or_404(db, market_id)
 

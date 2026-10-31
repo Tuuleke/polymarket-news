@@ -86,8 +86,7 @@ export function MarketCard({ market: initialMarket }: Props) {
       await api.markets.generateExplanation(market.id);
       router.refresh();
     } catch (e: unknown) {
-      const msg = e instanceof Error ? e.message : "Failed to generate explanation";
-      setError(msg.includes("409") ? "Explanation already exists" : msg);
+      setError(e instanceof Error ? e.message : "Failed to generate explanation");
     } finally {
       setLoadingExplain(false);
     }
