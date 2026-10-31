@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 
 export const metadata: Metadata = {
   title: "Polymarket News",
-  description: "AI-generated articles for prediction market moves",
+  description: "AI-generated articles for prediction market moves on Kalshi and Manifold",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

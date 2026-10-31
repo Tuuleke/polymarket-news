@@ -18,13 +18,20 @@ export interface MarketSnapshot {
   probability: number;
 }
 
+export type MarketSource = "kalshi" | "manifold" | "polymarket";
+export type VolumeUnit = "usd" | "contracts" | "mana";
+
 export interface Market {
   id: number;
-  polymarket_id: string;
+  source: MarketSource;
+  external_id: string;
+  event_id: string | null;
   question: string;
   category: string;
   probability: number;
   volume: number;
+  volume_unit: VolumeUnit;
+  url: string | null;
   end_date: string | null;
   fetched_at: string;
   articles: Article[];

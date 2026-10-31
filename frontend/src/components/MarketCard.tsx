@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import type { Article, Market, MarketSnapshot } from "@/types";
+import type { Article, Market, MarketSnapshot, MarketSource, VolumeUnit } from "@/types";
 import { api } from "@/lib/api";
 
 interface Props {
@@ -30,12 +30,7 @@ export function MarketCard({ market }: Props) {
     ? "rgba(239,68,68,0.20)"
     : "rgba(245,158,11,0.20)";
 
-  const volumeStr = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    notation: "compact",
-    maximumSignificantDigits: 3,
-  }).format(market.volume);
+  const volumeStr = formatVolume(market.volume, market.volume_unit);
 
   // ── End date countdown ──
   const endDateStr = (() => {
@@ -136,8 +131,9 @@ export function MarketCard({ market }: Props) {
               {market.question}
             </h2>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 5, flexWrap: "wrap" }}>
+              <SourceLink market={market} />
               <p style={{ fontSize: 12, color: "var(--text-muted)", margin: 0, letterSpacing: "-0.01em" }}>
-                Vol {volumeStr}
+                · Vol {volumeStr}
               </p>
               {endDateStr && (
                 <p style={{
@@ -520,5 +516,38 @@ function GlassButton({
       {loading && <span className="spinner" />}
       {displayLabel}
     </button>
+  );
+}
+
+const SOURCE_LABELS: Record<MarketSource, string> = {
+  kalshi: "Kalshi",
+  manifold: "Manifold",
+  polymarket: "Polymarket",
+};
+
+// Volume units differ by platform and are not comparable: dollars, contracts, play money.
+function formatVolume(volume: number, unit: VolumeUnit): string {
+  const compact = new Intl.NumberFormat("en-US", { notation: "compact", maximumSignificantDigits: 3 });
+  if (unit === "usd") return `$${compact.format(volume)}`;
+  if (unit === "contracts") return `${compact.format(volume)} contracts`;
+  return `${compact.format(volume)} mana`;
+}
+
+function SourceLink({ market }: { market: Market }) {
+  const style = {
+    fontSize: 12,
+    fontWeight: 600,
+    color: "var(--text-secondary)",
+    margin: 0,
+    letterSpacing: "-0.01em",
+    textDecoration: "none",
+  } as const;
+  const label = SOURCE_LABELS[market.source];
+  return market.url ? (
+    <a href={market.url} target="_blank" rel="noopener noreferrer" style={style}>
+      {label} ↗
+    </a>
+  ) : (
+    <p style={style}>{label}</p>
   );
 }
