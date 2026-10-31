@@ -23,27 +23,35 @@ Articles are capped at 80 words. The LLM is required to run a web search before 
 
 | | |
 |---|---|
-| Frontend | Next.js 15, React 19, TypeScript, Tailwind CSS v4 |
-| Backend | FastAPI, APScheduler, SQLAlchemy |
-| Database | PostgreSQL 16 |
+| Frontend | Next.js 16, React 19, TypeScript, Tailwind CSS v4 |
+| Backend | FastAPI, SQLAlchemy 2 (async), Alembic, APScheduler |
+| Database | PostgreSQL 16 with pgvector |
 | LLM | OpenRouter (DeepSeek v3.2 by default, swappable via config) |
+| Tooling | uv, ruff, mypy (strict), pytest + testcontainers + respx, ESLint, pre-commit with gitleaks |
 | Infra | Docker Compose |
+
+> **Data sources.** Polymarket is not available in Estonia, so its ingestion is **off by
+> default** (`POLYMARKET_ENABLED=false`). A fresh clone uses the thesis sample markets
+> (`make seed`). Kalshi and Manifold adapters are the next step; see
+> [docs/MIGRATION_PLAN.md](docs/MIGRATION_PLAN.md).
 
 ---
 
 ## Structure
 
 ```
+├── src/pmnews/             # Python package
+│   ├── api/                # FastAPI app, routes, schemas, dependencies
+│   ├── core/               # settings, UTC clock helpers
+│   ├── db/                 # SQLAlchemy models, session, seed data
+│   ├── ingestion/          # scheduled market fetch + upsert
+│   ├── llm/                # article generation via OpenRouter
+│   └── sources/            # Polymarket client
+├── migrations/             # Alembic migrations
+├── tests/                  # pytest suite (real Postgres in a container, HTTP mocked)
 ├── frontend/               # Next.js — SSR market list, CSR article generation
-├── backend/                # FastAPI — ingestion, LLM calls, REST API
-│   └── app/
-│       ├── api/            # /markets, /explain, /generate-updates
-│       ├── db/             # markets · market_snapshots · articles
-│       └── services/       # Polymarket client, LLM service, scheduler
-└── prompt-evaluation/      # Standalone eval module (no backend dependency)
-    ├── web_writer.py       # Generates articles with mandatory web search
-    ├── evaluator.py        # LLM-as-a-judge scorer, 5 criteria, max 50 pts
-    └── grounded_eval.py    # Fact-checks claims against live web via gpt-4o
+├── prompt-evaluation/      # Thesis evaluation harness (frozen; see below)
+└── docs/                   # migration plan and design notes
 ```
 
 ---
@@ -64,27 +72,33 @@ Grammar scores were consistently high (avg 8.5/10) across all models. Factual ac
 
 ## Running locally
 
-```bash
-cp .env.example .env
-docker compose up --build
+Requires Docker, [uv](https://docs.astral.sh/uv/) and Node.js 22+.
 
-# Frontend  → http://localhost:3000
-# Backend   → http://localhost:8000/docs
+```bash
+make setup   # installs dependencies, creates .env from .env.example, installs git hooks
+make up      # builds and starts db, migrations, API and frontend
+make seed    # loads the thesis sample markets
+
+# Frontend → http://localhost:3000
+# API docs → http://localhost:8000/docs
 ```
 
-Without Docker:
+Generating articles needs `OPENROUTER_API_KEY` in `.env`. Without it the generate
+buttons return a clear 503. Article generation is disabled unless `GENERATION_MODE`
+is `open` (local development, the `.env.example` default) or `token` (requires an
+`X-Admin-Token` header).
+
+| Command | What it does |
+|---|---|
+| `make test` | pytest against a throwaway Postgres container; no network calls |
+| `make lint` / `make typecheck` | ruff, ESLint / mypy --strict, tsc --noEmit |
+| `make dev` | API on the host with auto-reload (database from `make up`) |
+| `make reset-db` | delete the local database volume |
+
+The thesis evaluation harness is kept as submitted:
 
 ```bash
-# Backend
-cd backend && python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt && uvicorn app.main:app --reload
-
-# Frontend
-cd frontend && npm install && npm run dev
-
-# Evaluation
-cd prompt-evaluation && pip install -r requirements.txt
-python web_evaluate.py
+cd prompt-evaluation && pip install -r requirements.txt && python web_evaluate.py
 ```
 
 ---
