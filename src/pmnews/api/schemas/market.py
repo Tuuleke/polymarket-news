@@ -39,3 +39,4 @@ class MarketRead(MarketBase):
 class GenerateUpdatesResult(BaseModel):
     generated: int
     dates: list[str]
+    snapshots_added: int

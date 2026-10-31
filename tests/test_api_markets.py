@@ -111,3 +111,21 @@ async def test_snapshot_dates_are_utc_calendar_days(
     snapshot = await db.scalar(select(MarketSnapshot))
     assert snapshot is not None
     assert snapshot.date == date(2026, 4, 6)
+
+
+async def test_generate_updates_reports_only_new_snapshots(
+    client: httpx.AsyncClient,
+    db: AsyncSession,
+    mock_http: respx.MockRouter,
+    openrouter: respx.Route,
+) -> None:
+    market = await _add_market(db)
+    db.add(MarketSnapshot(market_id=market.id, date=date(2026, 4, 7), probability=0.72))
+    await db.commit()
+    mock_http.get(f"{CLOB_TEST_URL}/prices-history").mock(
+        return_value=httpx.Response(200, json=load_fixture("polymarket/prices_history.json"))
+    )
+
+    resp = await client.post(f"/api/v1/markets/{market.id}/generate-updates")
+
+    assert resp.json()["snapshots_added"] == 4

@@ -158,14 +158,15 @@ async def generate_updates(
         snapshot_values.append({"market_id": market_id, "date": snap_date, "probability": prob})
 
     if snapshot_values:
-        await db.execute(
+        result = await db.execute(
             pg_insert(MarketSnapshot)
             .values(snapshot_values)
             .on_conflict_do_nothing(constraint="uq_snapshot_market_date")
+            .returning(MarketSnapshot.id)
         )
-        inserted = len(snapshot_values)
+        inserted = len(result.all())
         await db.commit()
-    logger.info("generate-updates: inserted/attempted %d snapshots", inserted)
+    logger.info("generate-updates: inserted %d new snapshots", inserted)
 
     snapshots = (
         (
@@ -214,4 +215,4 @@ async def generate_updates(
     if created:
         await db.commit()
 
-    return GenerateUpdatesResult(generated=len(created), dates=created)
+    return GenerateUpdatesResult(generated=len(created), dates=created, snapshots_added=inserted)

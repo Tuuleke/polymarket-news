@@ -34,4 +34,5 @@ export interface Market {
 export interface GenerateUpdatesResult {
   generated: number;
   dates: string[];
+  snapshots_added: number;
 }
