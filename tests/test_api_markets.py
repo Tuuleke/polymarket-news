@@ -9,6 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from pmnews.api.app import app
 from pmnews.api.deps import get_polymarket
 from pmnews.api.routes.markets import find_significant_moves
+from pmnews.core.config import settings
 from pmnews.db.models import Article, Market, MarketSnapshot
 from tests.conftest import CLOB_TEST_URL, load_fixture
 
@@ -145,3 +146,22 @@ async def test_generate_updates_is_503_when_polymarket_is_disabled(
     resp = await client.post(f"/api/v1/markets/{market.id}/generate-updates")
 
     assert resp.status_code == 503
+
+
+async def test_generate_updates_writes_at_most_the_configured_number_of_articles(
+    client: httpx.AsyncClient,
+    db: AsyncSession,
+    mock_http: respx.MockRouter,
+    openrouter: respx.Route,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(settings, "MAX_UPDATES_PER_REQUEST", 1)
+    market = await _add_market(db)
+    mock_http.get(f"{CLOB_TEST_URL}/prices-history").mock(
+        return_value=httpx.Response(200, json=load_fixture("polymarket/prices_history.json"))
+    )
+
+    resp = await client.post(f"/api/v1/markets/{market.id}/generate-updates")
+
+    assert resp.json()["dates"] == ["2026-04-11"]  # the most recent of the two moves
+    assert openrouter.call_count == 1

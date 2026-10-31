@@ -12,6 +12,7 @@ from sqlalchemy.orm import selectinload
 from pmnews.api.deps import DbSession, Llm, Polymarket, require_generation_allowed
 from pmnews.api.schemas.article import ArticleRead
 from pmnews.api.schemas.market import GenerateUpdatesResult, MarketRead
+from pmnews.core.config import settings
 from pmnews.db.models import Article, ArticleType, Market, MarketSnapshot
 from pmnews.llm.articles import ArticleFields
 
@@ -203,7 +204,9 @@ async def generate_updates(
         .all()
     )
 
-    moves = find_significant_moves(snapshots, {d for d in existing_dates if d is not None})
+    all_moves = find_significant_moves(snapshots, {d for d in existing_dates if d is not None})
+    # Full history can contain dozens of moves; only the most recent ones are written per request.
+    moves = all_moves[-settings.MAX_UPDATES_PER_REQUEST :]
     semaphore = asyncio.Semaphore(LLM_CONCURRENCY)
 
     async def generate_with_semaphore(prev: MarketSnapshot, curr: MarketSnapshot) -> ArticleFields:
@@ -218,7 +221,7 @@ async def generate_updates(
 
     logger.info(
         "generate-updates: found %d significant moves, generated %d articles",
-        len(moves),
+        len(all_moves),
         len(created),
     )
     if created:

@@ -33,6 +33,8 @@ class Settings(BaseSettings):
     #   token — requests must send the X-Admin-Token header.
     GENERATION_MODE: Literal["disabled", "open", "token"] = "disabled"
     ADMIN_TOKEN: SecretStr = SecretStr("")
+    # Upper bound on LLM calls a single generate-updates request may make.
+    MAX_UPDATES_PER_REQUEST: int = 5
 
     # Scheduler
     FETCH_INTERVAL_MINUTES: int = 30
