@@ -9,8 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pmnews.api.deps import get_polymarket
 from pmnews.api.routes import articles, markets
 from pmnews.core.config import settings
-from pmnews.db import models  # noqa: F401 — registers models with Base
-from pmnews.db.database import AsyncSessionLocal, Base, engine
+from pmnews.db.database import AsyncSessionLocal
 from pmnews.ingestion.polymarket import fetch_and_store_markets
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s:%(name)s: %(message)s")
@@ -24,10 +23,6 @@ async def _scheduled_fetch() -> None:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
-    # Create DB tables if they don't exist yet (dev convenience; use alembic for production)
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
-
     if not settings.DISABLE_SCHEDULER:
         _scheduler.add_job(
             _scheduled_fetch,

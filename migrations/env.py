@@ -17,7 +17,9 @@ from pmnews.core.config import settings  # noqa: E402
 from pmnews.db import models  # noqa: E402, F401 — registers all ORM models
 from pmnews.db.database import Base  # noqa: E402
 
-config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
+# An explicit URL (set by tests) wins; otherwise use the app settings.
+if not config.get_main_option("sqlalchemy.url"):
+    config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
 target_metadata = Base.metadata
 
 

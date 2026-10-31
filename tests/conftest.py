@@ -14,6 +14,8 @@ from typing import Any
 import httpx
 import pytest
 import respx
+from alembic import command
+from alembic.config import Config
 from openai import AsyncOpenAI
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import (
@@ -30,6 +32,7 @@ from pmnews.db.database import Base, get_db
 from pmnews.llm.articles import LLMService, get_llm_service
 from pmnews.sources.polymarket import PolymarketService
 
+ROOT = Path(__file__).parent.parent
 FIXTURES = Path(__file__).parent / "fixtures"
 OPENROUTER_TEST_URL = "https://openrouter.test/api/v1"
 GAMMA_TEST_URL = "https://gamma.polymarket.test"
@@ -40,17 +43,24 @@ def load_fixture(relative_path: str) -> Any:
     return json.loads((FIXTURES / relative_path).read_text())
 
 
+def alembic_config(database_url: str) -> Config:
+    cfg = Config(str(ROOT / "alembic.ini"))
+    cfg.set_main_option("sqlalchemy.url", database_url)
+    return cfg
+
+
 @pytest.fixture(scope="session")
 def postgres_url() -> Iterator[str]:
+    """Start Postgres once and build the schema with the real migrations, not create_all."""
     with PostgresContainer("pgvector/pgvector:pg16", driver="asyncpg") as pg:
-        yield pg.get_connection_url()
+        url = pg.get_connection_url()
+        command.upgrade(alembic_config(url), "head")
+        yield url
 
 
 @pytest.fixture(scope="session")
 async def engine(postgres_url: str) -> AsyncIterator[AsyncEngine]:
     eng = create_async_engine(postgres_url)
-    async with eng.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
     yield eng
     await eng.dispose()
 
