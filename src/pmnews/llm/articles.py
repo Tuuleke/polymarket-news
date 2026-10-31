@@ -5,11 +5,13 @@ Uses OpenRouter's OpenAI-compatible API with optional web search.
 
 import re
 from datetime import date
+from functools import lru_cache
+from typing import Any, TypedDict
 
 from openai import AsyncOpenAI
 
 from pmnews.core.config import settings
-from pmnews.db.models import Market, MarketSnapshot
+from pmnews.db.models import ArticleType, Market, MarketSnapshot
 
 _SYSTEM_PROMPT = """\
 You are a financial journalist writing for a general audience with no background \
@@ -33,29 +35,46 @@ reference search results explicitly. Write as if you simply know the facts.
 """
 
 
+class ArticleFields(TypedDict):
+    """Column values for a new Article row, as produced by the LLM service."""
+
+    title: str
+    body: str
+    llm_model: str
+    probability_at_generation: float
+    article_type: ArticleType
+    probability_change: float | None
+    snapshot_date: date | None
+
+
 class LLMService:
     """Generates human-readable news articles from prediction market data."""
 
-    def __init__(self):
-        self._client = AsyncOpenAI(
-            api_key=settings.OPENROUTER_API_KEY,
-            base_url="https://openrouter.ai/api/v1",
-        )
-        self._model = settings.LLM_MODEL
-        self._web_search = settings.LLM_WEB_SEARCH
+    def __init__(self, client: AsyncOpenAI, model: str, web_search: bool) -> None:
+        self._client = client
+        self._model = model
+        self._web_search = web_search
 
-    def _extra(self) -> dict:
+    def _extra(self) -> dict[str, Any]:
         if self._web_search:
             return {"plugins": [{"id": "web"}]}
         return {}
 
-    async def generate_explanation(self, market: Market) -> dict:
-        today = date.today().isoformat()
-        end_line = (
-            f"Resolves: {market.end_date.date() if hasattr(market.end_date, 'date') else market.end_date}\n"
-            if market.end_date
-            else ""
+    async def _complete(self, user_prompt: str) -> str:
+        resp = await self._client.chat.completions.create(
+            model=self._model,
+            max_tokens=1024,
+            messages=[
+                {"role": "system", "content": _SYSTEM_PROMPT},
+                {"role": "user", "content": user_prompt},
+            ],
+            extra_body=self._extra(),
         )
+        return resp.choices[0].message.content or ""
+
+    async def generate_explanation(self, market: Market) -> ArticleFields:
+        today = date.today().isoformat()
+        end_line = f"Resolves: {market.end_date.date()}\n" if market.end_date else ""
 
         user_prompt = (
             f"Today is {today}. Search for recent news about this topic, "
@@ -72,22 +91,13 @@ class LLMService:
             f"(frame it as a chance, e.g. roughly X-in-10)\n"
         )
 
-        resp = await self._client.chat.completions.create(
-            model=self._model,
-            max_tokens=1024,
-            messages=[
-                {"role": "system", "content": _SYSTEM_PROMPT},
-                {"role": "user", "content": user_prompt},
-            ],
-            extra_body=self._extra(),
-        )
-        title, body = self._parse(resp.choices[0].message.content or "")
+        title, body = self._parse(await self._complete(user_prompt))
         return {
             "title": title,
             "body": body,
             "llm_model": self._model,
             "probability_at_generation": market.probability,
-            "article_type": "explanation",
+            "article_type": ArticleType.explanation,
             "probability_change": None,
             "snapshot_date": None,
         }
@@ -97,7 +107,7 @@ class LLMService:
         market: Market,
         prev: MarketSnapshot,
         curr: MarketSnapshot,
-    ) -> dict:
+    ) -> ArticleFields:
         direction = "rose" if curr.probability > prev.probability else "fell"
         change_pct = abs(curr.probability - prev.probability) * 100
 
@@ -115,22 +125,13 @@ class LLMService:
             f"rather than guessing."
         )
 
-        resp = await self._client.chat.completions.create(
-            model=self._model,
-            max_tokens=1024,
-            messages=[
-                {"role": "system", "content": _SYSTEM_PROMPT},
-                {"role": "user", "content": user_prompt},
-            ],
-            extra_body=self._extra(),
-        )
-        title, body = self._parse(resp.choices[0].message.content or "")
+        title, body = self._parse(await self._complete(user_prompt))
         return {
             "title": title,
             "body": body,
             "llm_model": self._model,
             "probability_at_generation": curr.probability,
-            "article_type": "update",
+            "article_type": ArticleType.update,
             "probability_change": curr.probability - prev.probability,
             "snapshot_date": curr.date,
         }
@@ -152,3 +153,13 @@ class LLMService:
                 body_lines.append(line)
         body = "\n".join(body_lines).strip()
         return title or (lines[0] if lines else "Untitled"), body or raw
+
+
+@lru_cache
+def get_llm_service() -> LLMService:
+    """FastAPI dependency: one shared client, created on first use rather than at import."""
+    client = AsyncOpenAI(
+        api_key=settings.OPENROUTER_API_KEY.get_secret_value(),
+        base_url=settings.OPENROUTER_BASE_URL,
+    )
+    return LLMService(client, settings.LLM_MODEL, settings.LLM_WEB_SEARCH)

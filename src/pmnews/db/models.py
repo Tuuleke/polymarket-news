@@ -17,7 +17,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from pmnews.db.database import Base
 
 
-class ArticleType(str, enum.Enum):
+class ArticleType(enum.StrEnum):
     explanation = "explanation"
     update = "update"
 

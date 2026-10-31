@@ -1,6 +1,6 @@
 from datetime import date, datetime
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 from pmnews.api.schemas.article import ArticleRead
 
@@ -11,7 +11,7 @@ class MarketSnapshotRead(BaseModel):
     date: date
     probability: float
 
-    model_config = {"from_attributes": True}
+    model_config = ConfigDict(from_attributes=True)
 
 
 class MarketBase(BaseModel):
@@ -33,4 +33,9 @@ class MarketRead(MarketBase):
     articles: list[ArticleRead] = []
     snapshots: list[MarketSnapshotRead] = []
 
-    model_config = {"from_attributes": True}
+    model_config = ConfigDict(from_attributes=True)
+
+
+class GenerateUpdatesResult(BaseModel):
+    generated: int
+    dates: list[str]
