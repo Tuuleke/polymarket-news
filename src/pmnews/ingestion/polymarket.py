@@ -24,10 +24,10 @@ async def upsert_markets(session: AsyncSession, raw_markets: list[RawMarket], ta
     count = 0
     for raw in raw_markets:
         try:
-            outcome_prices = json.loads(raw.get("outcomePrices", "[0]"))
-            probability = float(outcome_prices[0])
-        except (ValueError, IndexError, TypeError):
-            probability = 0.0
+            probability = float(json.loads(raw["outcomePrices"])[0])
+        except (KeyError, ValueError, IndexError, TypeError):
+            logger.warning("Skipping market %s: unparseable outcomePrices", raw.get("id"))
+            continue
 
         end_date: datetime | None = None
         end_date_raw = raw.get("endDate") or raw.get("end_date")

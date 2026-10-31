@@ -1,5 +1,7 @@
+import logging
 from datetime import UTC, datetime
 
+import pytest
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -38,3 +40,18 @@ async def test_upsert_is_idempotent_within_a_day(db: AsyncSession) -> None:
     newsom = await db.scalar(select(Market).where(Market.polymarket_id == "516710"))
     assert newsom is not None
     assert newsom.probability == 0.30
+
+
+async def test_upsert_skips_markets_without_a_parseable_price(
+    db: AsyncSession, caplog: pytest.LogCaptureFixture
+) -> None:
+    raw = load_fixture("polymarket/markets_geopolitics.json")
+    raw[0]["outcomePrices"] = "not json"
+    del raw[1]["outcomePrices"]
+
+    with caplog.at_level(logging.WARNING):
+        count = await upsert_markets(db, raw, "geopolitics")
+
+    assert count == 0
+    assert await db.scalar(select(func.count()).select_from(Market)) == 0
+    assert "Skipping market 516710" in caplog.text
