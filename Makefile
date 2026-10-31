@@ -23,7 +23,7 @@ setup: ## Install Python and Node dependencies, create .env, install git hooks
 	uv run pre-commit install
 
 up: ## Build and start the stack (db, migrations, API, frontend) and wait until healthy
-	$(COMPOSE) up --build --detach --wait
+	$(COMPOSE) up --build --detach --wait --remove-orphans
 
 down: ## Stop the stack (data is kept)
 	$(COMPOSE) down
