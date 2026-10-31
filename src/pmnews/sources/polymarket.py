@@ -2,7 +2,7 @@
 Service for fetching data from the Polymarket Gamma and CLOB APIs.
 """
 
-from datetime import date
+from datetime import UTC, date, datetime, time
 from typing import Any, ClassVar
 
 import httpx
@@ -67,7 +67,8 @@ class PolymarketService:
             "fidelity": 1440,
         }
         if since:
-            params["since"] = int(since.strftime("%s"))
+            # Midnight UTC; strftime("%s") is a non-portable glibc extension in local time.
+            params["since"] = int(datetime.combine(since, time.min, tzinfo=UTC).timestamp())
         async with httpx.AsyncClient(timeout=30.0) as client:
             try:
                 resp = await client.get(f"{self._clob_base}/prices-history", params=params)

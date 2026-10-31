@@ -1,3 +1,5 @@
+from datetime import date
+
 import httpx
 import respx
 
@@ -45,3 +47,15 @@ async def test_price_history_is_empty_when_clob_is_unavailable(
     mock_http.get(f"{CLOB_TEST_URL}/prices-history").mock(side_effect=httpx.ConnectTimeout("x"))
 
     assert await polymarket.fetch_price_history("token-1") == []
+
+
+async def test_price_history_since_is_midnight_utc(
+    polymarket: PolymarketService, mock_http: respx.MockRouter
+) -> None:
+    route = mock_http.get(f"{CLOB_TEST_URL}/prices-history").mock(
+        return_value=httpx.Response(200, json={"history": []})
+    )
+
+    await polymarket.fetch_price_history("token-1", since=date(2026, 4, 7))
+
+    assert route.calls.last.request.url.params["since"] == "1775520000"
