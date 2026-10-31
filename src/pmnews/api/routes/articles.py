@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from pmnews.api.schemas.article import ArticleRead
 from pmnews.db.database import get_db
 from pmnews.db.models import Article
-from pmnews.api.schemas.article import ArticleRead
 
 router = APIRouter()
 

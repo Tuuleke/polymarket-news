@@ -2,6 +2,7 @@
 Service for generating news articles from market data using an LLM.
 Uses OpenRouter's OpenAI-compatible API with optional web search.
 """
+
 import re
 from datetime import date
 
@@ -52,7 +53,8 @@ class LLMService:
         today = date.today().isoformat()
         end_line = (
             f"Resolves: {market.end_date.date() if hasattr(market.end_date, 'date') else market.end_date}\n"
-            if market.end_date else ""
+            if market.end_date
+            else ""
         )
 
         user_prompt = (

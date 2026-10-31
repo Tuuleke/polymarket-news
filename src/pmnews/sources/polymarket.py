@@ -1,6 +1,7 @@
 """
 Service for fetching data from the Polymarket Gamma and CLOB APIs.
 """
+
 from datetime import date
 
 import httpx
@@ -17,10 +18,10 @@ class PolymarketService:
 
     # Polymarket tag IDs for our four categories (discovered via API exploration)
     TAG_IDS: dict[str, str] = {
-        "geopolitics": "2",    # Politics
-        "finance": "120",      # Finance
-        "culture": "596",      # Culture
-        "tech": "439",         # AI / Tech
+        "geopolitics": "2",  # Politics
+        "finance": "120",  # Finance
+        "culture": "596",  # Culture
+        "tech": "439",  # AI / Tech
     }
 
     async def fetch_markets_by_tag(self, tag: str, limit: int = 10) -> list[dict]:
@@ -51,7 +52,9 @@ class PolymarketService:
             resp.raise_for_status()
             return resp.json()
 
-    async def fetch_price_history(self, clob_token_id: str, since: date | None = None) -> list[dict]:
+    async def fetch_price_history(
+        self, clob_token_id: str, since: date | None = None
+    ) -> list[dict]:
         """
         Fetch daily price history from the CLOB API using the YES token ID.
         Returns a list of dicts with 't' (Unix seconds) and 'p' (probability 0-1) keys.

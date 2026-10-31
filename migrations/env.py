@@ -1,10 +1,9 @@
 import asyncio
 from logging.config import fileConfig
 
+from alembic import context
 from sqlalchemy import pool
 from sqlalchemy.ext.asyncio import async_engine_from_config
-
-from alembic import context
 
 # Alembic Config object
 config = context.config
@@ -15,8 +14,8 @@ if config.config_file_name is not None:
 
 # Import app settings and models so metadata is populated
 from pmnews.core.config import settings  # noqa: E402
-from pmnews.db.database import Base  # noqa: E402
 from pmnews.db import models  # noqa: E402, F401 — registers all ORM models
+from pmnews.db.database import Base  # noqa: E402
 
 config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
 target_metadata = Base.metadata

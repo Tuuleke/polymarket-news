@@ -10,10 +10,10 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
-from pmnews.db.database import get_db
-from pmnews.db.models import Article, Market, MarketSnapshot
 from pmnews.api.schemas.article import ArticleRead
 from pmnews.api.schemas.market import MarketRead
+from pmnews.db.database import get_db
+from pmnews.db.models import Article, Market, MarketSnapshot
 from pmnews.llm.articles import LLMService
 from pmnews.sources.polymarket import PolymarketService
 
@@ -105,8 +105,10 @@ async def generate_updates(market_id: int, db: AsyncSession = Depends(get_db)):
 
     # Backfill historical price snapshots from CLOB API (safe to re-run; skips existing dates)
     if not market.clob_token_id:
-        raise HTTPException(status_code=422, detail="Market has no CLOB token ID — cannot fetch price history")
-    
+        raise HTTPException(
+            status_code=422, detail="Market has no CLOB token ID — cannot fetch price history"
+        )
+
     # Find the last snapshot date to only fetch new data
     last_snap_result = await db.execute(
         select(MarketSnapshot.date)
@@ -115,9 +117,13 @@ async def generate_updates(market_id: int, db: AsyncSession = Depends(get_db)):
         .limit(1)
     )
     last_snap_date = last_snap_result.scalar_one_or_none()
-    logger.info("generate-updates: market_id=%d clob_token_id=%s last_snap_date=%s", 
-                market_id, market.clob_token_id, last_snap_date)
-    
+    logger.info(
+        "generate-updates: market_id=%d clob_token_id=%s last_snap_date=%s",
+        market_id,
+        market.clob_token_id,
+        last_snap_date,
+    )
+
     history = await _polymarket.fetch_price_history(market.clob_token_id, since=last_snap_date)
     logger.info("generate-updates: got %d history points from CLOB", len(history))
     if history:
@@ -138,7 +144,7 @@ async def generate_updates(market_id: int, db: AsyncSession = Depends(get_db)):
                 logger.warning("generate-updates: skipping point %s — %s", point, e)
                 continue
             snapshot_values.append({"market_id": market_id, "date": snap_date, "probability": prob})
-        
+
         if snapshot_values:
             await db.execute(
                 pg_insert(MarketSnapshot)
@@ -170,11 +176,11 @@ async def generate_updates(market_id: int, db: AsyncSession = Depends(get_db)):
     significant = 0
     tasks = []
     semaphore = asyncio.Semaphore(5)
-    
+
     async def generate_with_semaphore(prev, curr):
         async with semaphore:
             return await _llm.generate_update(market, prev, curr)
-    
+
     for i in range(1, len(snapshots)):
         curr = snapshots[i]
         if curr.date in existing_dates:
@@ -186,17 +192,26 @@ async def generate_updates(market_id: int, db: AsyncSession = Depends(get_db)):
         delta = abs(curr.probability - prev.probability)
         if delta > THRESHOLD:
             significant += 1
-            logger.info("generate-updates: significant move on %s: %.1f%% → %.1f%% (Δ%.1f%%)",
-                        curr.date, prev.probability * 100, curr.probability * 100, delta * 100)
+            logger.info(
+                "generate-updates: significant move on %s: %.1f%% → %.1f%% (Δ%.1f%%)",
+                curr.date,
+                prev.probability * 100,
+                curr.probability * 100,
+                delta * 100,
+            )
             tasks.append((curr, generate_with_semaphore(prev, curr)))
-    
+
     if tasks:
         results = await asyncio.gather(*[t[1] for t in tasks])
         for (curr, _), article_data in zip(tasks, results):
             db.add(Article(market_id=market.id, **article_data))
             created.append(str(curr.date))
-    
-    logger.info("generate-updates: found %d significant moves, generated %d articles", significant, len(created))
+
+    logger.info(
+        "generate-updates: found %d significant moves, generated %d articles",
+        significant,
+        len(created),
+    )
 
     if created:
         await db.commit()
