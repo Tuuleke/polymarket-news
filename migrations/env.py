@@ -10,7 +10,7 @@ config = context.config
 
 # Set up logging
 if config.config_file_name is not None:
-    fileConfig(config.config_file_name)
+    fileConfig(config.config_file_name, disable_existing_loggers=False)
 
 # Import app settings and models so metadata is populated
 from pmnews.core.config import settings  # noqa: E402
