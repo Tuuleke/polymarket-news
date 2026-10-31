@@ -1,0 +1,2437 @@
+{
+ "events": [
+  {
+   "category": "Science and Technology",
+   "collateral_return_type": "",
+   "event_ticker": "KXELONMARS-99",
+   "exchange_index": 0,
+   "last_updated_ts": "2026-10-16T03:24:48.885736Z",
+   "markets": [
+    {
+     "can_close_early": true,
+     "close_time": "2099-08-01T04:59:00Z",
+     "created_time": "2025-08-28T20:40:16.168768Z",
+     "early_close_condition": "This market will close and expire early if the event occurs.",
+     "event_ticker": "KXELONMARS-99",
+     "exchange_index": 0,
+     "expected_expiration_time": "2099-08-01T15:00:00Z",
+     "expiration_time": "2099-08-08T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.1000",
+     "latest_expiration_time": "2099-08-08T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.9100",
+     "no_bid_dollars": "0.9000",
+     "no_sub_title": "Mars",
+     "notional_value_dollars": "1.0000",
+     "open_interest_fp": "39984.78",
+     "open_time": "2025-08-28T20:45:00Z",
+     "previous_price_dollars": "0.1000",
+     "previous_yes_ask_dollars": "0.1000",
+     "previous_yes_bid_dollars": "0.0800",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If Elon Musk visits Mars before the earlier of his death or Aug 1, 2099, then the market resolves to Yes.",
+     "rules_secondary": " ",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "ticker": "KXELONMARS-99",
+     "title": "Will Elon Musk visit Mars before Aug 1, 2099?",
+     "updated_time": "2026-10-16T03:23:52.413222Z",
+     "volume_24h_fp": "5.00",
+     "volume_fp": "123659.17",
+     "yes_ask_dollars": "0.1000",
+     "yes_ask_size_fp": "1.73",
+     "yes_bid_dollars": "0.0900",
+     "yes_bid_size_fp": "1.00",
+     "yes_sub_title": "Mars"
+    }
+   ],
+   "mutually_exclusive": false,
+   "series_ticker": "KXELONMARS",
+   "settlement_sources": [
+    {
+     "name": "The Guardian",
+     "url": "https://www.theguardian.com"
+    },
+    {
+     "name": "local news outlets with verifiable mastheads in ",
+     "url": "https://kalshi.com/"
+    },
+    {
+     "name": "official social media accounts of  or their official representatives",
+     "url": "https://kalshi.com/"
+    },
+    {
+     "name": "official government sources of ",
+     "url": "https://kalshi.com/"
+    },
+    {
+     "name": "official representatives or offices of ",
+     "url": "https://kalshi.com/"
+    },
+    {
+     "name": "The New York Times",
+     "url": "https://www.nytimes.com"
+    },
+    {
+     "name": "the Associated Press",
+     "url": "https://www.ap.org"
+    },
+    {
+     "name": "Reuters",
+     "url": "https://www.reuters.com"
+    },
+    {
+     "name": "Politico",
+     "url": "https://www.politico.com"
+    },
+    {
+     "name": "Semafor",
+     "url": "https://www.semafor.com/"
+    },
+    {
+     "name": "The Information",
+     "url": "https://www.theinformation.com/"
+    },
+    {
+     "name": "The Washington Post",
+     "url": "https://www.washingtonpost.com/"
+    },
+    {
+     "name": "The Wall Street Journal",
+     "url": "https://www.wsj.com"
+    },
+    {
+     "name": "CNN",
+     "url": "https://www.cnn.com"
+    },
+    {
+     "name": "Fox News",
+     "url": "https://www.foxnews.com/"
+    },
+    {
+     "name": "MSNBC",
+     "url": "https://www.msnbc.com"
+    },
+    {
+     "name": "CNBC",
+     "url": "https://www.cnbc.com"
+    }
+   ],
+   "strike_period": "",
+   "sub_title": "Before 2099",
+   "title": "Will Elon Musk visit Mars in his lifetime?"
+  },
+  {
+   "category": "Elections",
+   "collateral_return_type": "MECNET",
+   "event_ticker": "KXNEXTNATOSECGEN-99",
+   "exchange_index": 0,
+   "last_updated_ts": "2026-10-27T19:53:03.205429Z",
+   "markets": [
+    {
+     "can_close_early": true,
+     "close_time": "2099-01-08T15:00:00Z",
+     "created_time": "2026-06-29T19:31:47.73165Z",
+     "custom_strike": {
+      "Holder": "Klaus Iohannis"
+     },
+     "event_ticker": "KXNEXTNATOSECGEN-99",
+     "exchange_index": 0,
+     "expected_expiration_time": "2099-01-08T15:00:00Z",
+     "expiration_time": "2099-01-08T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.0800",
+     "latest_expiration_time": "2099-01-08T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.9900",
+     "no_bid_dollars": "0.9200",
+     "no_sub_title": "Klaus Iohannis",
+     "notional_value_dollars": "1.0000",
+     "occurrence_datetime": "2099-01-01T15:00:00Z",
+     "open_interest_fp": "90.00",
+     "open_time": "2026-06-29T19:47:00Z",
+     "previous_price_dollars": "0.0800",
+     "previous_yes_ask_dollars": "0.0800",
+     "previous_yes_bid_dollars": "0.0100",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If Klaus Iohannis formally holds the position of Secretary General of NATO, and is the first such subject to do so after Issuance, then the market resolves to Yes.",
+     "rules_secondary": "For the purposes of this Contract, \"formally holds Secretary General of NATO\" means that an individual, company, or group has assumed Secretary General of NATO in an official capacity\u2014whether by appointment, election, succession, confirmation, designation, or acting/interim assignment\u2014and has performed or is recognized to perform the duties or responsibilities of that role for any length of time after Issuance.",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "strike_type": "custom",
+     "ticker": "KXNEXTNATOSECGEN-99-KIOH",
+     "title": "Will Klaus Iohannis be the next Secretary General of NATO?",
+     "updated_time": "2026-10-23T17:10:06.496396Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "369.36",
+     "yes_ask_dollars": "0.0800",
+     "yes_ask_size_fp": "4.46",
+     "yes_bid_dollars": "0.0100",
+     "yes_bid_size_fp": "250.00",
+     "yes_sub_title": "Klaus Iohannis"
+    },
+    {
+     "can_close_early": true,
+     "close_time": "2099-01-08T15:00:00Z",
+     "created_time": "2026-06-29T19:31:47.73165Z",
+     "custom_strike": {
+      "Holder": "Kaja Kallas"
+     },
+     "event_ticker": "KXNEXTNATOSECGEN-99",
+     "exchange_index": 0,
+     "expected_expiration_time": "2099-01-08T15:00:00Z",
+     "expiration_time": "2099-01-08T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.2100",
+     "latest_expiration_time": "2099-01-08T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.8800",
+     "no_bid_dollars": "0.8000",
+     "no_sub_title": "Kaja Kallas",
+     "notional_value_dollars": "1.0000",
+     "occurrence_datetime": "2099-01-01T15:00:00Z",
+     "open_interest_fp": "1174.50",
+     "open_time": "2026-06-29T19:47:00Z",
+     "previous_price_dollars": "0.2100",
+     "previous_yes_ask_dollars": "0.2000",
+     "previous_yes_bid_dollars": "0.1200",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If Kaja Kallas formally holds the position of Secretary General of NATO, and is the first such subject to do so after Issuance, then the market resolves to Yes.",
+     "rules_secondary": "For the purposes of this Contract, \"formally holds Secretary General of NATO\" means that an individual, company, or group has assumed Secretary General of NATO in an official capacity\u2014whether by appointment, election, succession, confirmation, designation, or acting/interim assignment\u2014and has performed or is recognized to perform the duties or responsibilities of that role for any length of time after Issuance.",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "strike_type": "custom",
+     "ticker": "KXNEXTNATOSECGEN-99-KKAL",
+     "title": "Will Kaja Kallas be the next Secretary General of NATO?",
+     "updated_time": "2026-10-23T17:10:06.496396Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "1936.64",
+     "yes_ask_dollars": "0.2000",
+     "yes_ask_size_fp": "14.00",
+     "yes_bid_dollars": "0.1200",
+     "yes_bid_size_fp": "205.00",
+     "yes_sub_title": "Kaja Kallas"
+    }
+   ],
+   "mutually_exclusive": true,
+   "series_ticker": "KXNEXTNATOSECGEN",
+   "settlement_sources": [
+    {
+     "name": "North Atlantic Treaty Organization",
+     "url": "https://www.nato.int/"
+    }
+   ],
+   "strike_period": "",
+   "sub_title": "Before Jan 1, 2099",
+   "title": "Who will be the next Secretary General of NATO?"
+  },
+  {
+   "category": "Elections",
+   "collateral_return_type": "MECNET",
+   "event_ticker": "KXNEWPOPE-70",
+   "exchange_index": 0,
+   "last_updated_ts": "2026-10-23T16:06:29.81673Z",
+   "markets": [
+    {
+     "can_close_early": true,
+     "close_time": "2070-01-01T15:00:00Z",
+     "created_time": "2025-07-18T08:05:49.322772Z",
+     "early_close_condition": "This market will close and expire early if the event occurs.",
+     "event_ticker": "KXNEWPOPE-70",
+     "exchange_index": 0,
+     "expected_expiration_time": "2070-01-01T15:00:00Z",
+     "expiration_time": "2070-01-01T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.0450",
+     "latest_expiration_time": "2070-01-01T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.9700",
+     "no_bid_dollars": "0.9550",
+     "no_sub_title": "Pierbattista Pizzaballa",
+     "notional_value_dollars": "1.0000",
+     "open_interest_fp": "2951.09",
+     "open_time": "2025-07-18T14:00:00Z",
+     "previous_price_dollars": "0.0450",
+     "previous_yes_ask_dollars": "0.0450",
+     "previous_yes_bid_dollars": "0.0300",
+     "price_level_structure": "tapered_deci_cent",
+     "price_ranges": [
+      {
+       "end": "0.1000",
+       "start": "0.0000",
+       "step": "0.0010"
+      },
+      {
+       "end": "0.9000",
+       "start": "0.1000",
+       "step": "0.0100"
+      },
+      {
+       "end": "1.0000",
+       "start": "0.9000",
+       "step": "0.0010"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If Pierbattista Pizzaballa becomes the first person elected Pope before Jan 1, 2070, then the market resolves to Yes.",
+     "rules_secondary": " ",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "ticker": "KXNEWPOPE-70-PPIZ",
+     "title": "Who will the next Pope be?",
+     "updated_time": "2026-10-23T16:05:38.081718Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "20130.81",
+     "yes_ask_dollars": "0.0450",
+     "yes_ask_size_fp": "103.93",
+     "yes_bid_dollars": "0.0300",
+     "yes_bid_size_fp": "1473.15",
+     "yes_sub_title": "Pierbattista Pizzaballa"
+    },
+    {
+     "can_close_early": true,
+     "close_time": "2070-01-01T15:00:00Z",
+     "created_time": "2025-07-18T08:05:49.322773Z",
+     "early_close_condition": "This market will close and expire early if the event occurs.",
+     "event_ticker": "KXNEWPOPE-70",
+     "exchange_index": 0,
+     "expected_expiration_time": "2070-01-01T15:00:00Z",
+     "expiration_time": "2070-01-01T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.0400",
+     "latest_expiration_time": "2070-01-01T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.9600",
+     "no_bid_dollars": "0.9420",
+     "no_sub_title": "Pietro Parolin",
+     "notional_value_dollars": "1.0000",
+     "open_interest_fp": "5061.12",
+     "open_time": "2025-07-18T14:00:00Z",
+     "previous_price_dollars": "0.0400",
+     "previous_yes_ask_dollars": "0.0580",
+     "previous_yes_bid_dollars": "0.0400",
+     "price_level_structure": "tapered_deci_cent",
+     "price_ranges": [
+      {
+       "end": "0.1000",
+       "start": "0.0000",
+       "step": "0.0010"
+      },
+      {
+       "end": "0.9000",
+       "start": "0.1000",
+       "step": "0.0100"
+      },
+      {
+       "end": "1.0000",
+       "start": "0.9000",
+       "step": "0.0010"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If Pietro Parolin becomes the first person elected Pope before Jan 1, 2070, then the market resolves to Yes.",
+     "rules_secondary": " ",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "ticker": "KXNEWPOPE-70-PPAR",
+     "title": "Who will the next Pope be?",
+     "updated_time": "2026-10-23T16:05:38.081718Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "25541.16",
+     "yes_ask_dollars": "0.0580",
+     "yes_ask_size_fp": "72.37",
+     "yes_bid_dollars": "0.0400",
+     "yes_bid_size_fp": "766.51",
+     "yes_sub_title": "Pietro Parolin"
+    }
+   ],
+   "mutually_exclusive": true,
+   "series_ticker": "KXNEWPOPE",
+   "settlement_sources": [
+    {
+     "name": "The New York Times",
+     "url": "https://www.nytimes.com/"
+    },
+    {
+     "name": "the Associated Press",
+     "url": "https://apnews.com/"
+    },
+    {
+     "name": "Reuters",
+     "url": "https://www.reuters.com/"
+    },
+    {
+     "name": "Axios",
+     "url": "https://www.axios.com/"
+    },
+    {
+     "name": "Politico",
+     "url": "https://www.politico.com/"
+    },
+    {
+     "name": "Semafor",
+     "url": "https://www.semafor.com/"
+    },
+    {
+     "name": "The Information",
+     "url": "https://www.theinformation.com/"
+    },
+    {
+     "name": "The Washington Post",
+     "url": "https://www.washingtonpost.com/"
+    },
+    {
+     "name": "The Wall Street Journal",
+     "url": "https://www.wsj.com/"
+    },
+    {
+     "name": "ABC",
+     "url": "https://abcnews.go.com/"
+    },
+    {
+     "name": "CBS",
+     "url": "https://www.cbsnews.com/"
+    },
+    {
+     "name": "CNN",
+     "url": "https://www.cnn.com/"
+    },
+    {
+     "name": "Fox News",
+     "url": "https://www.foxnews.com/"
+    },
+    {
+     "name": "MSNBC",
+     "url": "https://www.msnbc.com/"
+    },
+    {
+     "name": "Bloomberg News",
+     "url": "https://www.bloomberg.com/news"
+    },
+    {
+     "name": "NBC",
+     "url": "https://www.nbcnews.com/"
+    },
+    {
+     "name": "the Vatican",
+     "url": "https://www.vatican.va/"
+    }
+   ],
+   "strike_period": "",
+   "sub_title": "Before 2070",
+   "title": "Who will the next Pope be?"
+  },
+  {
+   "category": "Climate and Weather",
+   "collateral_return_type": "",
+   "event_ticker": "KXWARMING-50",
+   "exchange_index": 0,
+   "last_updated_ts": "2026-10-16T03:29:31.893485Z",
+   "markets": [
+    {
+     "can_close_early": true,
+     "close_time": "2050-01-01T04:59:00Z",
+     "created_time": "2025-06-05T16:28:27.496599Z",
+     "early_close_condition": "This market will close and expire early if the event occurs.",
+     "event_ticker": "KXWARMING-50",
+     "exchange_index": 0,
+     "expected_expiration_time": "2050-01-01T15:00:00Z",
+     "expiration_time": "2050-01-08T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.6400",
+     "latest_expiration_time": "2050-01-08T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.3600",
+     "no_bid_dollars": "0.3300",
+     "no_sub_title": "Before 2050",
+     "notional_value_dollars": "1.0000",
+     "open_interest_fp": "4079.65",
+     "open_time": "2025-06-05T16:45:00Z",
+     "previous_price_dollars": "0.6400",
+     "previous_yes_ask_dollars": "0.6700",
+     "previous_yes_bid_dollars": "0.6400",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If the annual global mean surface temperature anomaly has reached or exceeded +2.0\u00b0C above pre-industrial levels (1850-1900 average) in any calendar year before Jan 1, 2050, then the market resolves to Yes.",
+     "rules_secondary": "At least two of the Source Agencies must report that we have hit the 2.0\u00b0C threshold.",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "ticker": "KXWARMING-50",
+     "title": "Will the world pass 2 degrees Celsius over pre-industrial levels before 2050?",
+     "updated_time": "2026-04-09T09:18:53.966868Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "21421.38",
+     "yes_ask_dollars": "0.6700",
+     "yes_ask_size_fp": "5.00",
+     "yes_bid_dollars": "0.6400",
+     "yes_bid_size_fp": "4.60",
+     "yes_sub_title": "Before 2050"
+    }
+   ],
+   "mutually_exclusive": false,
+   "series_ticker": "KXWARMING",
+   "settlement_sources": [
+    {
+     "name": "NASA Goddard\nInstitute for Space Studies",
+     "url": "https://data.giss.nasa.gov/gistemp/graphs/graph_data/Global_Mean_Estimates_based_on_Land_and_Ocean_Data/graph.txt"
+    },
+    {
+     "name": "NCEI",
+     "url": "https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/global/time-series"
+    },
+    {
+     "name": "Berkeley Earth",
+     "url": "https://berkeleyearth.org/data/"
+    },
+    {
+     "name": "UK Met Office Hadley Centre (HadCRUT)",
+     "url": "https://crudata.uea.ac.uk/cru/data/temperature/"
+    }
+   ],
+   "strike_period": "",
+   "sub_title": "Before 2050",
+   "title": "Will the world pass 2 degrees Celsius over pre-industrial levels before 2050?"
+  },
+  {
+   "category": "Science and Technology",
+   "collateral_return_type": "",
+   "event_ticker": "KXMARSVRAIL-50",
+   "exchange_index": 0,
+   "last_updated_ts": "2026-10-25T18:21:11.489639Z",
+   "markets": [
+    {
+     "can_close_early": true,
+     "close_time": "2050-01-01T04:59:00Z",
+     "created_time": "2025-06-27T16:39:16.626772Z",
+     "early_close_condition": "This market will close and expire early if the event occurs.",
+     "event_ticker": "KXMARSVRAIL-50",
+     "exchange_index": 0,
+     "expected_expiration_time": "2050-01-01T15:00:00Z",
+     "expiration_time": "2050-01-08T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.3300",
+     "latest_expiration_time": "2050-01-08T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.7200",
+     "no_bid_dollars": "0.6700",
+     "no_sub_title": "Before 2050",
+     "notional_value_dollars": "1.0000",
+     "open_interest_fp": "6092.17",
+     "open_time": "2025-06-27T20:45:00Z",
+     "previous_price_dollars": "0.3300",
+     "previous_yes_ask_dollars": "0.3300",
+     "previous_yes_bid_dollars": "0.2700",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If a human lands on Mars before California starts its high speed rail service for the public before Jan 1, 2050, then the market resolves to Yes.",
+     "rules_secondary": "",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "ticker": "KXMARSVRAIL-50",
+     "title": "Will a human land on Mars before California starts high-speed rail?",
+     "updated_time": "2026-10-25T18:19:12.117885Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "16951.14",
+     "yes_ask_dollars": "0.3300",
+     "yes_ask_size_fp": "573.20",
+     "yes_bid_dollars": "0.2800",
+     "yes_bid_size_fp": "10.00",
+     "yes_sub_title": "Before 2050"
+    }
+   ],
+   "mutually_exclusive": false,
+   "series_ticker": "KXMARSVRAIL",
+   "settlement_sources": [
+    {
+     "name": "NASA",
+     "url": "https://www.nasa.gov/news/releases/latest/index.html"
+    },
+    {
+     "name": "ESA",
+     "url": "https://www.esa.int"
+    },
+    {
+     "name": "SpaceX",
+     "url": "https://www.spacex.com/"
+    },
+    {
+     "name": "Blue Origin",
+     "url": "https://www.blueorigin.com/"
+    },
+    {
+     "name": "the Chinese National Space Administration",
+     "url": "http://www.cnsa.gov.cn"
+    },
+    {
+     "name": "Roscosmos",
+     "url": "https://www.roscosmos.ru/"
+    },
+    {
+     "name": "the California High-Speed Rail Authority",
+     "url": "http://www.hsr.ca.gov/"
+    },
+    {
+     "name": "the Federal Railroad Administration",
+     "url": "https://www.fra.dot.gov"
+    },
+    {
+     "name": "the California Department of Transportation",
+     "url": "https://dot.ca.gov"
+    },
+    {
+     "name": "The New York Times",
+     "url": "https://www.nytimes.com/"
+    },
+    {
+     "name": "the Associated Press",
+     "url": "https://www.ap.org"
+    },
+    {
+     "name": "Bloomberg News",
+     "url": "https://www.bloomberg.com"
+    },
+    {
+     "name": "Reuters",
+     "url": "https://www.reuters.com"
+    },
+    {
+     "name": "Axios",
+     "url": "https://www.axios.com"
+    },
+    {
+     "name": "Politico",
+     "url": "https://www.politico.com/"
+    },
+    {
+     "name": "The Washington Post",
+     "url": "https://www.washingtonpost.com"
+    },
+    {
+     "name": "The Wall Street Journal",
+     "url": "https://www.wsj.com/"
+    },
+    {
+     "name": "ABC",
+     "url": "https://abcnews.go.com/"
+    },
+    {
+     "name": "CBS",
+     "url": "https://www.cbs.com"
+    },
+    {
+     "name": "CNN",
+     "url": "https://www.cnn.com"
+    },
+    {
+     "name": "Fox News",
+     "url": "https://www.foxnews.com"
+    },
+    {
+     "name": "MSNBC",
+     "url": "https://www.msnbc.com"
+    },
+    {
+     "name": "NBC",
+     "url": "https://www.nbc.com"
+    },
+    {
+     "name": "Space.com",
+     "url": "https://www.space.com/"
+    }
+   ],
+   "strike_period": "",
+   "sub_title": "Before 2050",
+   "title": "Will a human land on Mars before California starts high-speed rail?"
+  },
+  {
+   "category": "Climate and Weather",
+   "collateral_return_type": "",
+   "event_ticker": "KXERUPTSUPER-0",
+   "exchange_index": 0,
+   "last_updated_ts": "2026-10-16T03:27:45.996562Z",
+   "markets": [
+    {
+     "can_close_early": true,
+     "close_time": "2050-01-01T04:59:00Z",
+     "created_time": "2025-07-18T11:56:20.793402Z",
+     "early_close_condition": "This market will close and expire early if the event occurs.",
+     "event_ticker": "KXERUPTSUPER-0",
+     "exchange_index": 0,
+     "expected_expiration_time": "2050-01-01T15:00:00Z",
+     "expiration_time": "2050-01-08T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.2600",
+     "latest_expiration_time": "2050-01-08T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.7400",
+     "no_bid_dollars": "0.6400",
+     "no_sub_title": "Before Jan 1, 2050",
+     "notional_value_dollars": "1.0000",
+     "open_interest_fp": "10818.47",
+     "open_time": "2025-07-18T14:00:00Z",
+     "previous_price_dollars": "0.2600",
+     "previous_yes_ask_dollars": "0.3600",
+     "previous_yes_bid_dollars": "0.2600",
+     "price_level_structure": "deci_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0010"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If a supervolcano erupts before Jan 1, 2050, then the market resolves to Yes.",
+     "rules_secondary": "",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "ticker": "KXERUPTSUPER-0-50JAN01",
+     "title": "When will a supervolcano next erupt?",
+     "updated_time": "2026-04-09T09:31:34.36679Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "35404.49",
+     "yes_ask_dollars": "0.3600",
+     "yes_ask_size_fp": "15.00",
+     "yes_bid_dollars": "0.2600",
+     "yes_bid_size_fp": "143.10",
+     "yes_sub_title": "Before Jan 1, 2050"
+    }
+   ],
+   "mutually_exclusive": false,
+   "series_ticker": "KXERUPTSUPER",
+   "settlement_sources": [
+    {
+     "name": "New York Times",
+     "url": "https://www.nytimes.com/"
+    },
+    {
+     "name": "the Associated Press",
+     "url": "https://apnews.com/"
+    },
+    {
+     "name": "Reuters",
+     "url": "https://www.reuters.com/"
+    },
+    {
+     "name": "Axios",
+     "url": "https://www.axios.com/"
+    },
+    {
+     "name": "The Washington Post",
+     "url": "https://www.wsj.com/"
+    },
+    {
+     "name": "The Wall Street Journal",
+     "url": "https://www.wsj.com/"
+    },
+    {
+     "name": "ABC",
+     "url": "https://www.abc.net.au/"
+    },
+    {
+     "name": "CBS",
+     "url": "https://www.cbsnews.com/"
+    },
+    {
+     "name": "CNN",
+     "url": "https://www.cnn.com/"
+    },
+    {
+     "name": "Fox News",
+     "url": "https://www.foxnews.com/"
+    },
+    {
+     "name": "MSNBC",
+     "url": "https://www.msnbc.com/"
+    }
+   ],
+   "strike_period": "",
+   "sub_title": "a supervolcano",
+   "title": "Will a supervolcano erupt before 2050?"
+  },
+  {
+   "category": "Politics",
+   "collateral_return_type": "",
+   "event_ticker": "KXPERSONPRESMAM-45",
+   "exchange_index": 0,
+   "last_updated_ts": "2026-10-16T14:14:43.800008Z",
+   "markets": [
+    {
+     "can_close_early": true,
+     "close_time": "2045-01-29T15:00:00Z",
+     "created_time": "2025-06-27T16:01:47.204137Z",
+     "early_close_condition": "This market will close and expire early if the event occurs.",
+     "event_ticker": "KXPERSONPRESMAM-45",
+     "exchange_index": 0,
+     "expected_expiration_time": "2045-01-22T15:00:00Z",
+     "expiration_time": "2045-01-29T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.1200",
+     "latest_expiration_time": "2045-01-29T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.8800",
+     "no_bid_dollars": "0.8400",
+     "no_sub_title": "Before Jan 22, 2045",
+     "notional_value_dollars": "1.0000",
+     "open_interest_fp": "18804.51",
+     "open_time": "2025-06-27T16:10:00Z",
+     "previous_price_dollars": "0.1200",
+     "previous_yes_ask_dollars": "0.1600",
+     "previous_yes_bid_dollars": "0.1200",
+     "price_level_structure": "tapered_deci_cent",
+     "price_ranges": [
+      {
+       "end": "0.1000",
+       "start": "0.0000",
+       "step": "0.0010"
+      },
+      {
+       "end": "0.9000",
+       "start": "0.1000",
+       "step": "0.0100"
+      },
+      {
+       "end": "1.0000",
+       "start": "0.9000",
+       "step": "0.0010"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If Zohran Mamdani becomes President of the United States before Jan 22, 2045, then the market resolves to Yes.",
+     "rules_secondary": "",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "ticker": "KXPERSONPRESMAM-45",
+     "title": "Will Zohran Mamdani become President of the United States before Jan 22, 2045?",
+     "updated_time": "2026-10-05T17:48:43.955241Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "44061.94",
+     "yes_ask_dollars": "0.1600",
+     "yes_ask_size_fp": "174.75",
+     "yes_bid_dollars": "0.1200",
+     "yes_bid_size_fp": "203.12",
+     "yes_sub_title": "Before Jan 22, 2045"
+    }
+   ],
+   "mutually_exclusive": false,
+   "series_ticker": "KXPERSONPRESMAM",
+   "settlement_sources": [
+    {
+     "name": "Office of the Presidency",
+     "url": "https://www.whitehouse.gov/administration/executive-office-of-the-president/"
+    }
+   ],
+   "strike_period": "",
+   "sub_title": "Before Jan 22, 2045",
+   "title": "Will Zohran Mamdani become President of the United States before Jan 22, 2045?"
+  },
+  {
+   "category": "Politics",
+   "collateral_return_type": "MECNET",
+   "event_ticker": "KXNEXTDNCCHAIR-45",
+   "exchange_index": 0,
+   "last_updated_ts": "2026-10-27T19:53:03.205429Z",
+   "markets": [
+    {
+     "can_close_early": true,
+     "close_time": "2045-01-08T15:00:00Z",
+     "created_time": "2026-05-26T18:20:00.496704Z",
+     "custom_strike": {
+      "Holder": "Ben Wikler"
+     },
+     "event_ticker": "KXNEXTDNCCHAIR-45",
+     "exchange_index": 0,
+     "expected_expiration_time": "2045-01-08T15:00:00Z",
+     "expiration_time": "2045-01-08T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.0540",
+     "latest_expiration_time": "2045-01-08T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "1.0000",
+     "no_bid_dollars": "0.9450",
+     "no_sub_title": "Ben Wikler",
+     "notional_value_dollars": "1.0000",
+     "occurrence_datetime": "2045-01-01T15:00:00Z",
+     "open_interest_fp": "107.84",
+     "open_time": "2026-05-27T14:00:00Z",
+     "previous_price_dollars": "0.0540",
+     "previous_yes_ask_dollars": "0.0550",
+     "previous_yes_bid_dollars": "0.0000",
+     "price_level_structure": "tapered_deci_cent",
+     "price_ranges": [
+      {
+       "end": "0.1000",
+       "start": "0.0000",
+       "step": "0.0010"
+      },
+      {
+       "end": "0.9000",
+       "start": "0.1000",
+       "step": "0.0100"
+      },
+      {
+       "end": "1.0000",
+       "start": "0.9000",
+       "step": "0.0010"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If Ben Wikler formally holds Chair of the Democratic National Committee before Jan 1, 2045, and is the first such subject to do so after Issuance, then the market resolves to Yes.",
+     "rules_secondary": "For the purposes of this Contract, \"formally holds Chair of the Democratic National Committee\" means that an individual, company, or group has assumed Chair of the Democratic National Committee in an official capacity\u2014whether by appointment, election, succession, confirmation, designation, or acting/interim assignment\u2014and has performed or is recognized to perform the duties or responsibilities of that role for any length of time after Issuance.",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "strike_type": "custom",
+     "ticker": "KXNEXTDNCCHAIR-45-BWIK",
+     "title": "Will Ben Wikler be the next Chair of the Democratic National Committee?",
+     "updated_time": "2026-10-23T17:09:55.173619Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "129.84",
+     "yes_ask_dollars": "0.0550",
+     "yes_ask_size_fp": "200.00",
+     "yes_bid_dollars": "0.0000",
+     "yes_bid_size_fp": "0.00",
+     "yes_sub_title": "Ben Wikler"
+    },
+    {
+     "can_close_early": true,
+     "close_time": "2045-01-08T15:00:00Z",
+     "created_time": "2026-05-26T18:20:00.496704Z",
+     "custom_strike": {
+      "Holder": "Jane Kleeb"
+     },
+     "event_ticker": "KXNEXTDNCCHAIR-45",
+     "exchange_index": 0,
+     "expected_expiration_time": "2045-01-08T15:00:00Z",
+     "expiration_time": "2045-01-08T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.0530",
+     "latest_expiration_time": "2045-01-08T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "1.0000",
+     "no_bid_dollars": "0.9450",
+     "no_sub_title": "Jane Kleeb",
+     "notional_value_dollars": "1.0000",
+     "occurrence_datetime": "2045-01-01T15:00:00Z",
+     "open_interest_fp": "6.00",
+     "open_time": "2026-05-27T14:00:00Z",
+     "previous_price_dollars": "0.0530",
+     "previous_yes_ask_dollars": "0.0550",
+     "previous_yes_bid_dollars": "0.0000",
+     "price_level_structure": "tapered_deci_cent",
+     "price_ranges": [
+      {
+       "end": "0.1000",
+       "start": "0.0000",
+       "step": "0.0010"
+      },
+      {
+       "end": "0.9000",
+       "start": "0.1000",
+       "step": "0.0100"
+      },
+      {
+       "end": "1.0000",
+       "start": "0.9000",
+       "step": "0.0010"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If Jane Kleeb formally holds Chair of the Democratic National Committee before Jan 1, 2045, and is the first such subject to do so after Issuance, then the market resolves to Yes.",
+     "rules_secondary": "For the purposes of this Contract, \"formally holds Chair of the Democratic National Committee\" means that an individual, company, or group has assumed Chair of the Democratic National Committee in an official capacity\u2014whether by appointment, election, succession, confirmation, designation, or acting/interim assignment\u2014and has performed or is recognized to perform the duties or responsibilities of that role for any length of time after Issuance.",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "strike_type": "custom",
+     "ticker": "KXNEXTDNCCHAIR-45-JKLE",
+     "title": "Will Jane Kleeb be the next Chair of the Democratic National Committee?",
+     "updated_time": "2026-10-23T17:09:55.173619Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "9.00",
+     "yes_ask_dollars": "0.0550",
+     "yes_ask_size_fp": "200.00",
+     "yes_bid_dollars": "0.0000",
+     "yes_bid_size_fp": "0.00",
+     "yes_sub_title": "Jane Kleeb"
+    }
+   ],
+   "mutually_exclusive": true,
+   "series_ticker": "KXNEXTDNCCHAIR",
+   "settlement_sources": [
+    {
+     "name": "the Democratic Party",
+     "url": "https://democrats.org/"
+    }
+   ],
+   "strike_period": "",
+   "sub_title": "Before Jan 1, 2045",
+   "title": "Who will be the next DNC Chair?"
+  },
+  {
+   "category": "Sports",
+   "collateral_return_type": "",
+   "event_ticker": "KXWCCAREERGOALS-KMBAPPE",
+   "exchange_index": 0,
+   "last_updated_ts": "2026-10-09T16:49:15.200879Z",
+   "markets": [
+    {
+     "can_close_early": true,
+     "close_time": "2043-07-28T14:00:00Z",
+     "created_time": "2026-07-20T23:48:46.068285Z",
+     "custom_strike": {
+      "soccer_player": "fa1a73ab-8e76-4501-8e4b-a4321631ef19"
+     },
+     "early_close_condition": "This market will close and expire after the event occurs or Kylian Mbappe retires from International play.",
+     "event_ticker": "KXWCCAREERGOALS-KMBAPPE",
+     "exchange_index": 0,
+     "expected_expiration_time": "2043-07-21T14:00:00Z",
+     "expiration_time": "2043-07-28T14:00:00Z",
+     "expiration_value": "",
+     "floor_strike": 29.5,
+     "last_price_dollars": "0.7900",
+     "latest_expiration_time": "2043-07-28T14:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.2000",
+     "no_bid_dollars": "0.1300",
+     "no_sub_title": "30+ Goals Scored",
+     "notional_value_dollars": "1.0000",
+     "occurrence_datetime": "2043-07-21T14:00:00Z",
+     "open_interest_fp": "314.70",
+     "open_time": "2026-07-20T23:52:00Z",
+     "previous_price_dollars": "0.7900",
+     "previous_yes_ask_dollars": "0.8700",
+     "previous_yes_bid_dollars": "0.7900",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "primary_participant_key": "soccer_player",
+     "result": "",
+     "rules_primary": "If Kylian Mbappe scores at least 30 goals in FIFA World Cup Tournament games during his career, then the market resolves to Yes.",
+     "rules_secondary": "Own goals scored by Kylian Mbappe do not count for purposes of this market. 3rd place game goals are included in total goals scored.",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 300,
+     "status": "active",
+     "strike_type": "greater",
+     "subtitle": "30+ Goals Scored",
+     "ticker": "KXWCCAREERGOALS-KMBAPPE-30",
+     "title": "Will Kylian Mbappe score at least 30 goals in the World Cup in his career?",
+     "updated_time": "2026-10-09T16:49:15.208301Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "851.31",
+     "yes_ask_dollars": "0.8700",
+     "yes_ask_size_fp": "1000.00",
+     "yes_bid_dollars": "0.8000",
+     "yes_bid_size_fp": "5.00",
+     "yes_sub_title": "30+ Goals Scored"
+    },
+    {
+     "can_close_early": true,
+     "close_time": "2043-07-28T14:00:00Z",
+     "created_time": "2026-07-20T23:48:46.068285Z",
+     "custom_strike": {
+      "soccer_player": "fa1a73ab-8e76-4501-8e4b-a4321631ef19"
+     },
+     "early_close_condition": "This market will close and expire after the event occurs or Kylian Mbappe retires from International play.",
+     "event_ticker": "KXWCCAREERGOALS-KMBAPPE",
+     "exchange_index": 0,
+     "expected_expiration_time": "2043-07-21T14:00:00Z",
+     "expiration_time": "2043-07-28T14:00:00Z",
+     "expiration_value": "",
+     "floor_strike": 34.5,
+     "last_price_dollars": "0.2000",
+     "latest_expiration_time": "2043-07-28T14:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.8000",
+     "no_bid_dollars": "0.7600",
+     "no_sub_title": "35+ Goals Scored",
+     "notional_value_dollars": "1.0000",
+     "occurrence_datetime": "2043-07-21T14:00:00Z",
+     "open_interest_fp": "2709.88",
+     "open_time": "2026-07-20T23:52:00Z",
+     "previous_price_dollars": "0.2000",
+     "previous_yes_ask_dollars": "0.2400",
+     "previous_yes_bid_dollars": "0.2000",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "primary_participant_key": "soccer_player",
+     "result": "",
+     "rules_primary": "If Kylian Mbappe scores at least 35 goals in FIFA World Cup Tournament games during his career, then the market resolves to Yes.",
+     "rules_secondary": "Own goals scored by Kylian Mbappe do not count for purposes of this market. 3rd place game goals are included in total goals scored.",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 300,
+     "status": "active",
+     "strike_type": "greater",
+     "ticker": "KXWCCAREERGOALS-KMBAPPE-35",
+     "title": "Will Kylian Mbappe score at least 35 goals in the World Cup in his career?",
+     "updated_time": "2026-10-09T16:49:15.208301Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "3541.36",
+     "yes_ask_dollars": "0.2400",
+     "yes_ask_size_fp": "1000.00",
+     "yes_bid_dollars": "0.2000",
+     "yes_bid_size_fp": "492.00",
+     "yes_sub_title": "35+ Goals Scored"
+    }
+   ],
+   "mutually_exclusive": false,
+   "product_metadata": {
+    "competition": "FIFA World Cup",
+    "competition_scope": "Player Goals"
+   },
+   "series_ticker": "KXWCCAREERGOALS",
+   "settlement_sources": [
+    {
+     "name": "ESPN",
+     "url": "https://www.espn.com"
+    },
+    {
+     "name": "FIFA",
+     "url": "https://www.fifa.com"
+    }
+   ],
+   "strike_period": "",
+   "sub_title": "Kylian Mbappe",
+   "title": "Kylian Mbappe Total FIFA World Cup Career Goals"
+  },
+  {
+   "category": "Sports",
+   "collateral_return_type": "",
+   "event_ticker": "KXNFLCAREERRSHYDS-DHENRY",
+   "exchange_index": 0,
+   "last_updated_ts": "2026-10-15T16:45:08.548945Z",
+   "markets": [
+    {
+     "can_close_early": true,
+     "close_time": "2040-03-08T15:00:00Z",
+     "created_time": "2026-09-26T22:58:27.071953Z",
+     "custom_strike": {
+      "football_player": "8ebb7c40-992b-441b-a691-4ff745dbfd68"
+     },
+     "early_close_condition": "This market will close and expire early if the event occurs.",
+     "event_ticker": "KXNFLCAREERRSHYDS-DHENRY",
+     "exchange_index": 0,
+     "expected_expiration_time": "2040-03-01T15:00:00Z",
+     "expiration_time": "2040-03-08T15:00:00Z",
+     "expiration_value": "",
+     "floor_strike": 13999.5,
+     "last_price_dollars": "0.8700",
+     "latest_expiration_time": "2040-03-08T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.1300",
+     "no_bid_dollars": "0.0800",
+     "no_sub_title": "14,000+ rushing yards",
+     "notional_value_dollars": "1.0000",
+     "occurrence_datetime": "2040-03-01T15:00:00Z",
+     "open_interest_fp": "196.00",
+     "open_time": "2026-09-26T23:00:00Z",
+     "previous_price_dollars": "0.8700",
+     "previous_yes_ask_dollars": "0.9200",
+     "previous_yes_bid_dollars": "0.8700",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If Derrick Henry records at least 14,000 career regular season rushing yards before Derrick Henry or any of the Source Agencies formally announce his retirement from Pro Football, then the market resolves to Yes.",
+     "rules_secondary": "The market resolves to Yes if Derrick Henry records at least 14,000 career regular season rushing yards before he or any of the Source Agencies formally announce his retirement from Pro Football.\n\nKalshi is not affiliated, associated, authorized, endorsed by, or in any way officially connected with the NFL. All trademarks, logos, and brand names are the property of their respective owners.",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 300,
+     "status": "active",
+     "strike_type": "greater",
+     "ticker": "KXNFLCAREERRSHYDS-DHENRY-14000",
+     "title": "Derrick Henry: 14,000+ Rushing Yards",
+     "updated_time": "2026-09-26T23:00:02.015254Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "208.00",
+     "yes_ask_dollars": "0.9200",
+     "yes_ask_size_fp": "5.00",
+     "yes_bid_dollars": "0.8700",
+     "yes_bid_size_fp": "200.00",
+     "yes_sub_title": "14,000+ rushing yards"
+    },
+    {
+     "can_close_early": true,
+     "close_time": "2040-03-08T15:00:00Z",
+     "created_time": "2026-09-26T22:58:27.071953Z",
+     "custom_strike": {
+      "football_player": "8ebb7c40-992b-441b-a691-4ff745dbfd68"
+     },
+     "early_close_condition": "This market will close and expire early if the event occurs.",
+     "event_ticker": "KXNFLCAREERRSHYDS-DHENRY",
+     "exchange_index": 0,
+     "expected_expiration_time": "2040-03-01T15:00:00Z",
+     "expiration_time": "2040-03-08T15:00:00Z",
+     "expiration_value": "",
+     "floor_strike": 14999.5,
+     "last_price_dollars": "0.6300",
+     "latest_expiration_time": "2040-03-08T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.3600",
+     "no_bid_dollars": "0.2700",
+     "no_sub_title": "15,000+ rushing yards",
+     "notional_value_dollars": "1.0000",
+     "occurrence_datetime": "2040-03-01T15:00:00Z",
+     "open_interest_fp": "2.00",
+     "open_time": "2026-09-26T23:00:00Z",
+     "previous_price_dollars": "0.6300",
+     "previous_yes_ask_dollars": "0.7300",
+     "previous_yes_bid_dollars": "0.6400",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If Derrick Henry records at least 15,000 career regular season rushing yards before Derrick Henry or any of the Source Agencies formally announce his retirement from Pro Football, then the market resolves to Yes.",
+     "rules_secondary": "The market resolves to Yes if Derrick Henry records at least 15,000 career regular season rushing yards before he or any of the Source Agencies formally announce his retirement from Pro Football.\n\nKalshi is not affiliated, associated, authorized, endorsed by, or in any way officially connected with the NFL. All trademarks, logos, and brand names are the property of their respective owners.",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 300,
+     "status": "active",
+     "strike_type": "greater",
+     "ticker": "KXNFLCAREERRSHYDS-DHENRY-15000",
+     "title": "Derrick Henry: 15,000+ Rushing Yards",
+     "updated_time": "2026-09-26T23:00:02.015254Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "14.68",
+     "yes_ask_dollars": "0.7300",
+     "yes_ask_size_fp": "200.00",
+     "yes_bid_dollars": "0.6400",
+     "yes_bid_size_fp": "200.00",
+     "yes_sub_title": "15,000+ rushing yards"
+    }
+   ],
+   "mutually_exclusive": false,
+   "product_metadata": {
+    "competition": "Pro Football",
+    "competition_scope": "Career Stats"
+   },
+   "series_ticker": "KXNFLCAREERRSHYDS",
+   "settlement_sources": [
+    {
+     "name": "Sports Illustrated",
+     "url": "https://www.si.com"
+    },
+    {
+     "name": "Bleacher Report",
+     "url": "https://bleacherreport.com"
+    },
+    {
+     "name": "The Athletic",
+     "url": "https://theathletic.com"
+    },
+    {
+     "name": "Fox Sports",
+     "url": "https://foxsports.com"
+    },
+    {
+     "name": "ESPN",
+     "url": "https://espn.com"
+    },
+    {
+     "name": "the Governing League",
+     "url": "https://www.nfl.com/"
+    }
+   ],
+   "strike_period": "",
+   "sub_title": "Derrick Henry",
+   "title": "Derrick Henry Career Regular Season Rushing Yards"
+  },
+  {
+   "category": "Financials",
+   "collateral_return_type": "",
+   "event_ticker": "KXRAMPBREX-40",
+   "exchange_index": 0,
+   "last_updated_ts": "2026-10-16T03:29:32.128797Z",
+   "markets": [
+    {
+     "can_close_early": true,
+     "close_time": "2040-01-01T04:59:00Z",
+     "created_time": "2025-08-06T23:28:46.25889Z",
+     "custom_strike": {
+      "Company": "Ramp"
+     },
+     "early_close_condition": "This market will close and expire early if the event occurs.",
+     "event_ticker": "KXRAMPBREX-40",
+     "exchange_index": 0,
+     "expected_expiration_time": "2040-01-01T15:00:00Z",
+     "expiration_time": "2040-01-08T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.8900",
+     "latest_expiration_time": "2040-01-08T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.1800",
+     "no_bid_dollars": "0.1100",
+     "no_sub_title": "Ramp",
+     "notional_value_dollars": "1.0000",
+     "open_interest_fp": "2646.04",
+     "open_time": "2025-08-06T23:45:00Z",
+     "previous_price_dollars": "0.8900",
+     "previous_yes_ask_dollars": "0.8900",
+     "previous_yes_bid_dollars": "0.8200",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If Ramp confirms an IPO first, before Jan 1, 2040, then the market resolves to Yes.",
+     "rules_secondary": "",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "strike_type": "custom",
+     "ticker": "KXRAMPBREX-40-RAMP",
+     "title": "Will Ramp or Brex IPO first?",
+     "updated_time": "2026-04-09T09:31:19.216844Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "8523.38",
+     "yes_ask_dollars": "0.8900",
+     "yes_ask_size_fp": "440.70",
+     "yes_bid_dollars": "0.8200",
+     "yes_bid_size_fp": "511.00",
+     "yes_sub_title": "Ramp"
+    },
+    {
+     "can_close_early": true,
+     "close_time": "2040-01-01T04:59:00Z",
+     "created_time": "2025-08-06T23:28:46.25889Z",
+     "custom_strike": {
+      "Company": "Brex"
+     },
+     "early_close_condition": "This market will close and expire early if the event occurs.",
+     "event_ticker": "KXRAMPBREX-40",
+     "exchange_index": 0,
+     "expected_expiration_time": "2040-01-01T15:00:00Z",
+     "expiration_time": "2040-01-08T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.0200",
+     "latest_expiration_time": "2040-01-08T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.9800",
+     "no_bid_dollars": "0.9300",
+     "no_sub_title": "Brex",
+     "notional_value_dollars": "1.0000",
+     "open_interest_fp": "2991.14",
+     "open_time": "2025-08-06T23:45:00Z",
+     "previous_price_dollars": "0.0200",
+     "previous_yes_ask_dollars": "0.0700",
+     "previous_yes_bid_dollars": "0.0200",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If Brex confirms an IPO first, before Jan 1, 2040, then the market resolves to Yes.",
+     "rules_secondary": "",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "strike_type": "custom",
+     "ticker": "KXRAMPBREX-40-BREX",
+     "title": "Will Ramp or Brex IPO first?",
+     "updated_time": "2026-04-09T09:31:38.366771Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "17595.28",
+     "yes_ask_dollars": "0.0700",
+     "yes_ask_size_fp": "423.00",
+     "yes_bid_dollars": "0.0200",
+     "yes_bid_size_fp": "1665.00",
+     "yes_sub_title": "Brex"
+    }
+   ],
+   "mutually_exclusive": false,
+   "series_ticker": "KXRAMPBREX",
+   "settlement_sources": [
+    {
+     "name": "Securities and Exchange Commission",
+     "url": "https://www.sec.gov/"
+    },
+    {
+     "name": "NYSE",
+     "url": "https://www.nyse.com/index"
+    },
+    {
+     "name": "NASDAQ",
+     "url": "https://www.nasdaq.com/"
+    },
+    {
+     "name": "the New York Times",
+     "url": "https://www.nytimes.com"
+    },
+    {
+     "name": "The Wall Street Journal",
+     "url": "https://www.wsj.com"
+    },
+    {
+     "name": "Bloomberg",
+     "url": "https://www.bloomberg.com"
+    },
+    {
+     "name": "BBC",
+     "url": "https://www.bbc.co.uk/"
+    },
+    {
+     "name": "ABC",
+     "url": "https://www.abc.net.au/"
+    },
+    {
+     "name": "Reuters",
+     "url": "https://www.reuters.com"
+    },
+    {
+     "name": "CNBC",
+     "url": "https://www.cnbc.com"
+    },
+    {
+     "name": "Financial Times",
+     "url": "https://www.ft.com"
+    }
+   ],
+   "strike_period": "",
+   "sub_title": "Before 2040",
+   "title": "Will Ramp or Brex IPO first?"
+  },
+  {
+   "category": "Financials",
+   "collateral_return_type": "",
+   "event_ticker": "KXOAIANTH-40",
+   "exchange_index": 0,
+   "last_updated_ts": "2026-10-26T19:04:08.158424Z",
+   "markets": [
+    {
+     "can_close_early": true,
+     "close_time": "2040-01-01T04:59:00Z",
+     "created_time": "2025-08-06T22:58:15.748721Z",
+     "custom_strike": {
+      "Company": "OpenAI"
+     },
+     "early_close_condition": "This market will close and expire early if the event occurs.",
+     "event_ticker": "KXOAIANTH-40",
+     "exchange_index": 0,
+     "expected_expiration_time": "2040-01-01T15:00:00Z",
+     "expiration_time": "2040-01-08T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.0400",
+     "latest_expiration_time": "2040-01-08T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.9600",
+     "no_bid_dollars": "0.9500",
+     "no_sub_title": "OpenAI",
+     "notional_value_dollars": "1.0000",
+     "open_interest_fp": "49839.01",
+     "open_time": "2025-08-06T23:30:00Z",
+     "previous_price_dollars": "0.0400",
+     "previous_yes_ask_dollars": "0.0700",
+     "previous_yes_bid_dollars": "0.0400",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If OpenAI confirms an IPO first, before Jan 1, 2040, then the market resolves to Yes.",
+     "rules_secondary": "",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "strike_type": "custom",
+     "ticker": "KXOAIANTH-40-OAI",
+     "title": "Will OpenAI or Anthropic IPO first?",
+     "updated_time": "2026-10-26T19:04:08.165742Z",
+     "volume_24h_fp": "79.72",
+     "volume_fp": "213186.25",
+     "yes_ask_dollars": "0.0500",
+     "yes_ask_size_fp": "137.76",
+     "yes_bid_dollars": "0.0400",
+     "yes_bid_size_fp": "930.76",
+     "yes_sub_title": "OpenAI"
+    },
+    {
+     "can_close_early": true,
+     "close_time": "2040-01-01T04:59:00Z",
+     "created_time": "2025-08-06T22:58:15.748722Z",
+     "custom_strike": {
+      "Company": "Anthropic"
+     },
+     "early_close_condition": "This market will close and expire early if the event occurs.",
+     "event_ticker": "KXOAIANTH-40",
+     "exchange_index": 0,
+     "expected_expiration_time": "2040-01-01T15:00:00Z",
+     "expiration_time": "2040-01-08T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.9900",
+     "latest_expiration_time": "2040-01-08T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.0200",
+     "no_bid_dollars": "0.0100",
+     "no_sub_title": "Anthropic",
+     "notional_value_dollars": "1.0000",
+     "open_interest_fp": "58019.32",
+     "open_time": "2025-08-06T23:30:00Z",
+     "previous_price_dollars": "0.9700",
+     "previous_yes_ask_dollars": "0.9900",
+     "previous_yes_bid_dollars": "0.9800",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If Anthropic confirms an IPO first, before Jan 1, 2040, then the market resolves to Yes.",
+     "rules_secondary": "",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "strike_type": "custom",
+     "ticker": "KXOAIANTH-40-ANTH",
+     "title": "Will Open AI or Anthropic IPO first?",
+     "updated_time": "2026-10-26T19:04:08.165742Z",
+     "volume_24h_fp": "5.97",
+     "volume_fp": "222667.25",
+     "yes_ask_dollars": "0.9900",
+     "yes_ask_size_fp": "178.00",
+     "yes_bid_dollars": "0.9800",
+     "yes_bid_size_fp": "175.61",
+     "yes_sub_title": "Anthropic"
+    }
+   ],
+   "mutually_exclusive": false,
+   "series_ticker": "KXOAIANTH",
+   "settlement_sources": [
+    {
+     "name": "Securities and Exchange Commission",
+     "url": "https://www.sec.gov/"
+    },
+    {
+     "name": "NYSE",
+     "url": "https://www.nyse.com/index"
+    },
+    {
+     "name": "NASDAQ",
+     "url": "https://www.nasdaq.com/"
+    },
+    {
+     "name": "the New York Times",
+     "url": "https://www.nytimes.com"
+    },
+    {
+     "name": "The Wall Street Journal",
+     "url": "https://www.wsj.com"
+    },
+    {
+     "name": "Bloomberg",
+     "url": "https://www.bloomberg.com"
+    },
+    {
+     "name": "BBC",
+     "url": "https://www.bbc.co.uk/"
+    },
+    {
+     "name": "ABC",
+     "url": "https://www.abc.net.au/"
+    },
+    {
+     "name": "Reuters",
+     "url": "https://www.reuters.com"
+    },
+    {
+     "name": "CNBC",
+     "url": "https://www.cnbc.com"
+    },
+    {
+     "name": "Financial Times",
+     "url": "https://www.ft.com"
+    }
+   ],
+   "strike_period": "",
+   "sub_title": "Before 2040",
+   "title": "Will OpenAI or Anthropic IPO first?"
+  },
+  {
+   "category": "Economics",
+   "collateral_return_type": "MECNET",
+   "event_ticker": "KXGDPYEAR-36",
+   "exchange_index": 0,
+   "last_updated_ts": "2026-10-27T19:53:03.069091Z",
+   "markets": [
+    {
+     "can_close_early": true,
+     "cap_strike": 0.1,
+     "close_time": "2037-12-31T13:29:00Z",
+     "created_time": "2026-07-27T23:49:03.68502Z",
+     "event_ticker": "KXGDPYEAR-36",
+     "exchange_index": 0,
+     "expected_expiration_time": "2037-12-31T15:00:00Z",
+     "expiration_time": "2037-12-31T13:29:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.1000",
+     "latest_expiration_time": "2037-12-31T13:29:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.9400",
+     "no_bid_dollars": "0.9300",
+     "no_sub_title": "0.0% or Below",
+     "notional_value_dollars": "1.0000",
+     "occurrence_datetime": "2037-12-31T13:29:00Z",
+     "open_interest_fp": "672.53",
+     "open_time": "2026-07-28T00:00:00Z",
+     "previous_price_dollars": "0.1000",
+     "previous_yes_ask_dollars": "0.0700",
+     "previous_yes_bid_dollars": "0.0600",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If the United States real GDP growth in 2036 is below 0.1%, then the market resolves to Yes.",
+     "rules_secondary": "This market is based on the Bureau of Economic Analysis\u2019s advance estimate of real gross domestic product (GDP) growth in the United States for calendar year 2036. The Expiration Value will be the first-published annual percent change in real GDP for 2036 from BEA\u2019s GDP release, expected with the advance estimate of Q4 2036 GDP in early 2037. Revisions published after expiration will not be considered.",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "strike_type": "less",
+     "ticker": "KXGDPYEAR-36-T0.1",
+     "title": "GDP growth in 2036?",
+     "updated_time": "2026-07-28T00:00:02.362285Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "9036.65",
+     "yes_ask_dollars": "0.0700",
+     "yes_ask_size_fp": "267.00",
+     "yes_bid_dollars": "0.0600",
+     "yes_bid_size_fp": "426.15",
+     "yes_sub_title": "0.0% or Below"
+    },
+    {
+     "can_close_early": true,
+     "cap_strike": 0.5,
+     "close_time": "2037-12-31T13:29:00Z",
+     "created_time": "2026-07-27T23:49:03.68502Z",
+     "event_ticker": "KXGDPYEAR-36",
+     "exchange_index": 0,
+     "expected_expiration_time": "2037-12-31T15:00:00Z",
+     "expiration_time": "2037-12-31T13:29:00Z",
+     "expiration_value": "",
+     "floor_strike": 0.1,
+     "last_price_dollars": "0.0500",
+     "latest_expiration_time": "2037-12-31T13:29:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.9600",
+     "no_bid_dollars": "0.9500",
+     "no_sub_title": "0.1% to 0.5%",
+     "notional_value_dollars": "1.0000",
+     "occurrence_datetime": "2037-12-31T13:29:00Z",
+     "open_interest_fp": "807.75",
+     "open_time": "2026-07-28T00:00:00Z",
+     "previous_price_dollars": "0.0500",
+     "previous_yes_ask_dollars": "0.0500",
+     "previous_yes_bid_dollars": "0.0400",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If the United States real GDP growth in 2036 is between 0.1% to 0.5%, then the market resolves to Yes.",
+     "rules_secondary": "This market is based on the Bureau of Economic Analysis\u2019s advance estimate of real gross domestic product (GDP) growth in the United States for calendar year 2036. The Expiration Value will be the first-published annual percent change in real GDP for 2036 from BEA\u2019s GDP release, expected with the advance estimate of Q4 2036 GDP in early 2037. Revisions published after expiration will not be considered.",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "strike_type": "between",
+     "ticker": "KXGDPYEAR-36-B0.3",
+     "title": "GDP growth in 2036?",
+     "updated_time": "2026-07-28T00:00:02.362285Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "12224.72",
+     "yes_ask_dollars": "0.0500",
+     "yes_ask_size_fp": "492.00",
+     "yes_bid_dollars": "0.0400",
+     "yes_bid_size_fp": "88.00",
+     "yes_sub_title": "0.1% to 0.5%"
+    }
+   ],
+   "mutually_exclusive": true,
+   "series_ticker": "KXGDPYEAR",
+   "settlement_sources": [
+    {
+     "name": "Bureau of Economic Analysis",
+     "url": "https://www.bea.gov/data/gdp/gross-domestic-product"
+    }
+   ],
+   "strike_period": "",
+   "sub_title": "2036",
+   "title": "US real GDP growth in 2036?"
+  },
+  {
+   "category": "Economics",
+   "collateral_return_type": "DIRECNET",
+   "event_ticker": "KXUSCPIYEAR-37FEB01",
+   "exchange_index": 0,
+   "last_updated_ts": "2026-10-27T19:53:03.248789Z",
+   "markets": [
+    {
+     "can_close_early": true,
+     "close_time": "2037-02-01T04:59:00Z",
+     "created_time": "2026-07-29T22:30:57.988612Z",
+     "early_close_condition": "This market will close and expire early if the economic data is released.",
+     "event_ticker": "KXUSCPIYEAR-37FEB01",
+     "exchange_index": 0,
+     "expected_expiration_time": "2037-02-08T06:30:00Z",
+     "expiration_time": "2037-02-08T06:30:00Z",
+     "expiration_value": "",
+     "floor_strike": 0,
+     "last_price_dollars": "0.9800",
+     "latest_expiration_time": "2037-02-08T06:30:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.2200",
+     "no_bid_dollars": "0.0000",
+     "no_sub_title": "Above 0.0%",
+     "notional_value_dollars": "1.0000",
+     "occurrence_datetime": "2037-02-01T06:30:00Z",
+     "open_interest_fp": "240.01",
+     "open_time": "2026-07-29T23:00:00Z",
+     "previous_price_dollars": "0.9800",
+     "previous_yes_ask_dollars": "1.0000",
+     "previous_yes_bid_dollars": "0.7800",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If the 12-month percentage change in CPI-U, U.S. city average, all items, not seasonally adjusted, in December 2036 is above 0.0%, then the market resolves to Yes.",
+     "rules_secondary": "The initially reported value for December 2036 will be used. This market concerns the 12-month percentage change for December 2036, not the annual-average percentage change for the specified year.",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "strike_type": "greater",
+     "ticker": "KXUSCPIYEAR-37FEB01-T0.0",
+     "title": "Will the 12-month percentage change in CPI-U in December 2036 be above 0.0%?",
+     "updated_time": "2026-07-29T23:00:01.609978Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "384.01",
+     "yes_ask_dollars": "1.0000",
+     "yes_ask_size_fp": "0.00",
+     "yes_bid_dollars": "0.7800",
+     "yes_bid_size_fp": "2.00",
+     "yes_sub_title": "Above 0.0%"
+    },
+    {
+     "can_close_early": true,
+     "close_time": "2037-02-01T04:59:00Z",
+     "created_time": "2026-07-29T22:30:57.988612Z",
+     "early_close_condition": "This market will close and expire early if the economic data is released.",
+     "event_ticker": "KXUSCPIYEAR-37FEB01",
+     "exchange_index": 0,
+     "expected_expiration_time": "2037-02-08T06:30:00Z",
+     "expiration_time": "2037-02-08T06:30:00Z",
+     "expiration_value": "",
+     "floor_strike": 0.5,
+     "last_price_dollars": "0.6200",
+     "latest_expiration_time": "2037-02-08T06:30:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.3800",
+     "no_bid_dollars": "0.0000",
+     "no_sub_title": "Above 0.5%",
+     "notional_value_dollars": "1.0000",
+     "occurrence_datetime": "2037-02-01T06:30:00Z",
+     "open_interest_fp": "242.82",
+     "open_time": "2026-07-29T23:00:00Z",
+     "previous_price_dollars": "0.6200",
+     "previous_yes_ask_dollars": "1.0000",
+     "previous_yes_bid_dollars": "0.6200",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If the 12-month percentage change in CPI-U, U.S. city average, all items, not seasonally adjusted, in December 2036 is above 0.5%, then the market resolves to Yes.",
+     "rules_secondary": "The initially reported value for December 2036 will be used. This market concerns the 12-month percentage change for December 2036, not the annual-average percentage change for the specified year.",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "strike_type": "greater",
+     "ticker": "KXUSCPIYEAR-37FEB01-T0.5",
+     "title": "Will the 12-month percentage change in CPI-U in December 2036 be above 0.5%?",
+     "updated_time": "2026-07-29T23:00:01.609978Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "795.41",
+     "yes_ask_dollars": "1.0000",
+     "yes_ask_size_fp": "0.00",
+     "yes_bid_dollars": "0.6200",
+     "yes_bid_size_fp": "40.00",
+     "yes_sub_title": "Above 0.5%"
+    }
+   ],
+   "mutually_exclusive": false,
+   "series_ticker": "KXUSCPIYEAR",
+   "settlement_sources": [
+    {
+     "name": "Bureau of Labor Statistics- Consumer Price Index",
+     "url": "https://www.bls.gov/news.release/cpi.nr0.htm"
+    }
+   ],
+   "strike_period": "",
+   "sub_title": "December 2036",
+   "title": "US headline CPI inflation in December 2036"
+  },
+  {
+   "category": "Entertainment",
+   "collateral_return_type": "",
+   "event_ticker": "KXPERFORMBONDSONG-35",
+   "exchange_index": 0,
+   "last_updated_ts": "2026-10-25T18:24:32.046937Z",
+   "markets": [
+    {
+     "can_close_early": true,
+     "close_time": "2035-01-01T15:00:00Z",
+     "created_time": "2025-06-27T17:08:30.400197Z",
+     "custom_strike": {
+      "Artist": "Dua Lipa"
+     },
+     "early_close_condition": "This market will close and expire early if the event occurs.",
+     "event_ticker": "KXPERFORMBONDSONG-35",
+     "exchange_index": 0,
+     "expected_expiration_time": "2035-01-01T15:00:00Z",
+     "expiration_time": "2035-01-01T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.2400",
+     "latest_expiration_time": "2035-01-01T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.8200",
+     "no_bid_dollars": "0.7600",
+     "no_sub_title": "Dua Lipa",
+     "notional_value_dollars": "1.0000",
+     "open_interest_fp": "4497.62",
+     "open_time": "2025-06-27T20:45:00Z",
+     "previous_price_dollars": "0.2400",
+     "previous_yes_ask_dollars": "0.2400",
+     "previous_yes_bid_dollars": "0.1800",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If Dua Lipa performs the James Bond film theme, then the market resolves to Yes.",
+     "rules_secondary": "",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "strike_type": "custom",
+     "ticker": "KXPERFORMBONDSONG-35-DUA",
+     "title": "Who will perform the next James Bond Song?",
+     "updated_time": "2026-10-25T18:24:32.086259Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "9021.81",
+     "yes_ask_dollars": "0.2400",
+     "yes_ask_size_fp": "113.10",
+     "yes_bid_dollars": "0.1800",
+     "yes_bid_size_fp": "49.00",
+     "yes_sub_title": "Dua Lipa"
+    },
+    {
+     "can_close_early": true,
+     "close_time": "2035-01-01T15:00:00Z",
+     "created_time": "2025-06-27T17:08:30.400197Z",
+     "custom_strike": {
+      "Artist": "Lana Del Rey"
+     },
+     "early_close_condition": "This market will close and expire early if the event occurs.",
+     "event_ticker": "KXPERFORMBONDSONG-35",
+     "exchange_index": 0,
+     "expected_expiration_time": "2035-01-01T15:00:00Z",
+     "expiration_time": "2035-01-01T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.2100",
+     "latest_expiration_time": "2035-01-01T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.8500",
+     "no_bid_dollars": "0.8200",
+     "no_sub_title": "Lana Del Rey",
+     "notional_value_dollars": "1.0000",
+     "open_interest_fp": "1978.01",
+     "open_time": "2025-06-27T20:45:00Z",
+     "previous_price_dollars": "0.2100",
+     "previous_yes_ask_dollars": "0.1800",
+     "previous_yes_bid_dollars": "0.1400",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If Lana Del Rey performs the James Bond film theme, then the market resolves to Yes.",
+     "rules_secondary": "",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "strike_type": "custom",
+     "ticker": "KXPERFORMBONDSONG-35-LAN",
+     "title": "Who will perform the next James Bond Song?",
+     "updated_time": "2026-10-25T18:24:32.086259Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "8829.80",
+     "yes_ask_dollars": "0.1800",
+     "yes_ask_size_fp": "2.00",
+     "yes_bid_dollars": "0.1500",
+     "yes_bid_size_fp": "170.40",
+     "yes_sub_title": "Lana Del Rey"
+    }
+   ],
+   "mutually_exclusive": false,
+   "series_ticker": "KXPERFORMBONDSONG",
+   "settlement_sources": [
+    {
+     "name": "performer"
+    },
+    {
+     "name": "official production company or studio releasing song",
+     "url": "https://www.007.com/"
+    },
+    {
+     "name": "official credits of the release"
+    },
+    {
+     "name": "the Recording Industry Association of America",
+     "url": "https://www.riaa.com"
+    },
+    {
+     "name": "Billboard",
+     "url": "https://www.billboard.com"
+    },
+    {
+     "name": "Rolling Stone",
+     "url": "https://www.rollingstone.com"
+    },
+    {
+     "name": "Variety",
+     "url": "https://variety.com"
+    },
+    {
+     "name": "The Hollywood Reporter",
+     "url": "https://www.hollywoodreporter.com"
+    },
+    {
+     "name": "Deadline",
+     "url": "https://deadline.com"
+    },
+    {
+     "name": "The New York Times",
+     "url": "https://www.nytimes.com/"
+    },
+    {
+     "name": "the Associated Press",
+     "url": "https://www.ap.org"
+    },
+    {
+     "name": "Bloomberg News",
+     "url": "https://www.bloomberg.com"
+    },
+    {
+     "name": "Reuters",
+     "url": "https://www.reuters.com"
+    },
+    {
+     "name": "official websites or social media accounts of the production",
+     "url": "https://www.007.com/"
+    }
+   ],
+   "strike_period": "",
+   "sub_title": "Before 2035",
+   "title": "Next James Bond film: Artist performing the James Bond Theme"
+  },
+  {
+   "category": "Entertainment",
+   "collateral_return_type": "",
+   "event_ticker": "KXJOHNNYDEPP-35",
+   "exchange_index": 0,
+   "last_updated_ts": "2026-10-16T03:06:21.089779Z",
+   "markets": [
+    {
+     "can_close_early": true,
+     "close_time": "2035-01-01T15:00:00Z",
+     "created_time": "2025-07-01T19:46:40.349215Z",
+     "custom_strike": {
+      "Actor": "Johnny Depp"
+     },
+     "early_close_condition": "This market will close and expire early if the event occurs.",
+     "event_ticker": "KXJOHNNYDEPP-35",
+     "exchange_index": 0,
+     "expected_expiration_time": "2035-01-01T15:00:00Z",
+     "expiration_time": "2035-01-01T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.6100",
+     "latest_expiration_time": "2035-01-01T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.3800",
+     "no_bid_dollars": "0.3300",
+     "no_sub_title": "Johnny Depp",
+     "notional_value_dollars": "1.0000",
+     "open_interest_fp": "11549.99",
+     "open_time": "2025-07-01T21:00:00Z",
+     "previous_price_dollars": "0.5100",
+     "previous_yes_ask_dollars": "0.6800",
+     "previous_yes_bid_dollars": "0.6300",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If Johnny Depp is cast in the next Pirates of the Caribbean before Jan 1, 2035, then the market resolves to Yes.",
+     "rules_secondary": "",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "strike_type": "custom",
+     "ticker": "KXJOHNNYDEPP-35-JOH",
+     "title": "Will Johnny Depp be casted in the next Pirates of the Caribbean?",
+     "updated_time": "2026-06-15T23:45:04.518968Z",
+     "volume_24h_fp": "30.17",
+     "volume_fp": "26655.33",
+     "yes_ask_dollars": "0.6700",
+     "yes_ask_size_fp": "2.00",
+     "yes_bid_dollars": "0.6200",
+     "yes_bid_size_fp": "75.00",
+     "yes_sub_title": "Johnny Depp"
+    }
+   ],
+   "mutually_exclusive": false,
+   "series_ticker": "KXJOHNNYDEPP",
+   "settlement_sources": [
+    {
+     "name": "The Hollywood Reporter",
+     "url": "https://www.hollywoodreporter.com/"
+    },
+    {
+     "name": "The New York Times",
+     "url": "https://www.nytimes.com/"
+    },
+    {
+     "name": "the Associated Press",
+     "url": "https://apnews.com/"
+    },
+    {
+     "name": "Reuters",
+     "url": "https://www.reuters.com/"
+    },
+    {
+     "name": "Axios",
+     "url": "https://www.axios.com/"
+    },
+    {
+     "name": "Politico",
+     "url": "https://www.politico.com/"
+    },
+    {
+     "name": "Semafor",
+     "url": "https://www.semafor.com/"
+    },
+    {
+     "name": "The Information",
+     "url": "https://www.theinformation.com/"
+    },
+    {
+     "name": "The Washington Post",
+     "url": "https://www.washingtonpost.com/"
+    },
+    {
+     "name": "The Wall Street Journal",
+     "url": "https://www.wsj.com/"
+    },
+    {
+     "name": "ABC",
+     "url": "https://www.abc.net.au/"
+    },
+    {
+     "name": "CBS",
+     "url": "https://www.cbsnews.com/"
+    },
+    {
+     "name": "CNN",
+     "url": "https://www.cnn.com/"
+    },
+    {
+     "name": "Fox News",
+     "url": "https://www.foxnews.com/"
+    },
+    {
+     "name": "MSNBC",
+     "url": "https://www.msnbc.com/"
+    }
+   ],
+   "strike_period": "",
+   "sub_title": "Before 2035",
+   "title": "Next Pirates of the Caribbean film: Will Johnny Depp be cast?"
+  },
+  {
+   "category": "Health",
+   "collateral_return_type": "",
+   "event_ticker": "KXFDATYPE1DIABETES-33",
+   "exchange_index": 0,
+   "last_updated_ts": "2026-10-16T03:27:45.996562Z",
+   "markets": [
+    {
+     "can_close_early": true,
+     "close_time": "2033-01-01T04:59:00Z",
+     "created_time": "2025-06-27T18:05:58.540665Z",
+     "early_close_condition": "This market will close and expire early if the event occurs.",
+     "event_ticker": "KXFDATYPE1DIABETES-33",
+     "exchange_index": 0,
+     "expected_expiration_time": "2033-01-01T15:00:00Z",
+     "expiration_time": "2033-01-08T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.3500",
+     "latest_expiration_time": "2033-01-08T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.6500",
+     "no_bid_dollars": "0.6400",
+     "no_sub_title": "Before 2033",
+     "notional_value_dollars": "1.0000",
+     "open_interest_fp": "4811.56",
+     "open_time": "2025-06-27T20:45:00Z",
+     "previous_price_dollars": "0.3600",
+     "previous_yes_ask_dollars": "0.3600",
+     "previous_yes_bid_dollars": "0.3500",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If the FDA approves a cure for Type 1 diabetes before Jan 1, 2033, then the market resolves to Yes.",
+     "rules_secondary": "",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "ticker": "KXFDATYPE1DIABETES-33",
+     "title": "Will the FDA approve a cure for Type 1 Diabetes before 2033?",
+     "updated_time": "2026-04-09T09:18:19.723337Z",
+     "volume_24h_fp": "34.32",
+     "volume_fp": "10681.30",
+     "yes_ask_dollars": "0.3600",
+     "yes_ask_size_fp": "9.43",
+     "yes_bid_dollars": "0.3500",
+     "yes_bid_size_fp": "567.00",
+     "yes_sub_title": "Before 2033"
+    }
+   ],
+   "mutually_exclusive": false,
+   "series_ticker": "KXFDATYPE1DIABETES",
+   "settlement_sources": [
+    {
+     "name": "U.S. Food and Drug Administration.",
+     "url": "https://www.fda.gov/news-events/fda-newsroom/press-announcements"
+    }
+   ],
+   "strike_period": "",
+   "sub_title": "Before 2033",
+   "title": "Will the FDA approve a cure for Type 1 diabetes before 2033?"
+  },
+  {
+   "category": "Companies",
+   "collateral_return_type": "",
+   "event_ticker": "KXAGICO-COMP",
+   "exchange_index": 0,
+   "last_updated_ts": "2026-10-16T03:27:45.996562Z",
+   "markets": [
+    {
+     "can_close_early": true,
+     "close_time": "2026-10-01T03:59:00Z",
+     "created_time": "2026-03-03T14:22:53.773623Z",
+     "custom_strike": {
+      "Company": "any company"
+     },
+     "early_close_condition": "This market will close and expire early if a qualifying announcement occurs.",
+     "event_ticker": "KXAGICO-COMP",
+     "exchange_index": 0,
+     "expected_expiration_time": "2031-01-01T15:00:00Z",
+     "expiration_time": "2026-10-08T14:00:00Z",
+     "expiration_value": "No",
+     "last_price_dollars": "0.0100",
+     "latest_expiration_time": "2026-10-08T14:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "1.0000",
+     "no_bid_dollars": "0.0000",
+     "no_sub_title": "Before Oct 1, 2026",
+     "notional_value_dollars": "1.0000",
+     "occurrence_datetime": "2026-10-01T15:44:38.642Z",
+     "open_interest_fp": "16277.61",
+     "open_time": "2026-03-03T15:00:00Z",
+     "previous_price_dollars": "0.0100",
+     "previous_yes_ask_dollars": "1.0000",
+     "previous_yes_bid_dollars": "0.0000",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "no",
+     "rules_primary": "If any company (public or private) officially announces that it has achieved Artificial General Intelligence (AGI) after market issuance and before Oct 1, 2026, then the market resolves to Yes.",
+     "rules_secondary": "To qualify, the announcement must explicitly state that the company has achieved, attained, reached, or developed Artificial General Intelligence (AGI), or that it has achieved, attained, reached, or developed \u201cAGI.\u201d Statements that describe \u201cAGI-like,\u201d \u201cAGI-level,\u201d \u201cnear-AGI,\u201d or \u201ctoward AGI\u201d systems without explicitly stating that the company has achieved/attained/reached/developed AGI do not qualify. For purposes of this market, a \u201ccompany\u201d includes any publicly traded company or any privately held company whose existence and corporate identity is verifiable and whose financing/valuation or corporate profile is covered by at least two of the listed major business news sources.",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "settlement_ts": "2026-10-01T16:55:43.966804Z",
+     "settlement_value_dollars": "0.0000",
+     "status": "finalized",
+     "strike_type": "custom",
+     "ticker": "KXAGICO-COMP-26Q3",
+     "title": "Will any company announce that it has achieved Artificial General Intelligence (AGI) before Oct 1, 2026?",
+     "updated_time": "2026-10-01T16:55:44.330613Z",
+     "volume_24h_fp": "0.00",
+     "volume_fp": "57129.54",
+     "yes_ask_dollars": "1.0000",
+     "yes_ask_size_fp": "0.00",
+     "yes_bid_dollars": "0.0000",
+     "yes_bid_size_fp": "0.00",
+     "yes_sub_title": "Before Oct 1, 2026"
+    },
+    {
+     "can_close_early": true,
+     "close_time": "2027-01-01T04:59:00Z",
+     "created_time": "2026-03-03T14:22:53.773623Z",
+     "custom_strike": {
+      "Company": "any company"
+     },
+     "early_close_condition": "This market will close and expire early if a qualifying announcement occurs.",
+     "event_ticker": "KXAGICO-COMP",
+     "exchange_index": 0,
+     "expected_expiration_time": "2031-01-01T15:00:00Z",
+     "expiration_time": "2027-01-08T15:00:00Z",
+     "expiration_value": "",
+     "last_price_dollars": "0.0700",
+     "latest_expiration_time": "2027-01-08T15:00:00Z",
+     "market_type": "binary",
+     "no_ask_dollars": "0.9400",
+     "no_bid_dollars": "0.9300",
+     "no_sub_title": "Before Jan 1, 2027",
+     "notional_value_dollars": "1.0000",
+     "open_interest_fp": "17564.08",
+     "open_time": "2026-03-03T15:00:00Z",
+     "previous_price_dollars": "0.0600",
+     "previous_yes_ask_dollars": "0.0700",
+     "previous_yes_bid_dollars": "0.0600",
+     "price_level_structure": "linear_cent",
+     "price_ranges": [
+      {
+       "end": "1.0000",
+       "start": "0.0000",
+       "step": "0.0100"
+      }
+     ],
+     "result": "",
+     "rules_primary": "If any company (public or private) officially announces that it has achieved Artificial General Intelligence (AGI) after market issuance and before Jan 1, 2027, then the market resolves to Yes.",
+     "rules_secondary": "To qualify, the announcement must explicitly state that the company has achieved, attained, reached, or developed Artificial General Intelligence (AGI), or that it has achieved, attained, reached, or developed \u201cAGI.\u201d Statements that describe \u201cAGI-like,\u201d \u201cAGI-level,\u201d \u201cnear-AGI,\u201d or \u201ctoward AGI\u201d systems without explicitly stating that the company has achieved/attained/reached/developed AGI do not qualify. For purposes of this market, a \u201ccompany\u201d includes any publicly traded company or any privately held company whose existence and corporate identity is verifiable and whose financing/valuation or corporate profile is covered by at least two of the listed major business news sources.",
+     "settlement_bounds_type": "default",
+     "settlement_timer_seconds": 1800,
+     "status": "active",
+     "strike_type": "custom",
+     "ticker": "KXAGICO-COMP-26Q4",
+     "title": "Will any company announce that it has achieved Artificial General Intelligence (AGI) before Jan 1, 2027?",
+     "updated_time": "2026-04-09T10:32:57.383887Z",
+     "volume_24h_fp": "393.00",
+     "volume_fp": "39256.18",
+     "yes_ask_dollars": "0.0700",
+     "yes_ask_size_fp": "658.01",
+     "yes_bid_dollars": "0.0600",
+     "yes_bid_size_fp": "7520.92",
+     "yes_sub_title": "Before Jan 1, 2027"
+    }
+   ],
+   "mutually_exclusive": false,
+   "series_ticker": "KXAGICO",
+   "settlement_sources": [
+    {
+     "name": "The Washington Post",
+     "url": "https://www.washingtonpost.com/"
+    },
+    {
+     "name": "ABC",
+     "url": "https://abcnews.go.com/"
+    },
+    {
+     "name": "CBS",
+     "url": "https://www.cbsnews.com/"
+    },
+    {
+     "name": "CNN",
+     "url": "https://www.cnn.com"
+    },
+    {
+     "name": "Fox Business",
+     "url": "https://foxbusiness.com/"
+    },
+    {
+     "name": "MSNBC",
+     "url": "https://www.msnbc.com"
+    },
+    {
+     "name": "NBC",
+     "url": "https://www.nbcnews.com/"
+    },
+    {
+     "name": "the Securities and Exchange Commission EDGAR database",
+     "url": "http://www.sec.gov/"
+    },
+    {
+     "name": "The New York Times",
+     "url": "https://www.nytimes.com/"
+    },
+    {
+     "name": "The Wall Street Journal",
+     "url": "https://www.wsj.com/"
+    },
+    {
+     "name": "Bloomberg News",
+     "url": "https://www.bloomberg.com/news"
+    },
+    {
+     "name": "Reuters",
+     "url": "https://www.reuters.com/"
+    },
+    {
+     "name": "the Associated Press",
+     "url": "https://apnews.com/"
+    },
+    {
+     "name": "Financial Times",
+     "url": "https://ft.com/"
+    },
+    {
+     "name": "CNBC",
+     "url": "https://www.cnbc.com/"
+    },
+    {
+     "name": "Yahoo Finance",
+     "url": "https://yahoofinance.com/"
+    },
+    {
+     "name": "MarketWatch",
+     "url": "https://marketwatch.com/"
+    },
+    {
+     "name": "Axios",
+     "url": "https://www.axios.com/"
+    },
+    {
+     "name": "Politico",
+     "url": "https://www.politico.com/"
+    },
+    {
+     "name": "The Information",
+     "url": "https://www.theinformation.com/"
+    }
+   ],
+   "strike_period": "",
+   "sub_title": "Corporate announcement",
+   "title": "When will any company achieve AGI?"
+  }
+ ],
+ "cursor": ""
+}
