@@ -14,9 +14,9 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 # Import app settings and models so metadata is populated
-from app.core.config import settings  # noqa: E402
-from app.db.database import Base  # noqa: E402
-from app.db import models  # noqa: E402, F401 — registers all ORM models
+from pmnews.core.config import settings  # noqa: E402
+from pmnews.db.database import Base  # noqa: E402
+from pmnews.db import models  # noqa: E402, F401 — registers all ORM models
 
 config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
 target_metadata = Base.metadata

@@ -17,7 +17,7 @@ services:
       retries: 5
 
   backend:
-    build: ./backend
+    build: .
     restart: unless-stopped
     depends_on:
       db:
@@ -27,7 +27,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./backend:/app
+      - ./src:/app/src
 
   frontend:
     build: ./frontend

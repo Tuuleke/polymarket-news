@@ -10,11 +10,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
-from app.api.routes import articles, markets
-from app.core.config import settings
-from app.db.database import AsyncSessionLocal, Base, engine
-from app.db.models import Market, MarketSnapshot  # noqa: F401 — registers models with Base
-from app.services.polymarket import PolymarketService
+from pmnews.api.routes import articles, markets
+from pmnews.core.config import settings
+from pmnews.db.database import AsyncSessionLocal, Base, engine
+from pmnews.db.models import Market, MarketSnapshot  # noqa: F401 — registers models with Base
+from pmnews.sources.polymarket import PolymarketService
 
 logger = logging.getLogger(__name__)
 _polymarket = PolymarketService()

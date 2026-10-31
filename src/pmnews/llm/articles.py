@@ -7,8 +7,8 @@ from datetime import date
 
 from openai import AsyncOpenAI
 
-from app.core.config import settings
-from app.db.models import Market, MarketSnapshot
+from pmnews.core.config import settings
+from pmnews.db.models import Market, MarketSnapshot
 
 _SYSTEM_PROMPT = """\
 You are a financial journalist writing for a general audience with no background \

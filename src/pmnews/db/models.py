@@ -14,7 +14,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from app.db.database import Base
+from pmnews.db.database import Base
 
 
 class ArticleType(str, enum.Enum):

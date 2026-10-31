@@ -5,7 +5,7 @@ from datetime import date
 
 import httpx
 
-from app.core.config import settings
+from pmnews.core.config import settings
 
 
 class PolymarketService:

@@ -2,7 +2,7 @@ from datetime import date, datetime
 
 from pydantic import BaseModel
 
-from app.schemas.article import ArticleRead
+from pmnews.api.schemas.article import ArticleRead
 
 
 class MarketSnapshotRead(BaseModel):

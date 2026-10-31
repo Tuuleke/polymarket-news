@@ -10,12 +10,12 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
-from app.db.database import get_db
-from app.db.models import Article, Market, MarketSnapshot
-from app.schemas.article import ArticleRead
-from app.schemas.market import MarketRead
-from app.services.llm import LLMService
-from app.services.polymarket import PolymarketService
+from pmnews.db.database import get_db
+from pmnews.db.models import Article, Market, MarketSnapshot
+from pmnews.api.schemas.article import ArticleRead
+from pmnews.api.schemas.market import MarketRead
+from pmnews.llm.articles import LLMService
+from pmnews.sources.polymarket import PolymarketService
 
 router = APIRouter()
 
