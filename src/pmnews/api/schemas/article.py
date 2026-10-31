@@ -13,10 +13,6 @@ class ArticleBase(BaseModel):
     snapshot_date: date | None = None
 
 
-class ArticleCreate(ArticleBase):
-    market_id: int
-
-
 class ArticleRead(ArticleBase):
     id: int
     market_id: int

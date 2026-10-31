@@ -27,10 +27,6 @@ class MarketBase(BaseModel):
     url: str | None = None
 
 
-class MarketCreate(MarketBase):
-    pass
-
-
 class MarketRead(MarketBase):
     id: int
     fetched_at: datetime
