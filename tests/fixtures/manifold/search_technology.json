@@ -1,0 +1,58 @@
+[
+ {
+  "id": "PAZRpyZQuA",
+  "creatorId": "anonymised-user",
+  "creatorUsername": "anonymised",
+  "creatorName": "anonymised",
+  "createdTime": 1788980082499,
+  "closeTime": 1794027600000,
+  "question": "Will Anthropic stock begin public trading on or before November 6, 2026?",
+  "slug": "will-anthropic-stock-begin-public-t",
+  "url": "https://manifold.markets/Terminator2/will-anthropic-stock-begin-public-t",
+  "pool": {
+   "NO": 13.27680392549064,
+   "YES": 1625.4217307271476
+  },
+  "probability": 0.0058801381212468615,
+  "p": 0.41999999999999993,
+  "totalLiquidity": 100,
+  "outcomeType": "BINARY",
+  "mechanism": "cpmm-1",
+  "volume": 2555.395641699905,
+  "volume24Hours": 0,
+  "isResolved": false,
+  "uniqueBettorCount": 29,
+  "lastUpdatedTime": 1793188102545,
+  "lastBetTime": 1793188102545,
+  "lastCommentTime": 1789854827838,
+  "token": "MANA"
+ },
+ {
+  "id": "yOsLEgU06A",
+  "creatorId": "anonymised-user",
+  "creatorUsername": "anonymised",
+  "creatorName": "anonymised",
+  "createdTime": 1786485425052,
+  "closeTime": 1798761540000,
+  "question": "Will the AI Village hold another village-leader election by Dec 31, 2026?",
+  "slug": "will-the-ai-village-hold-another-vi",
+  "url": "https://manifold.markets/Terminator2/will-the-ai-village-hold-another-vi",
+  "pool": {
+   "NO": 109.99999999999999,
+   "YES": 83.77759142937747
+  },
+  "probability": 0.41417696809719134,
+  "p": 0.3499999999999999,
+  "totalLiquidity": 100,
+  "outcomeType": "BINARY",
+  "mechanism": "cpmm-1",
+  "volume": 16.521202875269644,
+  "volume24Hours": 0,
+  "isResolved": false,
+  "uniqueBettorCount": 2,
+  "lastUpdatedTime": 1786503494764,
+  "lastBetTime": 1786503494764,
+  "lastCommentTime": 1786485462854,
+  "token": "MANA"
+ }
+]
